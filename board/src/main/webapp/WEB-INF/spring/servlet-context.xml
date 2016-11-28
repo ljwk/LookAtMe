@@ -21,12 +21,8 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<mvc:annotation-driven />
 
-	<context:component-scan base-package="org.devl.java" />
-	<context:component-scan base-package="org.devl.service" />
-	<!-- <context:component-scan base-package="org.devl.DAO" /> -->
-	<!-- <context:component-scan base-package="org.devl.VO" /> -->
-	<!-- <context:component-scan base-package="org.devl.security" /> -->
-	<!-- <context:component-scan base-package="org.devl.mybatis" /> -->
+	<context:component-scan base-package="org.dev.lam.Controller" />
+	<context:component-scan base-package="org.dev.lam.Service" />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />

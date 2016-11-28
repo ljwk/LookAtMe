@@ -24,7 +24,7 @@
 	</beans:bean>
 
 	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<beans:property name="mapperLocations" value="classpath:org/devl/DAO/*.xml" />
+		<beans:property name="mapperLocations" value="classpath:org/dev/lam/DAO/*.xml" />
 		<beans:property name="dataSource" ref="dataSource" />
 	</beans:bean>
 
@@ -35,8 +35,8 @@
 		<beans:bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<beans:property name="host" value="smtp.gmail.com" />
 		<beans:property name="port" value="25" />
-		<beans:property name="username" value="digh1219@gmail.com" />
-		<beans:property name="password" value="whddnr2484297" />
+		<beans:property name="username" value="asdf1234@gmail.com" />
+		<beans:property name="password" value="asdf1234" />
 		<beans:property name="defaultEncoding" value="utf-8" />
 		<beans:property name="javaMailProperties">
 			<beans:props>
@@ -55,10 +55,7 @@
 		<!-- <intercept-url pattern="/admin/**" access="hasAuthority('ROLE_ADMIN')" /> -->
 		<!-- <intercept-url pattern="/manager/**" access="hasRole('ROLE_MANAGER')" /> -->
 		<!-- <intercept-url pattern="/member/**" access="isAuthenticated()" /> -->
-		<!-- <intercept-url pattern="/dev/**" access="hasAuthority('DEV')" /> -->
 		<intercept-url pattern="/main/home" access="permitAll" />
-		<intercept-url pattern="/main/content" access="permitAll" />
-		<intercept-url pattern="/main/**" access="hasAuthority('ROLE_MEMBER')" />
 		<form-login 
 			login-page="/login" 
 			login-processing-url="/user/login" 
