@@ -50,19 +50,19 @@
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="alert alert-info">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/testWeb/index.jsp">Main</a>
+				<a class="navbar-brand" href="/board/index.jsp">Main</a>
 			</div>
 		
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 				<sec:authorize access="! isAuthenticated()">	      	
-					<li><a href="/testWeb/home/join">Join</a></li>
-					<li><a href="/testWeb/home/login">Login</a></li>
+					<li><a href="/board/home/join">Join</a></li>
+					<li><a href="/board/home/login">Login</a></li>
 				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
 					<li><a href="javascript:logout();">Logout</a></li>
 				</sec:authorize>		        
-					<li><a href="/testWeb/home/main">Board</a></li>
+					<li><a href="/board/home/main">Board</a></li>
 				</ul>
 			</div>	    
 		</div>

@@ -44,14 +44,14 @@
 			return;
 		}
 		$.ajax({
-			url : '/testWeb/user/join' , 
+			url : '/board/user/join' , 
 			data : dateObj,
 			type : 'post',
 			dataType : 'json', 
 			success : function(res) {
 				if(res.success){
 					alert('회원가입 성공');
-					location.href='/testWeb/home/login';
+					location.href='/board/home/login';
 				}else{
 					alert('회원가입 실패');
 				}
@@ -67,7 +67,7 @@
 		dateObj.id=$('[name=id]').val();
 			 
 		$.ajax({
-			url : '/testWeb/user/chk' , 
+			url : '/board/user/chk' , 
 			data : dateObj,
 			type : 'post',
 			dataType : 'json', 
@@ -91,7 +91,7 @@
 		jsonObj.email = $('[name=email]').val();
 		
 		$.ajax({
-			url : '/testWeb/email/chkResult' ,
+			url : '/board/email/chkResult' ,
 			type : 'post',
 			data : jsonObj, 
 			dataType : 'json',  
@@ -127,19 +127,19 @@
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="alert alert-info">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/testWeb/index.jsp">Main</a>
+				<a class="navbar-brand" href="/board/index.jsp">Main</a>
 			</div>
 		
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 				<sec:authorize access="! isAuthenticated()">	      	
-					<li><a href="/testWeb/home/join">Join</a></li>
-					<li><a href="/testWeb/home/login">Login</a></li>
+					<li><a href="/board/home/join">Join</a></li>
+					<li><a href="/board/home/login">Login</a></li>
 				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
 					<li><a href="javascript:logout();">Logout</a></li>
 				</sec:authorize>		        
-					<li><a href="/testWeb/home/main">Board</a></li>
+					<li><a href="/board/home/main">Board</a></li>
 				</ul>
 			</div>	    
 		</div>
@@ -157,6 +157,6 @@
 	</div>
 	<br><br>
 	<button class="btn btn-default" onclick="join();" id="JOIN">회원가입</button>
-	<a href=/testWeb/index.jsp><button class="btn btn-default">취소</button></a>
+	<a href=/board/index.jsp><button class="btn btn-default">취소</button></a>
 </body>
 </html>
