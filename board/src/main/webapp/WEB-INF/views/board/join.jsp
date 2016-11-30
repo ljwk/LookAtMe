@@ -153,7 +153,7 @@
 		<div class="panel-heading">회원가입 폼</div>
 		<table class="table" id="tablee">
 			<tr>
-				<th>E-MAIL</th><td><input type="email" name="email" id="EMAIL" value="${email}"> <button type="button" class="btn btn-default"  onclick="chk();" id="CHK">유효성 검사</button></td></tr>
+				<th>E-MAIL</th><td><input type="email" name="email" id="EMAIL" value="${email}"> <button type="button" class="btn btn-default"  onclick="chk();" id="CHK">이메일 인증</button></td></tr>
 				<tr><th>ID</th><td><input type="text" name="id" id="ID" > <button type="button" class="btn btn-default" onclick="chkId();" id="ICHK">아이디 중복검사</button></td></tr>
 				<tr><th>PASSWORD</th><td><input type="password" name="pwd" class="cls1" id="PWD"></td>
 			</tr>			
