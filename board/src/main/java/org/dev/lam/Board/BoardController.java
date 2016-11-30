@@ -17,11 +17,6 @@ public class BoardController {
 	@Autowired
 	private BoardService svc;
 	
-	@RequestMapping(value = "/cctv", method = RequestMethod.GET)
-	public String cctv(Model model) {
-		return "board/cctv";
-	}
-
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login1(Model model) {
 		return "board/login";
