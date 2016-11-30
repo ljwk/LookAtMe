@@ -18,7 +18,7 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
 	<context:component-scan base-package="org.dev.lam.Security" />	
-
+	
 	<beans:bean id="dataSource" class="oracle.jdbc.pool.OracleDataSource">
 		<beans:property name="dataSourceName" value="ds" />
 		<beans:property name="URL" value="jdbc:oracle:thin:@192.168.2.24:1521:xe" />
@@ -28,9 +28,9 @@
 	
 	<!-- Access permission -->
 	<http auto-config='true' use-expressions="true">
-<!--         <intercept-url pattern="/admin/usermanager/**"  access="hasAuthority('USER_MANAGER')" />
+        <intercept-url pattern="/admin/usermanager/**"  access="hasAuthority('USER_MANAGER')" />
         <intercept-url pattern="/manager/**"  access="hasRole('USER')" />
-        <intercept-url pattern="/member/**"  access="isAuthenticated()" /> -->
+        <intercept-url pattern="/member/**"  access="isAuthenticated()" />
 		<intercept-url pattern="/**" access="permitAll" />
 		<form-login 
 			login-page="/login" 

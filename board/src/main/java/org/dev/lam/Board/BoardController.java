@@ -44,6 +44,7 @@ public class BoardController {
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String main(@RequestParam(value = "page", defaultValue = "1") int page,
 			@RequestParam(value = "rpp", defaultValue = "10") int rpp, Model model) {
+		System.out.println("bbb");
 
 		model.addAttribute("list", svc.getList(page, rpp));
 		model.addAttribute("page", page);
