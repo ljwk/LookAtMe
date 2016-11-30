@@ -26,6 +26,15 @@
 		<beans:property name="password" value="TIGER" />
 	</beans:bean>	
 	
+		<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<beans:property name="mapperLocations" value="classpath:org/dev/lam/**/**.xml" />
+		<beans:property name="dataSource" ref="dataSource" />
+	</beans:bean>	
+	
+	<beans:bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<beans:constructor-arg index="0" ref="sqlSessionFactory" />
+	</beans:bean>
+	
 	<!-- Access permission -->
 	<http auto-config='true' use-expressions="true">
         <intercept-url pattern="/admin/usermanager/**"  access="hasAuthority('USER_MANAGER')" />
