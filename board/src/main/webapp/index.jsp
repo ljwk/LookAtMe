@@ -28,17 +28,18 @@ function logout(){
 		
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-				<sec:authorize access="! isAuthenticated()">	      	
-					<li><a href="/board/user/joinForm">Join</a></li>
-					<li><a href="/board/user/login">Login</a></li>
-				</sec:authorize>
-				<sec:authorize access="isAuthenticated()">
-					<li><a href="<c:url value='/logout' />">Logout</a></li>
-				</sec:authorize>		        
+					<sec:authorize access="isAuthenticated()">
+						<li><a href="<c:url value='/cctv/list' />">CCTV</a></li>
+					</sec:authorize>		  					
+  					<li><a href="/board/notice/main">Notice</a></li>
 					<li><a href="/board/free/main">Board</a></li>
-				<sec:authorize access="isAuthenticated()">
-					<li><a href="<c:url value='/cctv/list' />">CCTV</a></li>
-				</sec:authorize>		  					
+					<sec:authorize access="! isAuthenticated()">	      	
+						<li><a href="/board/user/joinForm">Join</a></li>
+						<li><a href="/board/user/login">Login</a></li>
+					</sec:authorize>
+					<sec:authorize access="isAuthenticated()">
+						<li><a href="<c:url value='/logout' />">Logout</a></li>
+					</sec:authorize>									
 				</ul>
 			</div>	    
 		</div>

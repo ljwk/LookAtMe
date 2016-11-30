@@ -24,6 +24,7 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<mvc:annotation-driven />
 
+	<context:component-scan base-package="org.dev.lam.Notice" />
 	<context:component-scan base-package="org.dev.lam.Board" />
 	<context:component-scan base-package="org.dev.lam.CCTV" />
 	<context:component-scan base-package="org.dev.lam.User" />
