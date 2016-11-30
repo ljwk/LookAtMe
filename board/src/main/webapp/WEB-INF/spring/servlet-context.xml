@@ -44,9 +44,6 @@
 	</beans:bean>
 	
 	
-	
-	
-	
 	<beans:bean id="multipartResolver" 
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
@@ -66,8 +63,5 @@
 			</beans:props>
 		</beans:property>
 	</beans:bean>
-	
-
-	<view-controller path="/login" view-name="sec/login" />
 	
 </beans:beans>

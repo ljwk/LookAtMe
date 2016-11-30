@@ -45,7 +45,7 @@ body { text-align: center; }
 						<li><a href="/board/user/login">Login</a></li>
 					</sec:authorize>
 					<sec:authorize access="isAuthenticated()">
-						<li><a href="<c:url value='/logout' />">Logout</a></li>
+						<li><a href="javascript:logout();">Logout</a></li>
 					</sec:authorize>					
 				</ul>
 			</div>	    
