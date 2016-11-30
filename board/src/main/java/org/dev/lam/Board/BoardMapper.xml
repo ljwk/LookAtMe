@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.kdea.board.BoardDAO"> <!--이 sql 문장과 매핑될 인터페이스의 완전한 경로 -->
-	<select id="list" resultType="org.kdea.board.BoardVO">
+<mapper namespace="org.dev.lam.Board.BoardDAO"> <!--이 sql 문장과 매핑될 인터페이스의 완전한 경로 -->
+	<select id="list" resultType="org.dev.lam.Board.BoardVO">
 		WITH t1(title,num,id,regdate,hitcnt,active,ref, lvl, totalRows)
 		  AS  
 		  (  
@@ -23,22 +23,22 @@
 		  WHERE page=#{page} 
 	</select>
 	
-	<insert id="insert" parameterType="org.kdea.board.BoardVO">
+	<insert id="insert" parameterType="org.dev.lam.Board.BoardVO">
 		INSERT INTO board (num, title, contents, id, regdate, hitCnt) 
 		VALUES (board_num.NEXTVAL, #{title}, #{contents}, #{id}, sysdate,0)
 	</insert>
 
-	<insert id="fileadd" parameterType="org.kdea.board.BoardVO">
+	<insert id="fileadd" parameterType="org.dev.lam.Board.BoardVO">
 		INSERT INTO pds (num, filename,filesize,ext,filenames)
 		VALUES (#{num}, #{filename}, #{filesize}, #{ext},#{filename2})
 	</insert>
 	
-	<select id="desc" resultType="org.kdea.board.BoardVO">
+	<select id="desc" resultType="org.dev.lam.Board.BoardVO">
 		<!-- SELECT * FROM board WHERE num=#{num} -->
 		SELECT * FROM BOARD B INNER JOIN MEMBER2 M ON B.ID = M.ID WHERE B.num = #{num}
 	</select>
 	
-	<select id="fileDesc" resultType="org.kdea.board.BoardVO">
+	<select id="fileDesc" resultType="org.dev.lam.Board.BoardVO">
 		SELECT * FROM BOARD B INNER JOIN pds p ON B.num = p.num WHERE B.num = #{num}
 	</select>
 	
@@ -54,16 +54,16 @@
 		UPDATE board SET active = 'X' WHERE num=#{num} and not EXISTS (SELECT * FROM (select * from board where active is null) WHERE ref=#{num})
 	</update>
 	
-	<update id="modi" parameterType="org.kdea.board.BoardVO">
+	<update id="modi" parameterType="org.dev.lam.Board.BoardVO">
 		UPDATE board SET title = #{title}, contents= #{contents} WHERE num=#{num}
 	</update>
 	
-	<insert id="reinsert" parameterType="org.kdea.board.BoardVO">
+	<insert id="reinsert" parameterType="org.dev.lam.Board.BoardVO">
 		INSERT INTO board (num, title, contents, id, regdate, hitCnt, ref) 
 		VALUES (board_num.NEXTVAL, #{title}, #{contents}, #{id}, sysdate, 0, #{ref})
 	</insert>
 	
-	<select id="numList" resultType="org.kdea.board.BoardVO">
+	<select id="numList" resultType="org.dev.lam.Board.BoardVO">
 		SELECT * 
 		FROM (SELECT num,title, id, regdate, hitcnt, active, ref, 
 		(SELECT COUNT(*) FROM board where num =#{searchContents}) 
@@ -72,7 +72,7 @@
 		WHERE page=#{page} and active is null
 	</select>
 	
-	<select id="titleList" resultType="org.kdea.board.BoardVO">
+	<select id="titleList" resultType="org.dev.lam.Board.BoardVO">
 		SELECT * 
 		FROM (SELECT num,title, id, regdate, hitcnt, active, ref, 
 		(SELECT COUNT(*) FROM board where title like '%'||#{searchContents}||'%') 
@@ -81,7 +81,7 @@
 		WHERE page=#{page} and active is null
 	</select>
 			
-	<select id="idList" resultType="org.kdea.board.BoardVO">
+	<select id="idList" resultType="org.dev.lam.Board.BoardVO">
 		SELECT * 
 		FROM (SELECT num,title, id, regdate, hitcnt, active, ref, 
 		(SELECT COUNT(*) FROM board where id =#{searchContents}) 
@@ -90,7 +90,7 @@
 		WHERE page=#{page} and active is null
 	</select>
 	
-	<select id="ContList" resultType="org.kdea.board.BoardVO">
+	<select id="ContList" resultType="org.dev.lam.Board.BoardVO">
 		SELECT * 
 		FROM (SELECT num, title, contents, id, regdate, hitcnt, active, ref, (SELECT COUNT(*) FROM board where contents like '%'||#{searchContents}||'%') 
 		totalRows ,TRUNC((ROWNUM-1)/#{rpp})+1 AS page  

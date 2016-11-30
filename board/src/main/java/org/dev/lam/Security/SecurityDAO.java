@@ -44,7 +44,7 @@ public class SecurityDAO {
 
 	public UserDetails getUserDetails(String userId) {
 		conn = getConn();
-		String sql = "SELECT * FROM member2 WHERE id=?";
+		String sql = "SELECT * FROM member WHERE id=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userId);

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.dev.lam.UserDAO">
-	<insert id="add" parameterType="org.dev.lam.UserDAO">		
+	<insert id="add" parameterType="org.dev.lam.UserVO">		
 		INSERT INTO member2 (id, pwd, enabled, authority, email) 
 		VALUES(#{id},#{pwd},#{enabled},#{authority},#{email})
 	</insert>	
 	
-	<select id="getUser" resultType="org.dev.lam.UserDAO">
+	<select id="getUser" resultType="org.dev.lam.UserVO">
 		SELECT * FROM member2 WHERE id= #{id}
 	</select>
 	
