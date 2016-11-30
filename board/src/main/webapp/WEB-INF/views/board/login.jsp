@@ -36,8 +36,8 @@ body { text-align: center; }
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 				<sec:authorize access="! isAuthenticated()">	      	
-					<li><a href="/board/home/join">Join</a></li>
-					<li><a href="/board/home/login">Login</a></li>
+					<li><a href="/board/user/joinForm">Join</a></li>
+					<li><a href="/board/user/login">Login</a></li>
 				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
 					<li><a href="javascript:logout();">Logout</a></li>

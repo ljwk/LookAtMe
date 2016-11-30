@@ -1,12 +1,17 @@
 package org.dev.lam.User;
 
+import javax.mail.internet.*;
+import javax.mail.internet.MimeMessage.*;
 import org.mybatis.spring.*;
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.*;
 import org.springframework.stereotype.*;
 
 @Service
 public class UserService {
+	@Autowired
+	protected JavaMailSender mailSender;
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
@@ -43,4 +48,43 @@ public class UserService {
 
 		return n == 0 ? true : false;
 	}
+	
+    public boolean joinSendMail(EmailVO email) throws Exception {
+        try{
+           MimeMessage msg = mailSender.createMimeMessage();
+           
+           InternetAddress addr = new InternetAddress("tjsgud1993@naver.com");
+           msg.setFrom(addr);
+           msg.setSubject(email.getSubject());
+           msg.setContent(email.getContent(), "text/html;charset=utf-8");
+           msg.setRecipient(RecipientType.TO , new InternetAddress(email.getReceiver()));
+            
+           mailSender.send(msg);
+           return true;
+        }catch(Exception ex) {
+           ex.printStackTrace();
+        }
+        return false;
+    }
+    
+    public boolean sendMail(EmailVO email, String send) throws Exception {
+        try{
+	        MimeMessage msg = mailSender.createMimeMessage();
+	        InternetAddress addr = new InternetAddress(send);
+	        msg.setFrom(addr); // 송신자를 설정해도 소용없지만 없으면 오류가 발생한다
+	        //msg.setFrom("someone@paran.com");
+	        msg.setSubject(email.getSubject());
+
+	        // 일반 텍스트만 전송하려는 경우
+	        msg.setText(email.getContent());  
+
+	        msg.setRecipient(RecipientType.TO , new InternetAddress(email.getReceiver()));
+	         
+	        mailSender.send(msg);
+	        return true;
+        }catch(Exception ex) {
+        	ex.printStackTrace();
+        }
+        return false;
+    } 
 }

@@ -36,8 +36,8 @@ function logout(){
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 				<sec:authorize access="! isAuthenticated()">	      	
-					<li><a href="/board/home/join">Join</a></li>
-					<li><a href="/board/home/login">Login</a></li>
+					<li><a href="/board/user/joinForm">Join</a></li>
+					<li><a href="/board/user/login">Login</a></li>
 				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
 					<li><a href="javascript:logout();">Logout</a></li>
@@ -51,7 +51,7 @@ function logout(){
 		</div>
 	</nav>
 	<br><br><br><br><br><br><br>
-	<form action="/board/home/send" method="post">
+	<form action="/board/user/send" method="post">
 		<fieldset>
 		<legend>글쓴이에게 메일보내기</legend>
 		<input type="hidden" name="receiver1" value="${email}">

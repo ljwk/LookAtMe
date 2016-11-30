@@ -1,4 +1,4 @@
-package org.dev.lam.Board;
+package org.dev.lam.User;
 
 public class EmailVO {
 	private String subject;

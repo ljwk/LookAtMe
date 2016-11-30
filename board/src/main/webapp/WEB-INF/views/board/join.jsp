@@ -51,7 +51,7 @@
 			success : function(res) {
 				if(res.success){
 					alert('회원가입 성공');
-					location.href='/board/home/login';
+					location.href='/board/user/login';
 				}else{
 					alert('회원가입 실패');
 				}
@@ -91,7 +91,7 @@
 		jsonObj.email = $('[name=email]').val();
 		
 		$.ajax({
-			url : '/board/home/chkResult' ,
+			url : '/board/user/chkResult' ,
 			type : 'post',
 			data : jsonObj, 
 			dataType : 'json',  
@@ -133,8 +133,8 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 				<sec:authorize access="! isAuthenticated()">	      	
-					<li><a href="/board/home/join">Join</a></li>
-					<li><a href="/board/home/login">Login</a></li>
+					<li><a href="/board/user/joinForm">Join</a></li>
+					<li><a href="/board/user/login">Login</a></li>
 				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
 					<li><a href="javascript:logout();">Logout</a></li>

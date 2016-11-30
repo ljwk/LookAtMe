@@ -2,7 +2,6 @@ package org.dev.lam.Board;
 
 import java.io.*;
 import java.util.*;
-import javax.servlet.*;
 import javax.servlet.http.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
@@ -16,30 +15,6 @@ public class BoardController {
 
 	@Autowired
 	private BoardService svc;
-	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login1(Model model) {
-		return "board/login";
-	}
-
-	@RequestMapping(value = "/fail", method = RequestMethod.GET)
-	public String fail(Model model) {
-		return "board/fail";
-	}
-
-	@RequestMapping(value = "/mail", method = RequestMethod.GET)
-	public String mail(@RequestParam("email") String email, Model model) {
-		model.addAttribute("email", email);
-		return "board/mail";
-	}
-
-	@RequestMapping(value = "/join", method = RequestMethod.GET)
-	public String join(@RequestParam(value = "auth", defaultValue = "") String auth, Model model, HttpSession session) {
-		ServletContext application = session.getServletContext();
-		model.addAttribute("email", application.getAttribute(auth));
-		application.removeAttribute(auth);
-		return "board/join";
-	}
 
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String main(@RequestParam(value = "page", defaultValue = "1") int page, @RequestParam(value = "rpp", defaultValue = "10") int rpp, Model model) {
@@ -48,7 +23,7 @@ public class BoardController {
 		model.addAttribute("rpp", rpp);
 		return "board/main";
 	}
-
+	
 	@RequestMapping(value = "/list", method = RequestMethod.POST)
 	public String getList2(@RequestParam(value = "page", defaultValue = "1") int page, @RequestParam(value = "rpp", defaultValue = "10") int rpp, Model model) {
 		model.addAttribute("list", svc.getList(page, rpp));
@@ -56,7 +31,7 @@ public class BoardController {
 		model.addAttribute("rpp", rpp);
 		return "board/list";
 	}
-
+	
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String add(@RequestParam("id") String id, Model model) {
 		model.addAttribute("id", id);
@@ -119,22 +94,6 @@ public class BoardController {
 		map.put("success", ok + "");
 		svc.hitCnt(board.getNum());
 		return map;
-	}
-
-	@RequestMapping("/download")
-	@ResponseBody
-	public byte[] getImage(HttpServletResponse response, @RequestParam String filename) throws IOException {
-		File file = new File("F:/test/upload/" + filename);
-		byte[] bytes = org.springframework.util.FileCopyUtils.copyToByteArray(file);
-
-		// 한글은 http 헤더에 사용할 수 없기때문에 파일명은 영문으로 인코딩하여 헤더에 적용한다
-		String fn = new String(file.getName().getBytes(), "iso_8859_1");
-
-		response.setHeader("Content-Disposition", "attachment; filename=\"" + fn + "\"");
-		response.setContentLength(bytes.length);
-		response.setContentType("image/jpeg");
-
-		return bytes;
 	}
 
 	@RequestMapping(value = "/desc", method = RequestMethod.GET)
@@ -205,48 +164,26 @@ public class BoardController {
 		return "board/search";
 	}
 	
-	@RequestMapping(value = "/chkResult", method = RequestMethod.POST)
+	@RequestMapping("/download")
 	@ResponseBody
-	public Map<String, Boolean> chk(@RequestParam(value = "email") String email1, HttpSession session, Model model) {
-		ServletContext application = session.getServletContext();
+	public byte[] getImage(HttpServletResponse response, @RequestParam String filename) throws IOException {
+		File file = new File("F:/test/upload/" + filename);
+		byte[] bytes = org.springframework.util.FileCopyUtils.copyToByteArray(file);
 
-		EmailVO email = new EmailVO();
-		String receiver = email1;
-		String subject = "Email 인증용 메일";
+		// 한글은 http 헤더에 사용할 수 없기때문에 파일명은 영문으로 인코딩하여 헤더에 적용한다
+		String fn = new String(file.getName().getBytes(), "iso_8859_1");
 
-		String sId = session.getId();
-		application.setAttribute(sId, email1);
-		String content = "<a href='http://192.168.2.20:8081/board/home/join?auth=" + sId + "'>회원가입 계속하기</a>";
-		email.setReceiver(receiver);
-		email.setSubject(subject);
-		email.setContent(content);
-		boolean result = false;
-		try {
-			result = svc.joinSendMail(email);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		Map<String, Boolean> map = new HashMap<>();
-		map.put("result", result);
-		return map;
+		response.setHeader("Content-Disposition", "attachment; filename=\"" + fn + "\"");
+		response.setContentLength(bytes.length);
+		response.setContentType("image/jpeg");
+
+		return bytes;
 	}
 	
-    @RequestMapping(value = "/send", method = RequestMethod.POST)
-    public String sendMail(@RequestParam(value = "send") String sender, @RequestParam(value = "receiver1") String receiver1, @RequestParam(value = "title") String title, @RequestParam(value = "contents") String contents) throws Exception {
- 
-        EmailVO email = new EmailVO();
-         
-        String receiver = receiver1; //Receiver.
-        String subject = title;
-        String content = contents;
-         
-        email.setReceiver(receiver);
-        email.setSubject(subject);
-        email.setContent(content);
-        svc.sendMail(email,sender);
-        
-        return "redirect:/home/main";
-    }
-
+	@RequestMapping(value = "/mail", method = RequestMethod.GET)
+	public String mail(@RequestParam("email") String email, Model model) {
+		model.addAttribute("email", email);
+		return "board/mail";
+	}
+	
 }
