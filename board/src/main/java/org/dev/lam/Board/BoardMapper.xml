@@ -35,7 +35,7 @@
 	
 	<select id="desc" resultType="org.dev.lam.Board.BoardVO">
 		<!-- SELECT * FROM board WHERE num=#{num} -->
-		SELECT * FROM BOARD B INNER JOIN MEMBER2 M ON B.ID = M.ID WHERE B.num = #{num}
+		SELECT * FROM BOARD B INNER JOIN MEMBER M ON B.ID = M.ID WHERE B.num = #{num}
 	</select>
 	
 	<select id="fileDesc" resultType="org.dev.lam.Board.BoardVO">

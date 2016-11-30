@@ -91,7 +91,7 @@
 		jsonObj.email = $('[name=email]').val();
 		
 		$.ajax({
-			url : '/board/email/chkResult' ,
+			url : '/board/home/chkResult' ,
 			type : 'post',
 			data : jsonObj, 
 			dataType : 'json',  

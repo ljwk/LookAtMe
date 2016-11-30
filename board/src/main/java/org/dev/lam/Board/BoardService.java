@@ -2,15 +2,40 @@ package org.dev.lam.Board;
 
 import java.io.File;
 import java.util.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMessage.RecipientType;
 import org.mybatis.spring.*;
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.*;
 
 @Service
 public class BoardService {
 	@Autowired
+	protected JavaMailSender mailSender;
+	
+	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 
+    public boolean joinSendMail(EmailVO email) throws Exception {
+        try{
+           MimeMessage msg = mailSender.createMimeMessage();
+           
+           InternetAddress addr = new InternetAddress("tjsgud1993@naver.com");
+           msg.setFrom(addr);
+           msg.setSubject(email.getSubject());
+           msg.setContent(email.getContent(), "text/html;charset=utf-8");
+           msg.setRecipient(RecipientType.TO , new InternetAddress(email.getReceiver()));
+            
+           mailSender.send(msg);
+           return true;
+        }catch(Exception ex) {
+           ex.printStackTrace();
+        }
+        return false;
+    }
+	
 	public List<BoardVO> getList(int page, int rpp) {
 		BoardDAO dao = sqlSessionTemplate.getMapper(BoardDAO.class);
 		List<BoardVO> list = dao.list(page, rpp);

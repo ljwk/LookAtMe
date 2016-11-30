@@ -204,5 +204,32 @@ public class BoardController {
 		model.addAttribute("rpp", rpp);
 		return "board/search";
 	}
+	
+	@RequestMapping(value = "/chkResult", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Boolean> chk(@RequestParam(value = "email") String email1, HttpSession session, Model model) {
+		ServletContext application = session.getServletContext();
+
+		EmailVO email = new EmailVO();
+		String receiver = email1;
+		String subject = "Email 인증용 메일";
+
+		String sId = session.getId();
+		application.setAttribute(sId, email1);
+		String content = "<a href='http://192.168.2.20:8081/board/home/join?auth=" + sId + "'>회원가입 계속하기</a>";
+		email.setReceiver(receiver);
+		email.setSubject(subject);
+		email.setContent(content);
+		boolean result = false;
+		try {
+			result = svc.joinSendMail(email);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		Map<String, Boolean> map = new HashMap<>();
+		map.put("result", result);
+		return map;
+	}
 
 }
