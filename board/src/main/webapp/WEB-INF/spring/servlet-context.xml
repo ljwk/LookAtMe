@@ -21,8 +21,10 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<mvc:annotation-driven />
 
-	<context:component-scan base-package="org.dev.lam.Controller" />
-	<context:component-scan base-package="org.dev.lam.Service" />
+	<context:component-scan base-package="org.dev.lam.Board" />
+	<context:component-scan base-package="org.dev.lam.CCTV" />
+	<context:component-scan base-package="org.dev.lam.Security" />	
+	<context:component-scan base-package="org.dev.lam.User" />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
