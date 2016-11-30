@@ -51,7 +51,7 @@ function logout(){
 		</div>
 	</nav>
 	<br><br><br><br><br><br><br>
-	<form action="/board/email/send" method="post">
+	<form action="/board/home/send" method="post">
 		<fieldset>
 		<legend>글쓴이에게 메일보내기</legend>
 		<input type="hidden" name="receiver1" value="${email}">

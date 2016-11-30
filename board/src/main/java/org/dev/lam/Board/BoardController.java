@@ -236,5 +236,22 @@ public class BoardController {
 		map.put("result", result);
 		return map;
 	}
+	
+    @RequestMapping(value = "/send", method = RequestMethod.POST)
+    public String sendMail(@RequestParam(value = "send") String sender, @RequestParam(value = "receiver1") String receiver1, @RequestParam(value = "title") String title, @RequestParam(value = "contents") String contents) throws Exception {
+ 
+        EmailVO email = new EmailVO();
+         
+        String receiver = receiver1; //Receiver.
+        String subject = title;
+        String content = contents;
+         
+        email.setReceiver(receiver);
+        email.setSubject(subject);
+        email.setContent(content);
+        svc.sendMail(email,sender);
+        
+        return "redirect:/home/main";
+    }
 
 }

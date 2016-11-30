@@ -137,5 +137,26 @@ public class BoardService {
 		}
 		return true;
 	}
+	
+    public boolean sendMail(EmailVO email, String send) throws Exception {
+        try{
+	        MimeMessage msg = mailSender.createMimeMessage();
+	        InternetAddress addr = new InternetAddress(send);
+	        msg.setFrom(addr); // 송신자를 설정해도 소용없지만 없으면 오류가 발생한다
+	        //msg.setFrom("someone@paran.com");
+	        msg.setSubject(email.getSubject());
+
+	        // 일반 텍스트만 전송하려는 경우
+	        msg.setText(email.getContent());  
+
+	        msg.setRecipient(RecipientType.TO , new InternetAddress(email.getReceiver()));
+	         
+	        mailSender.send(msg);
+	        return true;
+        }catch(Exception ex) {
+        	ex.printStackTrace();
+        }
+        return false;
+    } 
 
 }
