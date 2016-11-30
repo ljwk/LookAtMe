@@ -43,6 +43,9 @@ body { text-align: center; }
 					<li><a href="javascript:logout();">Logout</a></li>
 				</sec:authorize>		        
 					<li><a href="/board/home/main">Board</a></li>
+				<sec:authorize access="isAuthenticated()">
+					<li><a href="<c:url value='/home/cctv' />">CCTV</a></li>
+				</sec:authorize>						
 				</ul>
 			</div>	    
 		</div>
@@ -57,11 +60,11 @@ body { text-align: center; }
 	  <div class="panel-body">
 		<form action="<c:url value='/user/login'/>" method="post">
 			<div>
-				아이디 <input type="text" name="id">
+				아이디 <input type="text" name="id" value="SH">
 			</div>
 			<br>
 			<div>
-				암 호 <input type="password" name="pwd">
+				암 호 <input type="password" name="pwd" value="1111">
 			</div>
 			<br>
 			<div>

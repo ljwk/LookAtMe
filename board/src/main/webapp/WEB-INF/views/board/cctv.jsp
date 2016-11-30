@@ -5,8 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메일보내기</title>
-<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+<title>CCTV</title>
+<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="http://malsup.github.com/jquery.form.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="//raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script>
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -18,13 +19,6 @@ function logout(){
 	}
 }
 </script>
-<style type="text/css">
-	body {text-align: center;}
-	table {border: 1px solid black; border-spacing: 0px; margin: 0px auto ; width: 500px;}
-	th, td {padding: 5px;}
-	th {border: 1px solid black; text-align: center; background: rgb(176, 187, 190);}
-	td {border: 1px solid black;}
-</style>
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top">
@@ -51,25 +45,6 @@ function logout(){
 		</div>
 	</nav>
 	<br><br><br><br><br><br><br>
-	<form action="/board/email/send" method="post">
-		<fieldset>
-		<legend>글쓴이에게 메일보내기</legend>
-		<input type="hidden" name="receiver1" value="${email}">
-		<table>
-			<tr>
-				<th>보내는사람</th><td><input type="text" id="send" name="send"></td>
-			</tr>	
-			<tr id="bb">
-				<th>제목</th><td><input type="text" id="title" name="title"></td>
-			</tr>
-			<tr id="aa">
-				<th>내용</th><td><textarea id="contents" name="contents"></textarea></td>
-			</tr>		
-		</table>
-		</fieldset>
-		<br><br>
-		<button type="submit" class="btn btn-default">보내기</button>
-	</form>
-	<br><br><br>
+	<h3>CCTV</h3>
 </body>
 </html>
