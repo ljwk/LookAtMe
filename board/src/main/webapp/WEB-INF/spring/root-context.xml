@@ -46,9 +46,9 @@
 			login-processing-url="/user/login" 
 			username-parameter="id"
 			password-parameter="pwd"
-			default-target-url="/home/main"
-			authentication-failure-url="/home/login?error=true" />
-		<logout logout-success-url="/home/main" />
+			default-target-url="/free/main"
+			authentication-failure-url="/user/login?error=true" />
+		<logout logout-success-url="/free/main" />
 		<csrf disabled="true" />
 	</http>
 	

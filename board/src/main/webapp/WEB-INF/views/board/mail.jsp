@@ -42,7 +42,7 @@ function logout(){
 				<sec:authorize access="isAuthenticated()">
 					<li><a href="javascript:logout();">Logout</a></li>
 				</sec:authorize>		        
-					<li><a href="/board/home/main">Board</a></li>
+					<li><a href="/board/free/main">Board</a></li>
 				<sec:authorize access="isAuthenticated()">
 					<li><a href="<c:url value='/cctv/list' />">CCTV</a></li>
 				</sec:authorize>						
