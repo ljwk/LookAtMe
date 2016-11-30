@@ -46,5 +46,8 @@ function logout(){
 	</nav>
 	<br><br><br><br><br><br><br>
 	<h3>CCTV</h3>
+	<br><br>
+	<button>←</button>
+	<button>→</button>
 </body>
 </html>
