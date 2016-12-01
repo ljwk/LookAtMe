@@ -104,10 +104,10 @@ a {color: black; text-decoration: none;}
 	</ul>
 	</div>
 	<div id="imgs">
-		 <img src="http://malsup.github.io/images/p1.jpg">
-		 <img src="http://malsup.github.io/images/p2.jpg">
-		 <img src="http://malsup.github.io/images/p3.jpg">
-		 <img src="http://malsup.github.io/images/p4.jpg">
+		 <img src="http://malsup.github.io/images/p1.jpg" class="img-circle">
+		 <img src="http://malsup.github.io/images/p2.jpg" class="img-circle">
+		 <img src="http://malsup.github.io/images/p3.jpg" class="img-circle">
+		 <img src="http://malsup.github.io/images/p4.jpg" class="img-circle">
 	</div>
 </body>
 </html> 
