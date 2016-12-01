@@ -4,7 +4,7 @@
 
 <div id="navdiv">
 	<nav class="nav nav-tabs">
-			<div class="navbar-header">
+			<div class="navbar-header" style="margin-left: 380px">
 				<a class="navbar-brand" href="/board/index.jsp">Main</a>
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

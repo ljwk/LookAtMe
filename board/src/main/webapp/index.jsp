@@ -39,12 +39,12 @@ $(document).ready(function(){
 </script>
 <style type="text/css">
 #navdiv{
-height:130px;
+height:100px;
 }
 #sliderimg{
 border-spacing: 0px; 
 margin: 0px auto ;
-width: 1350px;
+width: 1100px;
 }
 .bxslider > li > img{
 height:400px;
@@ -73,13 +73,13 @@ a {color: gray; text-decoration: none;}
     display: block;
     padding: 12px 15px;
 }
-
+#main{margin-left: 380px;}
 </style>
 </head>
 <body>
 <div id="navdiv">
  	<nav class="nav nav-tabs">
-		<div class="navbar-header">
+		<div class="navbar-header" id="main">
 			<a class="navbar-brand" href="/board/index.jsp">Main</a>
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
