@@ -10,6 +10,6 @@ public class NoticeController {
 	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String notice(Model model) {
-		return "notice/notice";
+		return "notice/main";
 	}
 }
