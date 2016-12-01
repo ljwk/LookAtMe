@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dev.lam.Notice.NoticeDAO"> 
+	<select id="list" resultType="org.dev.lam.Notice.NoticeVO">
+		WITH t1(title,num,id,regdate,hitcnt,active,ref, lvl, totalRows)
+		  AS  
+		  (  
+		    SELECT title,num,id,regdate,hitcnt,active,ref, 0 AS lvl, (SELECT COUNT(*) FROM notice where active is null) totalRows 
+		    FROM notice
+		    WHERE ref IS NULL and active is null UNION ALL   
+		    SELECT b.title, b.num, b.id, b.regdate, b.hitcnt, b.active, b.ref, t1.lvl+1 AS lvl, t1.totalRows 
+		    FROM notice b JOIN t1 ON b.ref = t1.num  
+		    where b.active is null
+		  )
+		  SEARCH DEPTH FIRST BY num DESC SET ordering 
+		  SELECT * 
+		  FROM 
+		  (  
+		    SELECT num, LPAD('　┕', lvl*3, '　')||title AS title, id, regdate, hitcnt, ref, totalRows, TRUNC((ordering-1)/#{rpp})+1 AS page 
+		    FROM t1 
+		    ORDER BY ordering  
+		  )
+		  WHERE page=#{page} 
+	</select>
+	<insert id="insert" parameterType="org.dev.lam.Notice.NoticeVO">
+		INSERT INTO notice (num, title, contents, id, regdate, hitCnt) 
+		VALUES (notice_num.NEXTVAL, #{title}, #{contents}, #{id}, sysdate,0)
+	</insert>
+
+	<insert id="fileadd" parameterType="org.dev.lam.Notice.NoticeVO">
+		INSERT INTO pds (num, filename,filesize,ext,filenames)
+		VALUES (#{num}, #{filename}, #{filesize}, #{ext},#{filename2})
+	</insert>
+	
+	<select id="desc" resultType="org.dev.lam.Notice.NoticeVO">
+		SELECT * FROM notice B INNER JOIN MEMBER M ON B.ID = M.ID WHERE B.num = #{num}
+	</select>
+	
+	<select id="fileDesc" resultType="org.dev.lam.Notice.NoticeVO">
+		SELECT * FROM notice B INNER JOIN pds p ON B.num = p.num WHERE B.num = #{num}
+	</select>
+	
+	<select id="num1" resultType="Integer">
+		SELECT MAX(NUM) FROM notice WHERE id = #{id}
+	</select>
+	
+	<update id="hitCnt">
+		UPDATE notice SET hitCnt = hitCnt+1 WHERE num=#{num}
+	</update>
+	
+	<update id="boardDelete">
+		UPDATE notice SET active = 'X' WHERE num=#{num} and not EXISTS (SELECT * FROM (select * from notice where active is null) WHERE ref=#{num})
+	</update>
+	
+	<update id="modi" parameterType="org.dev.lam.Notice.NoticeVO">
+		UPDATE notice SET title = #{title}, contents= #{contents} WHERE num=#{num}
+	</update>
+	
+	<insert id="reinsert" parameterType="org.dev.lam.Notice.NoticeVO">
+		INSERT INTO notice (num, title, contents, id, regdate, hitCnt, ref) 
+		VALUES (notice_num.NEXTVAL, #{title}, #{contents}, #{id}, sysdate, 0, #{ref})
+	</insert>
+	
+	<select id="numList" resultType="org.dev.lam.Notice.NoticeVO">
+		SELECT * 
+		FROM (SELECT num,title, id, regdate, hitcnt, active, ref, 
+		(SELECT COUNT(*) FROM notice where num =#{searchContents}) 
+		totalRows ,TRUNC((ROWNUM-1)/#{rpp})+1 AS page  
+		FROM notice  where num =#{searchContents}  ORDER BY num desc) 
+		WHERE page=#{page} and active is null
+	</select>
+	
+	<select id="titleList" resultType="org.dev.lam.Notice.NoticeVO">
+		SELECT * 
+		FROM (SELECT num,title, id, regdate, hitcnt, active, ref, 
+		(SELECT COUNT(*) FROM notice where title like '%'||#{searchContents}||'%') 
+		totalRows ,TRUNC((ROWNUM-1)/#{rpp})+1 AS page  
+		FROM notice  where title like '%'||#{searchContents}||'%'  ORDER BY num desc) 
+		WHERE page=#{page} and active is null
+	</select>
+			
+	<select id="idList" resultType="org.dev.lam.Notice.NoticeVO">
+		SELECT * 
+		FROM (SELECT num,title, id, regdate, hitcnt, active, ref, 
+		(SELECT COUNT(*) FROM notice where id =#{searchContents}) 
+		totalRows ,TRUNC((ROWNUM-1)/#{rpp})+1 AS page  
+		FROM notice  where id =#{searchContents}  ORDER BY num desc) 
+		WHERE page=#{page} and active is null
+	</select>
+	
+	<select id="ContList" resultType="org.dev.lam.Notice.NoticeVO">
+		SELECT * 
+		FROM (SELECT num, title, contents, id, regdate, hitcnt, active, ref, (SELECT COUNT(*) FROM notice where contents like '%'||#{searchContents}||'%') 
+		totalRows ,TRUNC((ROWNUM-1)/#{rpp})+1 AS page  
+		FROM notice  where contents like '%'||#{searchContents}||'%'  ORDER BY num desc) 
+		WHERE page=#{page} and active is null
+	</select>		
+</mapper>
