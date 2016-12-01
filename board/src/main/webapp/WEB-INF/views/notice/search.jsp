@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판</title>
+<title>검색결과</title>
 <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="//raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script>
@@ -13,10 +13,7 @@
 <script src="<c:url value="/resources/jquery.bootpag.min.js"/>"></script>
 <script>
 	$(function(){
-	    $("#navdiv").load("../resources/nav.jsp");
-	});
-
-	$(function(){
+		$("#navdiv").load("../resources/nav.jsp");
 		$('#page-selection').bootpag({
 			total: Math.ceil(${list[0].totalrows}/${rpp}),  
 			page: ${page},  
@@ -33,29 +30,9 @@
 			lastClass: 'last',
 			firstClass: 'first'
 		}).on("page", function(event, num){
-			getList(num);
+			location.href='search?rpp=10&page='+num+'&search=${search}&searchContents=${searchContents}';
 		}); 
-		getList(1);
-	});
-	
-	function getList(num){
-		var dateObj = {};
-		dateObj.page=num;
-		dateObj.rpp=${rpp};
-		
-		$.ajax({
-			url : 'list' , 
-			data : dateObj,
-			type : 'post',
-			dataType : 'html',
-			success : function(res) {
-				$('#content').html(res); 
-			}, 
-			error(xhr, status, error){
-				alert(error);
-			} 
-		});
-	}
+	});	
 	
 	function logout(){
 		if(confirm("로그아웃 하시겠습니까?")){			
@@ -92,21 +69,22 @@
 <div id="navdiv">
 </div>
 	<h3>게 시 판 !</h3>
-	<div id="content" class="panel panel-default"><!-- Dynamic Content goes here --></div>
-	<p>	
-	<br>	
-	<form name="updateForm" action="search">
-		<input type="hidden"  id="rpp" name="rpp" value="10">
-		<input type="hidden"  id="page"  name="page" value="1">
-		<select name="search" style="height: 30px;">
-			<option>번호</option><option>제목</option><option>작성자</option><option>내용</option>
-		</select>
-		<input type="text" name="searchContents" style="height: 30px;">
-		<button type="submit" class="btn btn-default" onclick="search();">검색</button>
-		<sec:authorize access="isAuthenticated()">
-			<a href="add?id=<sec:authentication property="name"/>" ><button type="button" class="btn btn-default">글쓰기</button></a>
-		</sec:authorize>
-	</form>
+	<div id="content" class="panel panel-default">
+
+		<table class="table" id="tablee">
+			<tr>
+				<th>글번호</th><th>제목</th><th>작성자</th>	<th>작성일</th>	<th>조회수</th>
+			</tr>
+			<c:forEach var="e" items="${list}">
+			<tr id="jul">
+				<td>${e.num}</td><td id="title"><a href="desc?num=${e.num}">${e.title}</a></td><td id="author">${e.id}</td><td>${e.regdate}</td><td>${e.hitcnt}</td>
+			</tr>
+			</c:forEach>
+		</table>
+	</div>
+	<p>
 	<div id="page-selection"><!-- Pagination goes here --></div>		
+	<p>
+	<a href="main"><button type="button" class="btn btn-default">목 록 으 로</button></a>
 </body>
 </html>
