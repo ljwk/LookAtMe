@@ -12,7 +12,8 @@
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script src="<c:url value="/resources/jquery.bootpag.min.js"/>"></script>
 <script type="text/javascript">
-	$(function() {		
+	$(function() {
+		$("#navdiv").load("../resources/nav.jsp");
  		if('${desc.filename}'==""){
 			$('#DOWN').attr('disabled',true); 
 		}else{
@@ -67,41 +68,17 @@
 	#aaaa{text-align: left;}
 	a:hover {color: red;}
 	a:active {color: gold}
-	a {color: black; text-decoration: none;}
+	a {color: gray; text-decoration: none;}
+	.no{
+	position: relative;
+    display: block;
+    padding: 12px 15px;
+    }
 </style>
 </head>
 <body>
 <div id="navdiv">
-	<nav class="nav nav-tabs">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/board/index.jsp">Main</a>
-			</div>
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<sec:authorize access="isAuthenticated()">
-						<li><a href="<c:url value='/cctv/list' />">CCTV</a></li>
-					</sec:authorize>		  					
-  					<li><a href="/board/notice/main">Notice</a></li>
-					<li><a href="/board/free/main">Board</a></li>
-					<sec:authorize access="! isAuthenticated()">	      	
-						<li><a href="/board/user/joinForm">Join</a></li>
-						<li><a href="/board/user/login">Login</a></li>
-					</sec:authorize>
-					<sec:authorize access="isAuthenticated()">
-						<li><a href="javascript:logout();">Logout</a></li>
-					</sec:authorize>					
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<sec:authorize access="!isAuthenticated()">
-						<li><a>Guest님이 접속하셨습니다.</a></li>
-						<li><a>글쓰기와 다운로드는 로그인이 필요합니다!</a></li>
-					</sec:authorize>
-					<sec:authorize access="isAuthenticated()">
-						<li><a><sec:authentication property="name"/>님이 접속하셨습니다.</a></li>
-					</sec:authorize>		
-      			</ul>
-			</div>	    
-	</nav>
+	
 </div>
 	<h3>상세정보 페이지</h3>
 	<p>

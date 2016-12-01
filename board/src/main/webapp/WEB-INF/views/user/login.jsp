@@ -14,6 +14,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 <script type="text/javascript">
+$(function(){
+    $("#navdiv").load("../resources/nav.jsp");
+});
 	function logout(){
 		if(confirm("로그아웃 하시겠습니까?")){			
 			location.href="<c:url value='/logout' />";
@@ -26,35 +29,19 @@ form { width: 300px; }
 height:130px;
 }
 #abc { text-align: center; width: 400px; margin: 0px auto; }
-body { text-align: center; }
-a:hover {color: red;}
-a:active {color: gold}
-a {color: black; text-decoration: none;}
+body { text-align: center;}
+	a:hover {color: red;}
+	a:active {color: gold}
+	a {color: gray; text-decoration: none;}
+	.no{
+	position: relative;
+    display: block;
+    padding: 12px 15px;
+    }
 </style>
 </head>
 <body>
 <div id="navdiv">
- 	<nav class="nav nav-tabs">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="/board/index.jsp">Main</a>
-		</div>
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				<sec:authorize access="isAuthenticated()">
-					<li><a href="<c:url value='/cctv/list' />">CCTV</a></li>
-				</sec:authorize>		  					
-  				<li><a href="/board/notice/main">Notice</a></li>
-				<li><a href="/board/free/main">Board</a></li>
-				<sec:authorize access="! isAuthenticated()">	      	
-					<li><a href="/board/user/joinForm">Join</a></li>
-					<li><a href="/board/user/login">Login</a></li>
-				</sec:authorize>
-				<sec:authorize access="isAuthenticated()">
-					<li><a href="javascript:logout();">Logout</a></li>
-				</sec:authorize>									
-			</ul>		
-		</div>
-	</nav>
 </div>
 	<c:if test="${not empty param.error}">
 		<span id="errMsg">오류: ${SPRING_SECURITY_LAST_EXCEPTION.message}</span>
