@@ -77,7 +77,7 @@ a {color: gray; text-decoration: none;}
 </head>
 <body>
 <div id="navdiv">
- 	<nav class="nav nav-tabs">
+ 	<nav class="nav nav-tabs"> 
 		<div class="navbar-header" id="main">
 			<a class="navbar-brand" href="/board/index.jsp">Main</a>
 		</div>
