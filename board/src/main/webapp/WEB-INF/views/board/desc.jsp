@@ -57,6 +57,7 @@
 </script>
 <style type="text/css">
 	body {text-align: center;}
+	#navdiv{height:130px;}
 	table {border: 1px solid black;	border-spacing: 0px;	margin: 0px auto; width: 800px;}
 	th, td {padding: 5px;}
 	h3{text-align: center;}
@@ -64,15 +65,17 @@
 	td {border: 1px solid black; width: 400px;}
 	#contents{height: 400px}
 	#aaaa{text-align: left;}
+	a:hover {color: red;}
+	a:active {color: gold}
+	a {color: black; text-decoration: none;}
 </style>
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="alert alert-info">
+<div id="navdiv">
+	<nav class="nav nav-tabs">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="/board/index.jsp">Main</a>
 			</div>
-		
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<sec:authorize access="isAuthenticated()">
@@ -86,12 +89,20 @@
 					</sec:authorize>
 					<sec:authorize access="isAuthenticated()">
 						<li><a href="javascript:logout();">Logout</a></li>
-					</sec:authorize>						
+					</sec:authorize>					
 				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<sec:authorize access="!isAuthenticated()">
+						<li><a>Guest님이 접속하셨습니다.</a></li>
+						<li><a>글쓰기와 다운로드는 로그인이 필요합니다!</a></li>
+					</sec:authorize>
+					<sec:authorize access="isAuthenticated()">
+						<li><a><sec:authentication property="name"/>님이 접속하셨습니다.</a></li>
+					</sec:authorize>		
+      			</ul>
 			</div>	    
-		</div>
 	</nav>
-	<br><br><br><br><br><br><br>
+</div>
 	<h3>상세정보 페이지</h3>
 	<p>
 	<table>	

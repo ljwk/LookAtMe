@@ -61,6 +61,7 @@
 </script>
 <style type="text/css">
 	body {text-align: center;}
+	#navdiv{height:130px;}
 	table {border: 1px solid black; border-spacing: 0px; margin: 0px auto ;}
 	th, td {padding: 5px;}
 	th {border: 1px solid black; border-bottom: 3px double black; text-align: center; background: rgb(176, 187, 190);}
@@ -75,12 +76,11 @@
 </style>
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="alert alert-info">
+<div id="navdiv">
+	<nav class="nav nav-tabs">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="/board/index.jsp">Main</a>
 			</div>
-		
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<sec:authorize access="isAuthenticated()">
@@ -94,37 +94,35 @@
 					</sec:authorize>
 					<sec:authorize access="isAuthenticated()">
 						<li><a href="javascript:logout();">Logout</a></li>
-					</sec:authorize>						
+					</sec:authorize>					
 				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<sec:authorize access="!isAuthenticated()">
+						<li><a>Guest님이 접속하셨습니다.</a></li>
+						<li><a>글쓰기와 다운로드는 로그인이 필요합니다!</a></li>
+					</sec:authorize>
+					<sec:authorize access="isAuthenticated()">
+						<li><a><sec:authentication property="name"/>님이 접속하셨습니다.</a></li>
+					</sec:authorize>		
+      			</ul>
 			</div>	    
-		</div>
 	</nav>
-	<br><br><br><br><br><br><br>
+</div>
 	<div id="content" class="panel panel-default"><!-- Dynamic Content goes here --></div>
-	<p>
-	<div id="page-selection"><!-- Pagination goes here --></div>
-	<p>
-	<sec:authorize access="isAuthenticated()">
-		<a href="add?id=<sec:authentication property="name"/>" ><button type="button" class="btn btn-default">글쓰기</button></a>
-	</sec:authorize>			
-	<p>
-	<sec:authorize access="!isAuthenticated()">
-		<h4>Guest님이 접속하셨습니다.</h4>
-		<h5>글쓰기와 다운로드는 로그인이 필요합니다!</h5>
-	</sec:authorize>	
-	<sec:authorize access="isAuthenticated()">
-		<h4><sec:authentication property="name"/>님이 접속하셨습니다.</h4>
-	</sec:authorize>			
-	
+	<p>	
 	<br>	
 	<form name="updateForm" action="search">
 		<input type="hidden"  id="rpp" name="rpp" value="10">
 		<input type="hidden"  id="page"  name="page" value="1">
-		<select name="search">
+		<select name="search" style="height: 30px;">
 			<option>번호</option><option>제목</option><option>작성자</option><option>내용</option>
 		</select>
-		<input type="text" name="searchContents">
+		<input type="text" name="searchContents" style="height: 30px;">
 		<button type="submit" class="btn btn-default" onclick="search();">검색</button>
+		<sec:authorize access="isAuthenticated()">
+			<a href="add?id=<sec:authentication property="name"/>" ><button type="button" class="btn btn-default">글쓰기</button></a>
+		</sec:authorize>
 	</form>
+		<div id="page-selection"><!-- Pagination goes here --></div>		
 </body>
 </html>
