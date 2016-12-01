@@ -23,6 +23,3 @@ $(document).ready(function(){
 <div id="div1"></div>
 </body>
 </html>
-$(function(){
-    $("#navdiv").load("../resources/nav.jsp");
-});
