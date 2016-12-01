@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class CCTVController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String cctv(Model model) {
-		return "board/cctv";
+		return "cctv/cctv";
 	}
 }

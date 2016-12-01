@@ -47,5 +47,9 @@ function logout(){
 	</nav>
 	<br><br><br><br><br><br><br>
 	<h3>요기에다 공지사항을 만들어야겠다</h3>
+	
+	<sec:authorize access="hasAuthority('USER_MANAGER')">
+		<button>글쓰기</button>
+	</sec:authorize>
 </body>
 </html>

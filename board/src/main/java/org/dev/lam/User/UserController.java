@@ -20,7 +20,7 @@ public class UserController {
 		ServletContext application = session.getServletContext();
 		model.addAttribute("email", application.getAttribute(auth));
 		application.removeAttribute(auth);
-		return "board/join";
+		return "user/join";
 	}
 	
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
@@ -44,7 +44,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login1(Model model) {
-		return "board/login";
+		return "user/login";
 	}
 	
 	@RequestMapping(value = "/chkResult", method = RequestMethod.POST)
@@ -88,7 +88,7 @@ public class UserController {
         email.setContent(content);
         svc.sendMail(email,sender);
         
-        return "redirect:/home/main";
+        return "redirect:/free/main";
     }
 
 }
