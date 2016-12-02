@@ -26,7 +26,8 @@ function logout(){
 		location.href="<c:url value='/logout' />";
 	}
 }
-$(document).ready(function(){
+$(function(){
+	$("#footer").load("resources/footer.jsp");
 	$('.bxslider').bxSlider({
 		  mode:'horizontal', //default : 'horizontal', options: 'horizontal', 'vertical', 'fade'
 		  speed:1000, //default:500 이미지변환 속도
@@ -73,15 +74,7 @@ a {color: gray; text-decoration: none;}
     padding: 12px 15px;
 }
 #main{margin-left: 380px;}
-#footer{margin:30px 0 50px 450px;}
-#footer > ul > li {
-display:inline;
-border-left:1px solid #999; 
-font:bold 12px Dotum; 
-padding:0 10px;	
-list-style-type: none;
-}
-hr{width: 100%; border:1px solid lightgray;}
+#footer > ul {text-align: center;}
 </style>
 </head>
 <body>
@@ -122,14 +115,7 @@ hr{width: 100%; border:1px solid lightgray;}
 		 <img src="resources/js/images/dogsafe.png">
 		 <img src="resources/js/images/firesafe.png">
 	</div>
-		<hr>
 	<div id="footer">
-	<ul>
-		<li>(주)Look Out</li>
-		<li>대표 조장 임종욱</li>
-		<li>서울특별시 금천구 가산디지털1로 145 17층 1704호</li>
-		<li>Copyright © LookOut. All rights reserved.</li>
-	</ul>
 	</div>
 </body>
 </html> 

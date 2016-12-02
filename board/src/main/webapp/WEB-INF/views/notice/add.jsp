@@ -14,6 +14,7 @@
 <script src="<c:url value="/resources/jquery.bootpag.min.js"/>"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		$("#footer").load("../resources/footer.jsp");
 		var options = { 
 			success: function(res){
 				if(res.success){
@@ -103,5 +104,6 @@
 		<a href="main"><button type="button" class="btn btn-default">취 소</button></a>
 		</fieldset>
 	</form>
+	<div id="footer"></div>
 </body>
 </html>

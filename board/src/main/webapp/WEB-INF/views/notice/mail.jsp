@@ -14,6 +14,7 @@
 <script type="text/javascript">
 	$(function(){
 	    $("#navdiv").load("../resources/nav.jsp");
+	    $("#footer").load("../resources/footer.jsp");
 	});
 	
 	function logout(){
@@ -56,6 +57,6 @@
 		<br><br>
 		<button type="submit" class="btn btn-default">보내기</button>
 	</form>
-	<br><br><br>
+	<div id="footer"></div>
 </body>
 </html>

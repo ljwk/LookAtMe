@@ -15,6 +15,7 @@
 <script type="text/javascript">
 	$(function(){
 	    $("#navdiv").load("../resources/nav.jsp");
+	    $("#footer").load("../resources/footer.jsp");
 	});
 	
 	function logout(){
@@ -37,5 +38,6 @@
 	<br><br>
 	<button>←</button>
 	<button>→</button>
+	<div id="footer"></div>
 </body>
 </html>

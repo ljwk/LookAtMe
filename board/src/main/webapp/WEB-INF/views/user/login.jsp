@@ -9,13 +9,15 @@
 <head>
 <meta charset="utf-8">
 <title>로그인</title>
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="//raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="<c:url value="/resources/jquery.bootpag.min.js"/>"></script>
 <script type="text/javascript">
 	$(function(){
 	    $("#navdiv").load("../resources/nav.jsp");
+	    $("#footer").load("../resources/footer.jsp");
 	});
 	
 	function logout(){
@@ -25,10 +27,15 @@
 	}
 </script>
 <style type="text/css">
-	form { width: 300px; }
-	#navdiv {height:130px;}
-	#abc {text-align: center; width: 400px; margin: 0px auto;}
 	body {text-align: center;}
+	#navdiv {height:130px;}
+	body {text-align: center;}
+	.panel-heading{background: rgb(252, 252, 252);}
+	table {border-spacing: 0px; margin: 0px auto ;}
+	th, td {padding: 5px;}
+	th {text-align: center;}
+	td {text-align: left;}
+	#content {width: 450px; margin: 0px auto;}
 	a:hover {color: red;}
 	a:active {color: gold}
 	a {color: gray; text-decoration: none;}
@@ -37,29 +44,27 @@
 </head>
 <body>
 	<div id="navdiv"></div>
+	<h3 style="margin-right: 510px; font:bold 32px none;">로그인</h3>
+	<hr style="width: 600px; border:1px solid lightgray; margin-bottom:50px;">
 	<c:if test="${not empty param.error}">
 		<span id="errMsg">오류: ${SPRING_SECURITY_LAST_EXCEPTION.message}</span>
 	</c:if>
+	<h3 style="margin-bottom: 20px">Look Out 홈페이지에 오신 것을 환영합니다.</h3>
+	<form action="<c:url value='/user/login'/>" method="post">
 	
-	<div class="panel panel-primary" id="abc">
-	  <div class="panel-heading">Login</div>
-	  <div class="panel-body">
-		<form action="<c:url value='/user/login'/>" method="post">
-			<div>
-				아이디 <input type="text" name="id" value="SH">
-			</div>
-			<br>
-			<div>
-				암 호 <input type="password" name="pwd" value="1111">
-			</div>
-			<br>
-			<div>
-				<button type="submit" class="btn btn-default btn-lg">
-  					<span class="glyphicon glyphicon-saved" aria-hidden="true"></span> 로그인
-				</button>
-			</div>
-		</form>	    
+	<div id="content" class="panel panel-default">
+	 <div class="panel-heading">로그인</div>
+		<table class="table" id="tablee">
+			<tr>
+				<tr><th>ID</th><td><input type="text" name="id" value="SH">
+				<tr><th>PASSWORD</th><td><input type="password" name="pwd" value="1111"></td>
+			</tr>			
+		</table>
 	  </div>
-	</div>	
+	 
+	<br>
+		<button class="btn btn-default" type="submit">로그인</button>
+	 </form>
+	<div id="footer"></div>
 </body>
 </html>

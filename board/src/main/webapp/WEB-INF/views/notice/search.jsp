@@ -14,6 +14,7 @@
 <script>
 	$(function(){
 		$("#navdiv").load("../resources/nav.jsp");
+		$("#footer").load("../resources/footer.jsp");
 		$('#page-selection').bootpag({
 			total: Math.ceil(${list[0].totalrows}/${rpp}),  
 			page: ${page},  
@@ -82,5 +83,6 @@
 	<div id="page-selection"><!-- Pagination goes here --></div>		
 	<p>
 	<a href="main"><button type="button" class="btn btn-default">목 록 으 로</button></a>
+	<div id="footer"></div>
 </body>
 </html>

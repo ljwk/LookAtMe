@@ -13,6 +13,7 @@
 <script src="<c:url value="/resources/jquery.bootpag.min.js"/>"></script>
 <script type="text/javascript">
 	$(function() {
+		$("#footer").load("../resources/footer.jsp");
 		$("#navdiv").load("../resources/nav.jsp");
  		if('${desc.filename}'==""){
 			$('#DOWN').attr('disabled',true); 
@@ -104,6 +105,6 @@
 		<a href="modi?num=${desc.num}" ><button type="button" class="btn btn-default">수정</button></a>
 		<button type="button" class="btn btn-default" onclick="deleteBoard();">삭제</button>
 	</sec:authorize>			
-	
+	<div id="footer"></div>
 </body>
 </html>

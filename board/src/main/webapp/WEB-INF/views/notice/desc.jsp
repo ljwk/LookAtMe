@@ -14,6 +14,7 @@
 <script type="text/javascript">
 	$(function() {
 		$("#navdiv").load("../resources/nav.jsp");
+		$("#footer").load("../resources/footer.jsp");
  		if('${desc.filename}'==""){
 			$('#DOWN').attr('disabled',true); 
 		}else{
@@ -106,6 +107,6 @@
 		<a href="modi?num=${desc.num}" ><button type="button" class="btn btn-default">수정</button></a>
 		<button type="button" class="btn btn-default" onclick="deleteBoard();">삭제</button>
 	</sec:authorize>			
-	
+	<div id="footer"></div>
 </body>
 </html>
