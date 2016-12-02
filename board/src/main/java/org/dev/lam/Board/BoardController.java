@@ -43,7 +43,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.POST)
-	public String getList2(@RequestParam(value = "page", defaultValue = "1") int page, @RequestParam(value = "rpp", defaultValue = "10") int rpp, Model model) {
+	public String list(@RequestParam(value = "page", defaultValue = "1") int page, @RequestParam(value = "rpp", defaultValue = "10") int rpp, Model model) {
 		model.addAttribute("list", svc.getList(page, rpp));
 		model.addAttribute("page", page);
 		model.addAttribute("rpp", rpp);
@@ -58,7 +58,7 @@ public class BoardController {
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, String> add(BoardVO board, BindingResult result) {
+	public Map<String, String> save(BoardVO board, BindingResult result) {
 		InputStream inputStream = null;
 		OutputStream outputStream = null;
 		Map<String, String> map = new HashMap<>();
@@ -131,7 +131,7 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/modi", method = RequestMethod.GET)
-	public String modi(@RequestParam("num") int num, Model model) {
+	public String modiForm(@RequestParam("num") int num, Model model) {
 		model.addAttribute("num", num);
 		return "board/modi";
 	}

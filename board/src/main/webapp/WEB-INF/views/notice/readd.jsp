@@ -12,9 +12,11 @@
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script src="<c:url value="/resources/jquery.bootpag.min.js"/>"></script>
 <script type="text/javascript">
-$(function(){
-    $("#navdiv").load("../resources/nav.jsp");
-});
+	$(function(){
+	    $("#navdiv").load("../resources/nav.jsp");
+	    $("#footer").load("../resources/footer.jsp");
+	});
+	
 	function reboard() {
 		if(confirm('답글을 등록하시겠습니까?')){
  			var jsonObj = $('#reForm').serialize();
@@ -51,17 +53,13 @@ $(function(){
 	td {border: 1px solid black;}
 	#aa {height: 420px;}
 	#bb {height: 50px;}
-	#contents{width: 400px; height: 400px;}
-	#title{width: 400px;}
-	#navdiv{height:130px;}
+	#contents {width: 400px; height: 400px;}
+	#title {width: 400px;}
+	#navdiv {height:130px;}
 	a:hover {color: red;}
 	a:active {color: gold}
 	a {color: gray; text-decoration: none;}
-	.no{
-	position: relative;
-    display: block;
-    padding: 12px 15px;
-    }
+	.no{position: relative; display: block; padding: 12px 15px;}
 </style>
 </head>
 <body>
@@ -85,5 +83,6 @@ $(function(){
 	<br><br><br>
 	<button type="button" class="btn btn-default" onclick="reboard();">저 장</button>
 	<a href="desc?num=${ref}"><button type="button" class="btn btn-default">취 소</button></a>	
+	<div id="footer"></div>
 </body>
 </html>

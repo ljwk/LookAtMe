@@ -18,7 +18,8 @@
 						<li><a href="/board/user/joinForm">Join</a></li>
 						<li><a href="/board/user/login">Login</a></li>
 					</sec:authorize>
-					<sec:authorize access="isAuthenticated()">
+					<sec:authorize access="isAuthenticated()">					
+						<li><a href="/board/user/info?id=<sec:authentication property="name"/>">My Page</a></li>
 						<li><a href="javascript:logout();">Logout</a></li>
 					</sec:authorize>					
 				</ul>

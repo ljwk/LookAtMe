@@ -14,6 +14,7 @@
 <script type="text/javascript">
 	$(function() {
 		$("#navdiv").load("../resources/nav.jsp");
+		$("#footer").load("../resources/footer.jsp");
  		if('${desc.filename}'==""){
 			$('#DOWN').attr('disabled',true); 
 		}else{
@@ -58,7 +59,7 @@
 </script>
 <style type="text/css">
 	body {text-align: center;}
-	#navdiv{height:130px;}
+	#navdiv{height:100px;}
 	table {border: 1px solid black;	border-spacing: 0px;	margin: 0px auto; width: 800px;}
 	th, td {padding: 5px;}
 	h3{text-align: center;}
@@ -69,19 +70,15 @@
 	a:hover {color: red;}
 	a:active {color: gold}
 	a {color: gray; text-decoration: none;}
-	.no{
-	position: relative;
-    display: block;
-    padding: 12px 15px;
-    }
+	.no{position: relative; display: block; padding: 12px 15px; }
 </style>
 </head>
 <body>
 <div id="navdiv">
 	
 </div>
-	<h3>상세정보 페이지</h3>
-	<p>
+	<h3 style="margin-right: 680px; font:bold 32px none;">상세정보</h3>
+	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
 	<table>	
 		<tr>
 			<th>글번호</th>	<td>${desc.num}</td>	<th>제목</th><td>${desc.title}</td><th>작성자</th><td>${desc.id}</td>
@@ -110,6 +107,6 @@
 		<a href="modi?num=${desc.num}" ><button type="button" class="btn btn-default">수정</button></a>
 		<button type="button" class="btn btn-default" onclick="deleteBoard();">삭제</button>
 	</sec:authorize>			
-	
+	<div id="footer"></div>
 </body>
 </html>

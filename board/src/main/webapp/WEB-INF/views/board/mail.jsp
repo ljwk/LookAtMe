@@ -12,14 +12,16 @@
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script src="<c:url value="/resources/jquery.bootpag.min.js"/>"></script>
 <script type="text/javascript">
-$(function(){
-    $("#navdiv").load("../resources/nav.jsp");
-});
-function logout(){
-	if(confirm("로그아웃 하시겠습니까?")){			
-		location.href="<c:url value='/logout' />";
+	$(function(){
+		$("#footer").load("../resources/footer.jsp");
+	    $("#navdiv").load("../resources/nav.jsp");
+	});
+	
+	function logout(){
+		if(confirm("로그아웃 하시겠습니까?")){			
+			location.href="<c:url value='/logout' />";
+		}
 	}
-}
 </script>
 <style type="text/css">
 	body {text-align: center;}
@@ -27,7 +29,7 @@ function logout(){
 	th, td {padding: 5px;}
 	th {border: 1px solid black; text-align: center; background: rgb(176, 187, 190);}
 	td {border: 1px solid black;}
-	#navdiv{height:130px;}
+	#navdiv {height:130px;}
 	a:hover {color: red;}
 	a:active {color: gold}
 	a {color: black; text-decoration: none;}
@@ -55,6 +57,6 @@ function logout(){
 		<br><br>
 		<button type="submit" class="btn btn-default">보내기</button>
 	</form>
-	<br><br><br>
+	<div id="footer"></div>
 </body>
 </html>

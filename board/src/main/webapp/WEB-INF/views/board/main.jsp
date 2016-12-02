@@ -14,6 +14,7 @@
 <script type="text/javascript">
 	$(function(){
 	    $("#navdiv").load("../resources/nav.jsp");
+		$("#footer").load("../resources/footer.jsp");
 	});
 
 	$(function(){
@@ -66,38 +67,35 @@
 </script>
 <style type="text/css">
 	body {text-align: center;}
-	#navdiv{height:100px;}
+	#navdiv {height:100px;}
 	table {border-spacing: 0px; margin: 0px auto;}
 	th, td {padding: 5px;}
 	th {text-align: center; background: rgb(252, 252, 252);}
-	td{color: gray;}
-	#tnum{width: 45px;}
-	#ttitle{width:420px;}
-	#tauthor{width:80px;}
-	#tdate{width:100px;}
-	#tnum{width:60px;}
+	td {color: gray;}
+	#tnum {width: 45px;}
+	#ttitle {width:420px;}
+	#tauthor {width:80px;}
+	#tdate {width:100px;}
+	#tnum {width:60px;}
 	#jul:hover {background-color: rgb(202, 214, 255);}
 	#content {width: 800px; margin: 0px auto;margin-top:50px;}
 	#title {width: 300px; text-align: left;}
 	a:hover {color: red;}
 	a:active {color: gold}
 	a {color: gray; text-decoration: none;}
-	.no{
-	position: relative;
-    display: block;
-    padding: 12px 15px;
-    }
+	.no {position: relative; display: block; padding: 12px 15px;}
 </style>
 </head>
 <body>
-<!-- <img style="-webkit-user-select: none" src="http://192.168.2.27:8081/board/free/test/"> -->
-<img style="-webkit-user-select: none" src="http://192.168.2.26:8083/">
 <div id="navdiv">
 </div>
 	<h3>게 시 판 !</h3>
+	<!-- <img style="-webkit-user-select: none" src="http://192.168.2.27:8081/board/free/test/"> -->
+	<img style="-webkit-user-select: none" src="http://192.168.2.26:8083/">	<div id="navdiv"></div>
+	<h3 style="margin-right: 700px; font:bold 32px none;">게시판</h3>
+	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
 	<div id="content" class="panel panel-default"><!-- Dynamic Content goes here --></div>
-	<p>	
-	<br>	
+	<br>
 	<form name="updateForm" action="search">
 		<input type="hidden"  id="rpp" name="rpp" value="10">
 		<input type="hidden"  id="page"  name="page" value="1">
@@ -110,6 +108,7 @@
 			<a href="add?id=<sec:authentication property="name"/>" ><button type="button" class="btn btn-default">글쓰기</button></a>
 		</sec:authorize>
 	</form>
-	<div id="page-selection"><!-- Pagination goes here --></div>
+	<div id="page-selection"><!-- Pagination goes here --></div>		
+	<div id="footer"></div>
 </body>
 </html>

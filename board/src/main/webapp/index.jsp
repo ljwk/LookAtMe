@@ -26,7 +26,8 @@ function logout(){
 		location.href="<c:url value='/logout' />";
 	}
 }
-$(document).ready(function(){
+$(function(){
+	$("#footer").load("resources/footer.jsp");
 	$('.bxslider').bxSlider({
 		  mode:'horizontal', //default : 'horizontal', options: 'horizontal', 'vertical', 'fade'
 		  speed:1000, //default:500 이미지변환 속도
@@ -37,12 +38,13 @@ $(document).ready(function(){
 	});
 </script>
 <style type="text/css">
+
 #navdiv{
 height:100px;
 }
 #sliderimg{
 border-spacing: 0px; 
-margin: 0px auto ;
+margin-left: 410px;
 width: 1100px;
 }
 .bxslider > li > img{
@@ -54,15 +56,15 @@ height:400px;
 width: 500px;
 }
 #imgs{
-margin-left:250px;
+margin-left:370px;
 width: 1400px;
-height: 350px;
+height: 300px;
 }
 #imgs > img{
 float:left;
-margin-left: 45px;
-width:290px;
-height:270px;
+margin-left: 35px;
+width:250px;
+height:250px;
 }
 a:hover {color: red;}
 a:active {color: gold}
@@ -73,11 +75,12 @@ a {color: gray; text-decoration: none;}
     padding: 12px 15px;
 }
 #main{margin-left: 380px;}
+#footer > ul {text-align: center;}
 </style>
 </head>
 <body>
 <div id="navdiv">
- 	<nav class="nav nav-tabs"> 
+ 	<nav class="nav nav-tabs">
 		<div class="navbar-header" id="main">
 			<a class="navbar-brand" href="/board/index.jsp">Main</a>
 		</div>
@@ -92,7 +95,8 @@ a {color: gray; text-decoration: none;}
 					<li><a href="/board/user/joinForm">Join</a></li>
 					<li><a href="/board/user/login">Login</a></li>
 				</sec:authorize>
-				<sec:authorize access="isAuthenticated()">
+				<sec:authorize access="isAuthenticated()">				
+					<li><a href="/board/user/info?id=<sec:authentication property="name"/>">My Page</a></li>
 					<li><a href="javascript:logout();">Logout</a></li>
 				</sec:authorize>									
 			</ul>		
@@ -101,17 +105,18 @@ a {color: gray; text-decoration: none;}
 </div>
 	<div id="sliderimg">
  	<ul class="bxslider">
-	    <li><img src="http://malsup.github.io/images/p1.jpg"></li>
-	    <li><img src="http://malsup.github.io/images/p2.jpg"></li>
-	    <li><img src="http://malsup.github.io/images/p3.jpg"></li>
-	    <li><img src="http://malsup.github.io/images/p4.jpg"></li>
+	 	<li><img src="resources/js/images/main1.jpg"></li>
+	    <li><img src="resources/js/images/main2.jpg"></li>
+	    <li><img src="resources/js/images/main3.jpg"></li>
 	</ul>
 	</div>
 	<div id="imgs">
-		 <img src="http://malsup.github.io/images/p1.jpg" class="img-circle">
-		 <img src="http://malsup.github.io/images/p2.jpg" class="img-circle">
-		 <img src="http://malsup.github.io/images/p3.jpg" class="img-circle">
-		 <img src="http://malsup.github.io/images/p4.jpg" class="img-circle">
+		 <img src="resources/js/images/appphone.png">
+		 <img src="resources/js/images/babysafe.png">
+		 <img src="resources/js/images/dogsafe.png">
+		 <img src="resources/js/images/firesafe.png">
+	</div>
+	<div id="footer">
 	</div>
 </body>
 </html> 

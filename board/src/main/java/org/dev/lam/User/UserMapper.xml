@@ -13,4 +13,16 @@
 	<select id="chkId" resultType="Integer">
 		SELECT count(*) FROM member WHERE id= #{id}
 	</select>
+	
+	<select id="getInfo" resultType="org.dev.lam.User.UserVO">
+		SELECT * FROM member WHERE id= #{id}
+	</select>
+	
+	<update id="drop">
+		UPDATE member SET enabled = 0 WHERE id = #{id}
+	</update>
+	
+	<update id="modi" parameterType="org.dev.lam.User.UserVO">
+		UPDATE member SET pwd = #{pwd} , email = #{email}  WHERE id = #{id}
+	</update>	
 </mapper>

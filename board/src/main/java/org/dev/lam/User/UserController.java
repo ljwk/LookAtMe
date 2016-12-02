@@ -90,5 +90,30 @@ public class UserController {
         
         return "redirect:/free/main";
     }
+    
+	@RequestMapping(value = "/info", method = RequestMethod.GET)
+	public String info(@RequestParam("id") String id, Model model) {
+		model.addAttribute("info", svc.getInfo(id));
+		return "user/info";
+	}
+	
+	@RequestMapping(value = "/drop", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Boolean> drop(@RequestParam("id") String id, Model model) {
+		boolean ok = svc.drop(id);
+		Map<String, Boolean> map = new HashMap<>();
+		map.put("success", ok);
+		return map;
+	}
+	
+	@RequestMapping(value = "/modi", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Boolean> modi(UserVO user) {
+		Map<String, Boolean> map = new HashMap<>();
+		boolean ok = svc.modi(user);
+		map.put("success", ok);
+		return map;
+	}
+	
 
 }

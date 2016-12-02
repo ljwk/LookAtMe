@@ -13,34 +13,31 @@
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script src="<c:url value="/resources/jquery.bootpag.min.js"/>"></script>
 <script type="text/javascript">
-$(function(){
-    $("#navdiv").load("../resources/nav.jsp");
-});
-function logout(){
-	if(confirm("로그아웃 하시겠습니까?")){			
-		location.href="<c:url value='/logout' />";
+	$(function(){
+	    $("#navdiv").load("../resources/nav.jsp");
+	    $("#footer").load("../resources/footer.jsp");
+	});
+	
+	function logout(){
+		if(confirm("로그아웃 하시겠습니까?")){			
+			location.href="<c:url value='/logout' />";
+		}
 	}
-}
 </script>
 <style type="text/css">
-#navdiv{height:130px;}
-a:hover {color: red;}
-a:active {color: gold}
-a {color: gray; text-decoration: none;}
-.no{
-	position: relative;
-    display: block;
-    padding: 12px 15px;
-}
+	#navdiv {height:130px;}
+	a:hover {color: red;}
+	a:active {color: gold}
+	a {color: gray; text-decoration: none;}
+	.no {position: relative; display: block; padding: 12px 15px;}
 </style>
 </head>
 <body>
-<div id="navdiv">
-</div>
-
+	<div id="navdiv"></div>
 	<h3>CCTV</h3>
 	<br><br>
 	<button>←</button>
 	<button>→</button>
+	<div id="footer"></div>
 </body>
 </html>
