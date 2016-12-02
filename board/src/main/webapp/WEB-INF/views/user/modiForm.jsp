@@ -46,7 +46,7 @@
 			}); 					
 		}
 	}
-	   
+	     
 	function emailModi(){
 		if(confirm("정말로 이메일을 수정 하시겠습니까?")){			
 			var jsonObj = {};
