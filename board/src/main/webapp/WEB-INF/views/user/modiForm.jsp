@@ -52,7 +52,7 @@
 			var jsonObj = {};
 			jsonObj.id = '${info.id}';
 			jsonObj.email =  $('[name=email]').val();
-			
+			 
 			$.ajax({
 				url : 'emailModi',
 				data : jsonObj,
