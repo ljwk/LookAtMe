@@ -73,7 +73,7 @@
 
 		<table class="table" id="tablee">
 			<tr>
-				<th>글번호</th><th>제목</th><th>작성자</th>	<th>작성일</th>	<th>조회수</th>
+				<th id="tnum">번호</th><th id="ttitle">제목</th><th id="tauthor">작성자</th><th id="tdate">작성일</th><th id="tnum">조회수</th>
 			</tr>
 			<c:forEach var="e" items="${list}">
 			<tr id="jul">
