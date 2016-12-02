@@ -97,5 +97,23 @@ public class UserController {
 		return "user/info";
 	}
 	
+	@RequestMapping(value = "/drop", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Boolean> drop(@RequestParam("id") String id, Model model) {
+		boolean ok = svc.drop(id);
+		Map<String, Boolean> map = new HashMap<>();
+		map.put("success", ok);
+		return map;
+	}
+	
+	@RequestMapping(value = "/modi", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Boolean> modi(UserVO user) {
+		Map<String, Boolean> map = new HashMap<>();
+		boolean ok = svc.modi(user);
+		map.put("success", ok);
+		return map;
+	}
+	
 
 }

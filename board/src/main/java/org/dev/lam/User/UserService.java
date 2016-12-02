@@ -92,5 +92,19 @@ public class UserService {
 		UserDAO dao = sqlSessionTemplate.getMapper(UserDAO.class);
 		UserVO info = dao.getInfo(id);
 		return info;
+	}
+
+	public boolean drop(String id) {
+		UserDAO dao = sqlSessionTemplate.getMapper(UserDAO.class);
+		int n = dao.drop(id);
+		return n > 0 ? true : false;
+	}
+
+	public boolean modi(UserVO user) {
+		UserDAO dao = sqlSessionTemplate.getMapper(UserDAO.class);
+		String encodedPwd = passwordEncoder.encode(user.getPwd());
+		user.setPwd(encodedPwd);
+		int n = dao.modi(user);
+		return n > 0 ? true : false;
 	} 
 }

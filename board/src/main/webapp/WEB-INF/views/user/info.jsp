@@ -22,6 +22,52 @@
 			location.href="<c:url value='/logout' />";
 		}
 	}
+	
+	function modi(){
+		if(confirm('정보를 수정하시겠습니까?')){
+ 			var jsonObj = 	$('#modiInfo').serialize(); 
+
+ 			$.ajax({
+				url : 'modi',
+				data : jsonObj,
+				type : 'post',
+				dataType : 'json',
+				success : function(res) {
+				 	if(res.success){
+			 			alert('수정 성공');	
+					} 
+				},
+				error : function(xhr, status, error) {
+					alert(error);
+				}
+			}); 
+		} 
+	}
+	
+	function drop(){
+		if(confirm("정말로 회원탈퇴를 하시겠습니까?")){			
+			var jsonObj = {};
+			jsonObj.id = '${info.id}';
+			
+			$.ajax({
+				url : 'drop',
+				data : jsonObj,
+				type : 'post',
+				dataType : 'json',
+				success : function(res) {
+				 	if(res.success){
+			 			alert('탈퇴 성공');
+			 			location.href="<c:url value='/logout' />";
+					} 
+				},
+				error : function(xhr, status, error) {
+					alert(error);
+				}
+			}); 
+					
+		}
+	}
+	
 </script>
 <style type="text/css">
 	#navdiv {height:130px;}
@@ -34,11 +80,16 @@
 <body>
 	<div id="navdiv"></div>
 	<h3>My Page</h3>
-	${info.authority}<br>
-	${info.id}<br>
-	${info.pwd}<br>
-	${info.email}<br>
-	${info.enabled}<br><br>
-	<button>회원탈퇴</button>
+	<form id="modiInfo">
+		<input type="hidden" name="id" value="${info.id}">
+		<table>
+			<tr><th>id</th><td>${info.id}</td></tr>
+			<tr><th>비밀번호</th><td><input type="password" name="pwd"></td></tr>
+			<tr><th>email</th><td><input type="text" value="${info.email}" name="email"></td></tr>
+		</table>			
+		<button type="button" onclick="modi();">정보 수정</button>
+	</form>	
+	<br><br>
+	<button onclick="drop();">회원탈퇴</button>
 </body>
 </html>
