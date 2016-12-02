@@ -25,6 +25,14 @@
 			location.href="<c:url value='/logout' />";
 		}
 	}
+	
+	function findId(){
+		location.href="findID";
+	}
+	
+	function findPwd(){
+		location.href="findPWD";
+	}
 </script>
 <style type="text/css">
 	body {text-align: center;}
@@ -65,6 +73,9 @@
 	<br>
 		<button class="btn btn-default" type="submit">로그인</button>
 	 </form>
+	 <br>
+	 <button class="btn btn-default" onclick="findId();">ID 찾기</button>&nbsp;&nbsp;
+	 <button class="btn btn-default" onclick="findPwd();">PASSWORD 찾기</button>
 	<div id="footer"></div>
 </body>
 </html>

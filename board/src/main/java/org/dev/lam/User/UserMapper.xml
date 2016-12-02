@@ -29,4 +29,9 @@
 	<update id="modiEmail"  parameterType="org.dev.lam.User.UserVO">
 		UPDATE member SET email = #{email} WHERE id = #{id}
 	</update>	
+	
+	<select id="searchId"  resultType="org.dev.lam.User.UserVO">
+		SELECT id FROM member WHERE email = #{email} and enabled=1
+	</select>		
+	
 </mapper>
