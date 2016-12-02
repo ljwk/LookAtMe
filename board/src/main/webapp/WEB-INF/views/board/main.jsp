@@ -87,11 +87,10 @@
 </style>
 </head>
 <body>
-<div id="navdiv">
-</div>
 	<h3>게 시 판 !</h3>
 	<!-- <img style="-webkit-user-select: none" src="http://192.168.2.27:8081/board/free/test/"> -->
-	<img style="-webkit-user-select: none" src="http://192.168.2.26:8083/">	<div id="navdiv"></div>
+	<img style="-webkit-user-select: none" src="http://192.168.2.26:8083/">	
+	<div id="navdiv"></div>
 	<h3 style="margin-right: 700px; font:bold 32px none;">게시판</h3>
 	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
 	<div id="content" class="panel panel-default"><!-- Dynamic Content goes here --></div>
