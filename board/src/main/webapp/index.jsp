@@ -100,7 +100,7 @@ a {color: gray; text-decoration: none;}
 					<li><a href="javascript:logout();">Logout</a></li>
 				</sec:authorize>									
 			</ul>		
-		</div>
+		</div> 
 	</nav>
 </div>
 	<div id="sliderimg">
