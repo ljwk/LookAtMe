@@ -42,9 +42,9 @@
 	td {border: 1px solid black;}
 	#aa {height: 420px;}
 	#bb {height: 50px;}
-	#contents{width: 400px; height: 400px;}
-	#title{width: 400px;}
-	#navdiv{height:130px;}
+	#contents {width: 400px; height: 400px;}
+	#title {width: 400px;}
+	#navdiv {height:130px;}
 	a:hover {color: red;}
 	a:active {color: gold}
 	a {color: black; text-decoration: none;}

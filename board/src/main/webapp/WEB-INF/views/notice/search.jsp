@@ -46,23 +46,19 @@
 	table {border-spacing: 0px; margin: 0px auto;}
 	th, td {padding: 5px;}
 	th {text-align: center; background: rgb(252, 252, 252);}
-	td{color: gray;}
-	#tnum{width: 45px;}
-	#ttitle{width:420px;}
-	#tauthor{width:80px;}
-	#tdate{width:100px;}
-	#tnum{width:60px;}
+	td {color: gray;}
+	#tnum {width: 45px;}
+	#ttitle {width:420px;}
+	#tauthor {width:80px;}
+	#tdate {width:100px;}
+	#tnum {width:60px;}
 	#jul:hover {background-color: rgb(202, 214, 255);}
 	#content {width: 800px; margin: 0px auto;margin-top:50px;}
 	#title {width: 300px; text-align: left;}
 	a:hover {color: red;}
 	a:active {color: gold}
 	a {color: gray; text-decoration: none;}
-	.no{
-	position: relative;
-    display: block;
-    padding: 12px 15px;
-    }
+	.no {position: relative; display: block; padding: 12px 15px;}
 </style>
 </head>
 <body>
