@@ -28,7 +28,7 @@
 </script>
 <style type="text/css">
 	body {text-align: center;}
-	#navdiv {height:130px;}
+	#navdiv {height:100px;}
 	body {text-align: center;}
 	.panel-heading{background: rgb(252, 252, 252);}
 	table {border-spacing: 0px; margin: 0px auto ;}
@@ -49,7 +49,7 @@
 	<c:if test="${not empty param.error}">
 		<span id="errMsg">오류: ${SPRING_SECURITY_LAST_EXCEPTION.message}</span>
 	</c:if>
-	<h3 style="margin-bottom: 20px">Look Out 홈페이지에 오신 것을 환영합니다.</h3>
+	<h3 style="margin-bottom: 20px">Look Out에 오신 것을 환영합니다.</h3>
 	<form action="<c:url value='/user/login'/>" method="post">
 	
 	<div id="content" class="panel panel-default">

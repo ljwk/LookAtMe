@@ -38,6 +38,7 @@ $(function(){
 	});
 </script>
 <style type="text/css">
+
 #navdiv{
 height:100px;
 }
@@ -105,7 +106,7 @@ a {color: gray; text-decoration: none;}
 	<div id="sliderimg">
  	<ul class="bxslider">
 	 	<li><img src="resources/js/images/main1.jpg"></li>
-	    <li><img src="resources/js/images/main2.png"></li>
+	    <li><img src="resources/js/images/main2.jpg"></li>
 	    <li><img src="resources/js/images/main3.jpg"></li>
 	</ul>
 	</div>

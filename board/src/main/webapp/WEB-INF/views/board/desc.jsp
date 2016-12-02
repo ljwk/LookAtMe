@@ -59,13 +59,14 @@
 </script>
 <style type="text/css">
 	body {text-align: center;}
-	#navdiv {height:130px;}
+	#navdiv {height:100px;}
 	table {border: 1px solid black;	border-spacing: 0px;	margin: 0px auto; width: 800px;}
 	th, td {padding: 5px;}
 	h3{text-align: center;}
-	th {width: 200px;	border: 1px solid black; background: rgb(176, 187, 190); text-align: center;}
+	th {width: 200px;	border: 1px solid black; background: rgb(252, 252, 252); text-align: center;}
 	td {border: 1px solid black; width: 400px;}
-	#contents {height: 400px}
+	#tnum {width: 45px;}
+	#contents {height: 400px; margin: 0px auto;}
 	#aaaa {text-align: left;}
 	a:hover {color: red;}
 	a:active {color: gold}
@@ -75,11 +76,12 @@
 </head>
 <body>
 	<div id="navdiv"></div>
-	<h3>상세정보 페이지</h3>
-	<p>
+	<h3 style="margin-right: 680px; font:bold 32px none;">상세정보</h3>
+	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
+
 	<table>	
 		<tr>
-			<th>글번호</th>	<td>${desc.num}</td>	<th>제목</th><td>${desc.title}</td><th>작성자</th><td>${desc.id}</td>
+			<th>번호</th>	<td>${desc.num}</td>	<th>제목</th><td>${desc.title}</td><th>작성자</th><td>${desc.id}</td>
 		</tr>
 		<tr id="file" >
 			<th >작성자 메일</th><td colspan="5" ><a href="mail?email=${desc.email}">${desc.email}</a></td>
@@ -93,7 +95,7 @@
 			</tr>					
 		</sec:authorize>		
 	</table>		
-	<p><br>	
+	<br>
 	<a href="main" ><button type="button" class="btn btn-default">목록으로</button></a>
 	<sec:authorize access="isAuthenticated()">
 		<a href="readd?ref=${desc.num}" ><button type="button" class="btn btn-default" >답글</button></a>

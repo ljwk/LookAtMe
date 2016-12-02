@@ -59,7 +59,7 @@
 </script>
 <style type="text/css">
 	body {text-align: center;}
-	#navdiv{height:130px;}
+	#navdiv{height:100px;}
 	table {border: 1px solid black;	border-spacing: 0px;	margin: 0px auto; width: 800px;}
 	th, td {padding: 5px;}
 	h3{text-align: center;}
@@ -77,8 +77,8 @@
 <div id="navdiv">
 	
 </div>
-	<h3>상세정보 페이지</h3>
-	<p>
+	<h3 style="margin-right: 680px; font:bold 32px none;">상세정보</h3>
+	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
 	<table>	
 		<tr>
 			<th>글번호</th>	<td>${desc.num}</td>	<th>제목</th><td>${desc.title}</td><th>작성자</th><td>${desc.id}</td>
