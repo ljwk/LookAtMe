@@ -81,11 +81,7 @@
 	a:hover {color: red;}
 	a:active {color: gold}
 	a {color: gray; text-decoration: none;}
-	.no{
-	position: relative;
-    display: block;
-    padding: 12px 15px;
-    }
+	.no{position: relative; display: block; padding: 12px 15px; }
 </style>
 </head>
 <body>

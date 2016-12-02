@@ -46,9 +46,9 @@
 			login-processing-url="/user/login" 
 			username-parameter="id"
 			password-parameter="pwd"
-			default-target-url="/free/main"
+			default-target-url="/index.jsp"
 			authentication-failure-url="/user/login?error=true" />
-		<logout logout-success-url="/free/main" />
+		<logout logout-success-url="/index.jsp" />
 		<csrf disabled="true" />
 	</http>
 	

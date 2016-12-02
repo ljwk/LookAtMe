@@ -58,28 +58,22 @@
 </script>
 <style type="text/css">
 	body {text-align: center;}
-	#navdiv{height:130px;}
+	#navdiv {height:130px;}
 	table {border: 1px solid black;	border-spacing: 0px;	margin: 0px auto; width: 800px;}
 	th, td {padding: 5px;}
 	h3{text-align: center;}
 	th {width: 200px;	border: 1px solid black; background: rgb(176, 187, 190); text-align: center;}
 	td {border: 1px solid black; width: 400px;}
-	#contents{height: 400px}
-	#aaaa{text-align: left;}
+	#contents {height: 400px}
+	#aaaa {text-align: left;}
 	a:hover {color: red;}
 	a:active {color: gold}
 	a {color: gray; text-decoration: none;}
-	.no{
-	position: relative;
-    display: block;
-    padding: 12px 15px;
-    }
+	.no{position: relative; display: block; padding: 12px 15px;}
 </style>
 </head>
 <body>
-<div id="navdiv">
-	
-</div>
+	<div id="navdiv"></div>
 	<h3>상세정보 페이지</h3>
 	<p>
 	<table>	

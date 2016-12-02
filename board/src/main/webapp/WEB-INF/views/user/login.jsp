@@ -14,9 +14,10 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 <script type="text/javascript">
-$(function(){
-    $("#navdiv").load("../resources/nav.jsp");
-});
+	$(function(){
+	    $("#navdiv").load("../resources/nav.jsp");
+	});
+	
 	function logout(){
 		if(confirm("로그아웃 하시겠습니까?")){			
 			location.href="<c:url value='/logout' />";
@@ -24,25 +25,18 @@ $(function(){
 	}
 </script>
 <style type="text/css">
-form { width: 300px; }
-#navdiv{
-height:130px;
-}
-#abc { text-align: center; width: 400px; margin: 0px auto; }
-body { text-align: center;}
+	form { width: 300px; }
+	#navdiv {height:130px;}
+	#abc {text-align: center; width: 400px; margin: 0px auto;}
+	body {text-align: center;}
 	a:hover {color: red;}
 	a:active {color: gold}
 	a {color: gray; text-decoration: none;}
-	.no{
-	position: relative;
-    display: block;
-    padding: 12px 15px;
-    }
+	.no {position: relative; display: block; padding: 12px 15px;}
 </style>
 </head>
 <body>
-<div id="navdiv">
-</div>
+	<div id="navdiv"></div>
 	<c:if test="${not empty param.error}">
 		<span id="errMsg">오류: ${SPRING_SECURITY_LAST_EXCEPTION.message}</span>
 	</c:if>

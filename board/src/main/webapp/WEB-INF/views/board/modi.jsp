@@ -12,9 +12,10 @@
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script src="<c:url value="/resources/jquery.bootpag.min.js"/>"></script>
 <script type="text/javascript">
-$(function(){
-    $("#navdiv").load("../resources/nav.jsp");
-});
+	$(function(){
+	    $("#navdiv").load("../resources/nav.jsp");
+	});
+	
 	function modiboard() {
 		if(confirm('글을 수정하시겠습니까?')){
  			var jsonObj = $('#modiboard').serialize();
@@ -51,22 +52,17 @@ $(function(){
 	td {border: 1px solid black;}
 	#aa {height: 420px;}
 	#bb {height: 50px;}
-	#contents{width: 400px; height: 400px;}
-	#title{width: 400px;}
-	#navdiv{height:130px;}
+	#contents {width: 400px; height: 400px;}
+	#title {width: 400px;}
+	#navdiv {height:130px;}
 	a:hover {color: red;}
 	a:active {color: gold}
 	a {color: gray; text-decoration: none;}
-	.no{
-	position: relative;
-    display: block;
-    padding: 12px 15px;
-    }
+	.no{position: relative; display: block; padding: 12px 15px;}
 </style>
 </head>
 <body>
-<div id="navdiv">
-</div>
+	<div id="navdiv"></div>
 	<form id="modiboard" action="boardDesc.jsp">
 		<fieldset>
 		<legend>수정</legend>

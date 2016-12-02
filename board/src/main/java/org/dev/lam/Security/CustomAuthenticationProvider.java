@@ -16,10 +16,9 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-		
-		
+
 		String username = authentication.getName();
-				
+
 		String password = (String) authentication.getCredentials();
 
 		User user = null;
