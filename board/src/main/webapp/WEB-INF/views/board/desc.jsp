@@ -81,6 +81,7 @@
 	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
 	
 	<div id="content" class="panel panel-default">
+
 	<table>	
 		<tr>
 		<th>제목</th><td colspan="5">${desc.title}</td>
@@ -96,12 +97,12 @@
 		<tr id="contents">
 			<th>내용</th><td colspan="5" id="aaaa" align=left valign=top>${desc.contents}</td>
 		</tr>
-		<sec:authorize access="isAuthenticated()">		
-			<tr id="file" >
-				<th >첨부파일</th><td >${desc.filename} <button type="button" value="DOWNLOAD" id="DOWN"  class="btn btn-default" onclick="abcdeff();">DOWNLOAD</button></td>
-			</tr>					
-		</sec:authorize>		
-	</table>
+		<sec:authorize access="isAuthenticated()">
+					<tr id="file" >
+					<th >첨부파일</th><td >${desc.filename} <button type="button" value="DOWNLOAD" id="DOWN"  class="btn btn-default" onclick="abcdeff();">DOWNLOAD</button></td>
+				</tr>			
+		</sec:authorize>
+</table>
 	</div>
 	<br>
 	<a href="main" ><button type="button" class="btn btn-default">목록으로</button></a>

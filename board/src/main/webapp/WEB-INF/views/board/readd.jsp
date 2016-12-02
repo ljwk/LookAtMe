@@ -78,9 +78,8 @@
 			</tr>			
 		</table>
 		</div>
-
 	</form>
-	<br><br><br>
+	<br>
 	<button type="button" class="btn btn-default" onclick="reboard();">저 장</button>
 	<a href="desc?num=${ref}"><button type="button" class="btn btn-default">취 소</button></a>	
 	<div id="footer"></div>
