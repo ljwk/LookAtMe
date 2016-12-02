@@ -163,7 +163,6 @@ public class UserController {
 		List<UserVO> list = svc.searchId(email);
 		List<String> idList = new ArrayList<>();
 		for(int i=0; i<list.size();i++){
-			System.out.println(list.get(i).getId());
 			idList.add(list.get(i).getId());
 		}
 		map.put("list", idList);
