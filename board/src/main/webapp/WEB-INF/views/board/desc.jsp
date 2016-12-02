@@ -80,23 +80,23 @@
 	<h3 style="margin-right: 680px; font:bold 32px none;">상세정보</h3>
 	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
 	<div id="content" class="panel panel-default">
-	<table>	
-		<tr>
-			<th>번호</th>	<td>${desc.num}</td>
-			<th>제목</th><td>${desc.title}</td>
-			<th>작성자</th><td>${desc.id}</td>
-		<tr id="file" >
-			<th >메일</th><td colspan="5" ><a href="mail?email=${desc.email}">${desc.email}</a></td>
-		</tr>
-		<tr id="contents"  height="auto">
-			<th valign=top>내용</th><td colspan="5" id="aaaa" align=left valign=top>${desc.contents}</td>
-		</tr>
-		<sec:authorize access="isAuthenticated()">		
+		<table>	
+			<tr>
+				<th>번호</th><td>${desc.num}</td>
+				<th>제목</th><td>${desc.title}</td>
+				<th>작성자</th><td>${desc.id}</td>
 			<tr id="file" >
-				<th >첨부파일</th><td >${desc.filename} <button type="button" value="DOWNLOAD" id="DOWN"  class="btn btn-default" onclick="abcdeff();">DOWNLOAD</button></td>
-			</tr>					
-		</sec:authorize>		
-	</table>
+				<th >메일</th><td colspan="5" ><a href="mail?email=${desc.email}">${desc.email}</a></td>
+			</tr>
+			<tr id="contents"  height="auto">
+				<th valign=top>내용</th><td colspan="5" id="aaaa" align=left valign=top>${desc.contents}</td>
+			</tr>
+			<sec:authorize access="isAuthenticated()">		
+				<tr id="file" >
+					<th >첨부파일</th><td >${desc.filename} <button type="button" value="DOWNLOAD" id="DOWN"  class="btn btn-default" onclick="abcdeff();">DOWNLOAD</button></td>
+				</tr>					
+			</sec:authorize>		
+		</table>
 	</div>
 	<br>
 	<a href="main" ><button type="button" class="btn btn-default">목록으로</button></a>

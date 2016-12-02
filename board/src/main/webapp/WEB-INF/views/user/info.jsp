@@ -15,6 +15,7 @@
 <script type="text/javascript">
 	$(function(){
 	    $("#navdiv").load("../resources/nav.jsp");
+	    $("#footer").load("../resources/footer.jsp");
 	});
 	
 	function logout(){
@@ -47,5 +48,6 @@
 	</form>	
 	<br><br>
 	<button onclick="modiForm();">정보수정</button>
+	<div id="footer"></div>
 </body>
 </html>

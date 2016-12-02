@@ -15,6 +15,7 @@
 <script type="text/javascript">
 	$(function(){
 	    $("#navdiv").load("../resources/nav.jsp");
+	    $("#footer").load("../resources/footer.jsp");
 	});
 	
 	function logout(){
@@ -113,5 +114,6 @@
 	<br><br>
 	<button onclick="drop();">회원탈퇴</button><br><br>
 	<a href="info?id=${info.id}"><button>나가기</button></a>
+	<div id="footer"></div>
 </body>
 </html>
