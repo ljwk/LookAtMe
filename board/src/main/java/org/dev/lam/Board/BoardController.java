@@ -133,6 +133,8 @@ public class BoardController {
 		return "board/readd";
 	}
 
+
+
 	@RequestMapping(value = "/reple", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> re(BoardVO board) {
