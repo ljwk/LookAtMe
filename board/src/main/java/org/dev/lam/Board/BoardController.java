@@ -40,7 +40,7 @@ public class BoardController {
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, String> add(BoardVO board, BindingResult result) {
+	public Map<String, String> save(BoardVO board, BindingResult result) {
 		InputStream inputStream = null;
 		OutputStream outputStream = null;
 		Map<String, String> map = new HashMap<>();
