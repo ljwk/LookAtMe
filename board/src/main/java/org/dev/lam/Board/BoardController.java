@@ -25,7 +25,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.POST)
-	public String getList2(@RequestParam(value = "page", defaultValue = "1") int page, @RequestParam(value = "rpp", defaultValue = "10") int rpp, Model model) {
+	public String list(@RequestParam(value = "page", defaultValue = "1") int page, @RequestParam(value = "rpp", defaultValue = "10") int rpp, Model model) {
 		model.addAttribute("list", svc.getList(page, rpp));
 		model.addAttribute("page", page);
 		model.addAttribute("rpp", rpp);
