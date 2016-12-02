@@ -86,5 +86,11 @@ public class UserService {
         	ex.printStackTrace();
         }
         return false;
-    } 
+    }
+
+	public UserVO getInfo(String id) {
+		UserDAO dao = sqlSessionTemplate.getMapper(UserDAO.class);
+		UserVO info = dao.getInfo(id);
+		return info;
+	} 
 }

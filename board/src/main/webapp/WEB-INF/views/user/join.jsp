@@ -99,6 +99,11 @@
 			success : function(jsObj) {	
  				if(jsObj.result){
  					alert('메일이 전송되었습니다. 남은 가입단계를 메일에서 진행해주세요.');
+ 					window.close(); 
+ 					self.close(); 
+ 					window.opener = window.location.href; 
+ 					self.close(); 
+ 					window.open('about:blank','_self').close();
  				}else{
  					alert('메일 전송에 실패했습니다.');
  				}

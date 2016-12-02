@@ -90,5 +90,12 @@ public class UserController {
         
         return "redirect:/free/main";
     }
+    
+	@RequestMapping(value = "/info", method = RequestMethod.GET)
+	public String info(@RequestParam("id") String id, Model model) {
+		model.addAttribute("info", svc.getInfo(id));
+		return "user/info";
+	}
+	
 
 }
