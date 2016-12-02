@@ -14,6 +14,7 @@
 <script>
 	$(function(){
 	    $("#navdiv").load("../resources/nav.jsp");
+	    $("#footer").load("../resources/footer.jsp");
 	});
 
 	$(function(){
@@ -87,10 +88,10 @@
 <body>
 <div id="navdiv">
 </div>
-	<h3>공지사항</h3>
+	<h3 style="margin-right: 680px; font:bold 32px none;">공지사항</h3>
+	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
 	<div id="content" class="panel panel-default"><!-- Dynamic Content goes here --></div>
-	<p>	
-	<br>	
+	<br>
 	<form name="updateForm" action="search">
 		<input type="hidden"  id="rpp" name="rpp" value="10">
 		<input type="hidden"  id="page"  name="page" value="1">
@@ -103,6 +104,7 @@
 			<a href="add?id=<sec:authentication property="name"/>" ><button type="button" class="btn btn-default">글쓰기</button></a>
 		</sec:authorize>
 	</form>
-	<div id="page-selection"><!-- Pagination goes here --></div>		
+	<div id="page-selection"><!-- Pagination goes here --></div>
+	<div id="footer"></div>	
 </body>
 </html>

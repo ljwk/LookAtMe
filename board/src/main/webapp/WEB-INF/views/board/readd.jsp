@@ -14,6 +14,7 @@
 <script type="text/javascript">
 	$(function(){
 	    $("#navdiv").load("../resources/nav.jsp");
+	    $("#footer").load("../resources/footer.jsp");
 	});
 	
 	function reboard() {
@@ -81,5 +82,6 @@
 	<br><br><br>
 	<button type="button" class="btn btn-default" onclick="reboard();">저 장</button>
 	<a href="desc?num=${ref}"><button type="button" class="btn btn-default">취 소</button></a>	
+	<div id="footer"></div>
 </body>
 </html>

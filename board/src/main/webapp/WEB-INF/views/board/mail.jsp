@@ -13,6 +13,7 @@
 <script src="<c:url value="/resources/jquery.bootpag.min.js"/>"></script>
 <script type="text/javascript">
 	$(function(){
+		$("#footer").load("../resources/footer.jsp");
 	    $("#navdiv").load("../resources/nav.jsp");
 	});
 	
@@ -56,6 +57,6 @@
 		<br><br>
 		<button type="submit" class="btn btn-default">보내기</button>
 	</form>
-	<br><br><br>
+	<div id="footer"></div>
 </body>
 </html>

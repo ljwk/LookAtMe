@@ -16,6 +16,7 @@
 	
 	$(function() {
 		$("#navdiv").load("../resources/nav.jsp");
+		$("#footer").load("../resources/footer.jsp");
 		$('#JOIN').attr('disabled',true);
 		$('#ID').attr('disabled',true);
 		$('#PWD').attr('disabled',true);
@@ -117,11 +118,12 @@
 </script>
 <style type="text/css">
 	body {text-align: center;}
-	#navdiv {height:130px;}
+	#navdiv {height:100px;}
+	.panel-heading{background: rgb(252, 252, 252);}
 	table {border-spacing: 0px; margin: 0px auto ;}
 	th, td {padding: 5px;}
-	th {border: 1px solid black; text-align: center;}
-	td {border: 1px solid black; text-align: left;}
+	th {text-align: center;}
+	td {text-align: left;}
 	#content {width: 450px; margin: 0px auto;}
 	a:hover {color: red;}
 	a:active {color: gold}
@@ -131,8 +133,12 @@
 </head>
 <body>
 	<div id="navdiv"></div>
-	<div id="content" class="panel panel-primary">
-		<div class="panel-heading">회원가입 폼</div>
+	
+	<h3 style="margin-right: 480px; font:bold 32px none;">회원가입</h3>
+	<hr style="width: 600px; border:1px solid lightgray; margin-bottom:50px;">
+	
+	<div id="content" class="panel panel-default">
+		<div class="panel-heading">회원가입</div>
 		<table class="table" id="tablee">
 			<tr>
 				<th>E-MAIL</th><td><input type="email" name="email" id="EMAIL" value="${email}"> <button type="button" class="btn btn-default"  onclick="chk();" id="CHK">이메일 인증</button></td></tr>
@@ -141,8 +147,10 @@
 			</tr>			
 		</table>
 	</div>
-	<br><br>
+	
+	<br>
 	<button class="btn btn-default" onclick="join();" id="JOIN">회원가입</button>
 	<a href=/board/index.jsp><button class="btn btn-default">취소</button></a>
+	<div id="footer"></div>
 </body>
 </html>
