@@ -100,11 +100,27 @@ public class UserService {
 		return n > 0 ? true : false;
 	}
 
-	public boolean modi(UserVO user) {
+	public boolean modiChk(UserVO user) {
 		UserDAO dao = sqlSessionTemplate.getMapper(UserDAO.class);
+		UserVO db = dao.getUser(user.getId());
+		boolean found = passwordEncoder.matches(user.getPwd(), db.getPwd());
+		return found;
+	}
+
+	public boolean modiPwd(UserVO user) {
+		UserDAO dao = sqlSessionTemplate.getMapper(UserDAO.class);		
 		String encodedPwd = passwordEncoder.encode(user.getPwd());
 		user.setPwd(encodedPwd);
-		int n = dao.modi(user);
+		int n = dao.modiPwd(user);
 		return n > 0 ? true : false;
-	} 
+	}
+
+	public boolean modiEmail(UserVO user) {
+		UserDAO dao = sqlSessionTemplate.getMapper(UserDAO.class);		
+		int n = dao.modiEmail(user);
+		return n > 0 ? true : false;
+	}
+
+	
 }
+

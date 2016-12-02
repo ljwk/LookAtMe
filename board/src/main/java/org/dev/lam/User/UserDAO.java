@@ -6,5 +6,6 @@ public interface UserDAO {
 	public int chkId(String id);
 	public UserVO getInfo(String id);
 	public int drop(String id);
-	public int modi(UserVO user);
+	public int modiPwd(UserVO user);
+	public int modiEmail(UserVO user);
 }

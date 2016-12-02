@@ -105,15 +105,47 @@ public class UserController {
 		map.put("success", ok);
 		return map;
 	}
+
+	@RequestMapping(value = "/modi", method = RequestMethod.GET)
+	public String modi() {
+		return "user/modi";
+	}
 	
-	@RequestMapping(value = "/modi", method = RequestMethod.POST)
+	@RequestMapping(value = "/modiLogin", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Boolean> modi(UserVO user) {
+	public Map<String, Boolean> modiLogin(UserVO user) {
 		Map<String, Boolean> map = new HashMap<>();
-		boolean ok = svc.modi(user);
+		boolean ok = svc.modiChk(user);
 		map.put("success", ok);
 		return map;
 	}
+	
+	@RequestMapping(value = "/modiForm", method = RequestMethod.GET)
+	public String modiForm(@RequestParam("id") String id, Model model) {
+		model.addAttribute("info", svc.getInfo(id));
+		return "user/modiForm";
+	}
+	
+	@RequestMapping(value = "/pwdModi", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Boolean> pwdModi(UserVO user) {
+		Map<String, Boolean> map = new HashMap<>();
+		boolean ok = svc.modiPwd(user);
+		map.put("success", ok);
+		return map;
+	}
+	
+	@RequestMapping(value = "/emailModi", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Boolean> emailModi(UserVO user) {
+		Map<String, Boolean> map = new HashMap<>();
+		boolean ok = svc.modiEmail(user);
+		map.put("success", ok);
+		return map;
+	}
+	
+	
+	
 	
 
 }

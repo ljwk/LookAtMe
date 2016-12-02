@@ -24,7 +24,24 @@
 	}
 	
 	function modiForm(){
-		location.href="modi";
+		var jsonObj = 	$('#modiForm').serialize(); 
+
+ 		$.ajax({
+			url : 'modiLogin',
+			data : jsonObj,
+			type : 'post',
+			dataType : 'json',
+			success : function(res) {
+			 	if(res.success){
+					location.href="modiForm?id=<sec:authentication property="name"/>";
+				} else{
+					alert('비밀번호를 확인해주세요')
+				}
+			},
+			error : function(xhr, status, error) {
+				alert(error);
+			}
+		}); 		
 	}
 </script>
 <style type="text/css">
@@ -37,15 +54,15 @@
 </head>
 <body>
 	<div id="navdiv"></div>
-	<h3>My Page</h3>
-	<form id="modiInfo">
-		<input type="hidden" name="id" value="${info.id}">
-		<table>
-			<tr><th>id</th><td>${info.id}</td></tr>
-			<tr><th>email</th><td>${info.email}</td></tr>
-		</table>			
-	</form>	
-	<br><br>
-	<button onclick="modiForm();">정보수정</button>
+	<h3>회원정보 확인</h3>
+	<sec:authentication property="name"/>님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.
+	<form id="modiForm">
+		<input type="hidden" name="id" value="<sec:authentication property="name"/>">
+		<table>		
+			<tr><th>ID</th><td><sec:authentication property="name"/></td></tr>
+			<tr><th>비밀번호</th><td><input type="password" name="pwd"></td></tr>
+		</table>
+	</form>
+	<button onclick="modiForm();">확인</button>
 </body>
 </html>
