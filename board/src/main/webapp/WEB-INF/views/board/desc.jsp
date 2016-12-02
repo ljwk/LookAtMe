@@ -26,7 +26,7 @@
 		if(confirm('정말로 삭제하시겠어요?')){ 
  			var dateObj = {};
 			dateObj.num=${desc.num};
-			  
+			 
 			$.ajax({
 				url : 'delete' , 
 				data : dateObj,
@@ -60,13 +60,14 @@
 <style type="text/css">
 	body {text-align: center;}
 	#navdiv {height:100px;}
-	table {border: 1px solid black;	border-spacing: 0px;	margin: 0px auto; width: 800px;}
+	table {border-spacing: 0px;	margin: 0px auto; width: 800px;}
 	th, td {padding: 5px;}
 	h3{text-align: center;}
-	th {width: 200px;	border: 1px solid black; background: rgb(252, 252, 252); text-align: center;}
-	td {border: 1px solid black; width: 400px;}
-	#tnum {width: 45px;}
-	#contents {height: 400px; margin: 0px auto;}
+	th {width: 130px;border-bottom:1px solid lightgray;background: rgb(252, 252, 252); text-align: center;}
+	td {width: 400px;border-bottom:1px solid lightgray;text-align: left;}
+	#content {width: 800px; margin: 0px auto;}
+	#file{text-align: left;}
+	#contents {height: 100px;}
 	#aaaa {text-align: left;}
 	a:hover {color: red;}
 	a:active {color: gold}
@@ -78,23 +79,25 @@
 	<div id="navdiv"></div>
 	<h3 style="margin-right: 680px; font:bold 32px none;">상세정보</h3>
 	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
-
+	<div id="content" class="panel panel-default">
 	<table>	
 		<tr>
-			<th>번호</th>	<td>${desc.num}</td>	<th>제목</th><td>${desc.title}</td><th>작성자</th><td>${desc.id}</td>
-		</tr>
+			<th>번호</th>	<td>${desc.num}</td>
+			<th>제목</th><td>${desc.title}</td>
+			<th>작성자</th><td>${desc.id}</td>
 		<tr id="file" >
-			<th >작성자 메일</th><td colspan="5" ><a href="mail?email=${desc.email}">${desc.email}</a></td>
+			<th >메일</th><td colspan="5" ><a href="mail?email=${desc.email}">${desc.email}</a></td>
 		</tr>
-		<tr id="contents" >
-			<th >내용</th><td colspan="5" id="aaaa">${desc.contents}</td>
+		<tr id="contents"  height="auto">
+			<th valign=top>내용</th><td colspan="5" id="aaaa" align=left valign=top>${desc.contents}</td>
 		</tr>
 		<sec:authorize access="isAuthenticated()">		
 			<tr id="file" >
-				<th >첨부파일</th><td colspan="5" >${desc.filename} <button type="button" value="DOWNLOAD" id="DOWN"  class="btn btn-default" onclick="abcdeff();">DOWNLOAD</button></td>
+				<th >첨부파일</th><td >${desc.filename} <button type="button" value="DOWNLOAD" id="DOWN"  class="btn btn-default" onclick="abcdeff();">DOWNLOAD</button></td>
 			</tr>					
 		</sec:authorize>		
-	</table>		
+	</table>
+	</div>
 	<br>
 	<a href="main" ><button type="button" class="btn btn-default">목록으로</button></a>
 	<sec:authorize access="isAuthenticated()">

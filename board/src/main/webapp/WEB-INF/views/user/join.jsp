@@ -120,7 +120,7 @@
 	body {text-align: center;}
 	#navdiv {height:100px;}
 	.panel-heading{background: rgb(252, 252, 252);}
-	table {border-spacing: 0px; margin: 0px auto ;}
+	table {border-spacing: 0px; margin: 0px auto;}
 	th, td {padding: 5px;}
 	th {text-align: center;}
 	td {text-align: left;}
