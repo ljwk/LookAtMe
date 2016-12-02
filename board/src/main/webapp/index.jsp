@@ -111,10 +111,10 @@ a {color: gray; text-decoration: none;}
 	</ul>
 	</div>
 	<div id="imgs">
-		 <img src="resources/js/images/appphone.png">
-		 <img src="resources/js/images/babysafe.png">
-		 <img src="resources/js/images/dogsafe.png">
-		 <img src="resources/js/images/firesafe.png">
+		 <img src="resources/js/images/appphone.png" class="img-thumbnail">
+		 <img src="resources/js/images/babysafe.png" class="img-thumbnail">
+		 <img src="resources/js/images/dogsafe.png" class="img-thumbnail">
+		 <img src="resources/js/images/firesafe.png" class="img-thumbnail">
 	</div>
 	<div id="footer"></div>
 </body>
