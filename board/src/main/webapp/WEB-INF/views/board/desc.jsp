@@ -26,7 +26,7 @@
 		if(confirm('정말로 삭제하시겠어요?')){ 
  			var dateObj = {};
 			dateObj.num=${desc.num};
-			 
+			  
 			$.ajax({
 				url : 'delete' , 
 				data : dateObj,
