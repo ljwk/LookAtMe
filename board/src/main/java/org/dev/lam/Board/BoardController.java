@@ -113,7 +113,7 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/modi", method = RequestMethod.GET)
-	public String modi(@RequestParam("num") int num, Model model) {
+	public String modiForm(@RequestParam("num") int num, Model model) {
 		model.addAttribute("num", num);
 		return "board/modi";
 	}
