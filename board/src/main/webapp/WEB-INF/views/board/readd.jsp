@@ -47,15 +47,13 @@
 </script>
 <style type="text/css">
 	body {text-align: center;}
-	table {border: 1px solid black; border-spacing: 0px; margin: 0px auto ; width: 500px;}
+	#navdiv {height:100px;}
+	table {border-spacing: 0px;	margin: 0px auto; width: 800px;}
 	th, td {padding: 5px;}
-	th {border: 1px solid black; text-align: center; background: rgb(176, 187, 190);}
-	td {border: 1px solid black;}
-	#aa {height: 420px;}
-	#bb {height: 50px;}
-	#contents {width: 400px; height: 400px;}
-	#title {width: 400px;}
-	#navdiv {height:130px;}
+	th {width: 100px;border-bottom:1px solid lightgray;background: rgb(252, 252, 252); text-align: center;}
+	td {border-bottom:1px solid lightgray;text-align: left;}
+	#content {width: 800px; margin: 0px auto;}
+	textarea{resize: none;}
 	a:hover {color: red;}
 	a:active {color: gold}
 	a {color: gray; text-decoration: none;}
@@ -64,22 +62,24 @@
 </head>
 <body>
 	<div id="navdiv"></div>
+	<h3 style="margin-right: 680px; font:bold 32px none;">답글쓰기</h3>
+	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
+	
 	<form id="reForm" action="boardDesc.jsp">
-		<fieldset>
-		<legend>답글</legend>
 		<input type="hidden" name="ref"  value="${ref}">
 		<input type="hidden" name="id" value="<sec:authentication property="name"/>">
+		<div id="content" class="panel panel-default">
 		<table>
-			<tr id="bb">
-				<th>제목</th><td><input type="text" id="title" name="title"></td>
+			<tr>
+				<th>제목</th><td><input type="text" id="title" name="title" maxlength="40" size="90%"></td>
 			</tr>
-			<tr id="aa">
-				<th>내용</th><td><textarea id="contents" name="contents"></textarea></td>
+			<tr>
+				<th>내용</th><td><textarea id="contents" name="contents" rows="15" cols="92%" maxlength="400"></textarea></td>
 			</tr>			
 		</table>
-		</fieldset>
+		</div>
 	</form>
-	<br><br><br>
+	<br>
 	<button type="button" class="btn btn-default" onclick="reboard();">저 장</button>
 	<a href="desc?num=${ref}"><button type="button" class="btn btn-default">취 소</button></a>	
 	<div id="footer"></div>

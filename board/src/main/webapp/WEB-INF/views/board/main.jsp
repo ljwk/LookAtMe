@@ -85,7 +85,7 @@
 	a {color: gray; text-decoration: none;}
 	.no {position: relative; display: block; padding: 12px 15px;}
 </style>
-</head>
+</head> 
 <body>
 	<div id="navdiv"></div>
 	<h3 style="margin-right: 700px; font:bold 32px none;">게시판</h3>
