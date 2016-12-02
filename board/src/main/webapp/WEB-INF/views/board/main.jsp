@@ -11,7 +11,7 @@
 <script src="//raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script>
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script src="<c:url value="/resources/jquery.bootpag.min.js"/>"></script>
-<script>
+<script type="text/javascript">
 	$(function(){
 	    $("#navdiv").load("../resources/nav.jsp");
 	});
@@ -62,6 +62,7 @@
 			location.href="<c:url value='/logout' />";
 		}
 	}
+	
 </script>
 <style type="text/css">
 	body {text-align: center;}
@@ -89,6 +90,8 @@
 </style>
 </head>
 <body>
+<!-- <img style="-webkit-user-select: none" src="http://192.168.2.27:8081/board/free/test/"> -->
+<img style="-webkit-user-select: none" src="http://192.168.2.26:8083/">
 <div id="navdiv">
 </div>
 	<h3>게 시 판 !</h3>
@@ -107,6 +110,6 @@
 			<a href="add?id=<sec:authentication property="name"/>" ><button type="button" class="btn btn-default">글쓰기</button></a>
 		</sec:authorize>
 	</form>
-	<div id="page-selection"><!-- Pagination goes here --></div>		
+	<div id="page-selection"><!-- Pagination goes here --></div>
 </body>
 </html>
