@@ -1,18 +1,36 @@
 package org.dev.lam.Board;
 
-import java.io.*;
-import java.util.*;
-import javax.servlet.http.*;
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.stereotype.*;
-import org.springframework.ui.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.MalformedURLException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/free")
 public class BoardController {
-
+	
 	@Autowired
 	private BoardService svc;
 
@@ -184,6 +202,51 @@ public class BoardController {
 	public String mail(@RequestParam("email") String email, Model model) {
 		model.addAttribute("email", email);
 		return "board/mail";
+	}
+	
+	@RequestMapping(value = "/test")
+	public void image() {
+		DataInputStream input = null;
+		Socket socket = null;
+		ServerSocket serverSocket = null;
+		
+		try {
+			serverSocket = new ServerSocket(8088);
+			do {
+			socket = serverSocket.accept();
+			}while (socket == null);
+			
+			System.out.println(socket);
+			
+			URL url = new URL("http://192.168.2.26:8083/");
+			URLConnection getconn = url.openConnection();
+			input = new DataInputStream(getconn.getInputStream());
+			
+			
+			imageThread(socket, input);
+			
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void imageThread(Socket socket, DataInputStream input) {
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					DataOutputStream output = null;
+					output = new DataOutputStream(socket.getOutputStream());
+					
+					output.write(input.readByte());
+					output.flush();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
 	}
 	
 }
