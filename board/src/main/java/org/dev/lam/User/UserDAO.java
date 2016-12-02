@@ -5,4 +5,6 @@ public interface UserDAO {
 	public UserVO getUser(String id);
 	public int chkId(String id);
 	public UserVO getInfo(String id);
+	public int drop(String id);
+	public int modi(UserVO user);
 }
