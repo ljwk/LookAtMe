@@ -79,17 +79,22 @@
 	<div id="navdiv"></div>
 	<h3 style="margin-right: 680px; font:bold 32px none;">상세정보</h3>
 	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
+	
 	<div id="content" class="panel panel-default">
 	<table>	
 		<tr>
+		<th>제목</th><td colspan="5">${desc.title}</td>
+		</tr>
+		<tr>
 			<th>번호</th>	<td>${desc.num}</td>
-			<th>제목</th><td>${desc.title}</td>
+			
 			<th>작성자</th><td>${desc.id}</td>
+		</tr>
 		<tr id="file" >
 			<th >메일</th><td colspan="5" ><a href="mail?email=${desc.email}">${desc.email}</a></td>
 		</tr>
-		<tr id="contents"  height="auto">
-			<th valign=top>내용</th><td colspan="5" id="aaaa" align=left valign=top>${desc.contents}</td>
+		<tr id="contents">
+			<th>내용</th><td colspan="5" id="aaaa" align=left valign=top>${desc.contents}</td>
 		</tr>
 		<sec:authorize access="isAuthenticated()">		
 			<tr id="file" >
