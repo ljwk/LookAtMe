@@ -26,18 +26,17 @@
 </script>
 <style type="text/css">
 	form { width: 300px; }
-	#navdiv{height:130px;}
+	#navdiv {height:130px;}
 	#abc {text-align: center; width: 400px; margin: 0px auto;}
 	body {text-align: center;}
 	a:hover {color: red;}
 	a:active {color: gold}
 	a {color: gray; text-decoration: none;}
-	.no{position: relative; display: block; padding: 12px 15px;}
+	.no {position: relative; display: block; padding: 12px 15px;}
 </style>
 </head>
 <body>
-<div id="navdiv">
-</div>
+	<div id="navdiv"></div>
 	<c:if test="${not empty param.error}">
 		<span id="errMsg">오류: ${SPRING_SECURITY_LAST_EXCEPTION.message}</span>
 	</c:if>

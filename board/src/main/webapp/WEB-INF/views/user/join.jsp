@@ -117,7 +117,7 @@
 </script>
 <style type="text/css">
 	body {text-align: center;}
-	#navdiv{height:130px;}
+	#navdiv {height:130px;}
 	table {border-spacing: 0px; margin: 0px auto ;}
 	th, td {padding: 5px;}
 	th {border: 1px solid black; text-align: center;}
@@ -126,12 +126,11 @@
 	a:hover {color: red;}
 	a:active {color: gold}
 	a {color: gray; text-decoration: none;}
-	.no{position: relative; display: block; padding: 12px 15px;}
+	.no {position: relative; display: block; padding: 12px 15px;}
 </style>
 </head>
 <body>
-<div id="navdiv">
-</div>
+	<div id="navdiv"></div>
 	<div id="content" class="panel panel-primary">
 		<div class="panel-heading">회원가입 폼</div>
 		<table class="table" id="tablee">
