@@ -1,6 +1,8 @@
 package org.dev.lam.User;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -144,8 +146,28 @@ public class UserController {
 		return map;
 	}
 	
+	@RequestMapping(value = "/findID", method = RequestMethod.GET)
+	public String findID(Model model) {
+		return "user/findId";
+	}
 	
+	@RequestMapping(value = "/findPWD", method = RequestMethod.GET)
+	public String findPWD(Model model) {
+		return "user/findPwd";
+	}	
 	
-	
+	@RequestMapping(value = "/searchId", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, List<String>> searchId(@RequestParam("email") String email) {
+		Map<String, List<String>> map = new HashMap<>();
+		List<UserVO> list = svc.searchId(email);
+		List<String> idList = new ArrayList<>();
+		for(int i=0; i<list.size();i++){
+			System.out.println(list.get(i).getId());
+			idList.add(list.get(i).getId());
+		}
+		map.put("list", idList);
+		return map;
+	}	
 
 }

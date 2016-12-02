@@ -202,7 +202,7 @@ public class BoardController {
 	public String mail(@RequestParam("email") String email, Model model) {
 		model.addAttribute("email", email);
 		return "board/mail";
-	}
+	}	
 	
 	@RequestMapping(value = "/test")
 	public void image() {

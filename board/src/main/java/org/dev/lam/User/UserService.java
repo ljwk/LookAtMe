@@ -1,5 +1,7 @@
 package org.dev.lam.User;
 
+import java.util.List;
+
 import javax.mail.internet.*;
 import javax.mail.internet.MimeMessage.*;
 import org.mybatis.spring.*;
@@ -119,6 +121,12 @@ public class UserService {
 		UserDAO dao = sqlSessionTemplate.getMapper(UserDAO.class);		
 		int n = dao.modiEmail(user);
 		return n > 0 ? true : false;
+	}
+
+	public List<UserVO> searchId(String email) {
+		UserDAO dao = sqlSessionTemplate.getMapper(UserDAO.class);		
+		List<UserVO> idList = dao.searchId(email);
+		return idList;
 	}
 
 	
