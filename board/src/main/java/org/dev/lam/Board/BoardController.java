@@ -10,6 +10,7 @@ import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Date;
@@ -204,6 +205,11 @@ public class BoardController {
 		return "board/mail";
 	}
 	
+	@RequestMapping(value = "vv")
+	public String vv(){
+		return "cctv/view";
+	}
+	
 	@RequestMapping(value = "/test")
 	public void image() {
 		DataInputStream input = null;
@@ -212,19 +218,27 @@ public class BoardController {
 		
 		try {
 			serverSocket = new ServerSocket(8088);
-			do {
-			socket = serverSocket.accept();
-			}while (socket == null);
-			
-			System.out.println(socket);
-			
-			URL url = new URL("http://192.168.2.26:8083/");
-			URLConnection getconn = url.openConnection();
-			input = new DataInputStream(getconn.getInputStream());
-			
-			
-			imageThread(socket, input);
-			
+//			serverSocket.setSoTimeout(1000 /* milliseconds */);
+			while (true) {
+				do {
+					try {
+						System.out.println("¥Î±‚");
+						socket = serverSocket.accept();
+					} catch (final SocketTimeoutException e) {
+						System.out.println("è≥");
+					}
+				} while (socket == null);
+
+				System.out.println(socket);
+
+				URL url = new URL("http://192.168.2.26:8083/");
+				URLConnection getconn = url.openConnection();
+				input = new DataInputStream(getconn.getInputStream());
+
+				imageThread(socket, input);
+				socket = null;
+				// serverSocket.close();
+			}
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -240,10 +254,21 @@ public class BoardController {
 					DataOutputStream output = null;
 					output = new DataOutputStream(socket.getOutputStream());
 					
-					output.write(input.readByte());
-					output.flush();
+					while (true) {
+						byte by= input.readByte();
+						System.out.println(input.readByte());
+						output.write(by);
+						output.flush();
+					}
 				} catch (IOException e) {
 					e.printStackTrace();
+				} finally {
+					try {
+						socket.close();
+						input.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		}).start();
