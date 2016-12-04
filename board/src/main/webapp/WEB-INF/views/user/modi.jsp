@@ -25,7 +25,24 @@
 	}
 	
 	function modiForm(){
-		location.href="modi";
+		var jsonObj = 	$('#modiForm').serialize(); 
+
+ 		$.ajax({
+			url : 'modiLogin',
+			data : jsonObj,
+			type : 'post',
+			dataType : 'json',
+			success : function(res) {
+			 	if(res.success){
+					location.href="modiForm?id=<sec:authentication property="name"/>";
+				} else{
+					alert('비밀번호를 확인해주세요')
+				}
+			},
+			error : function(xhr, status, error) {
+				alert(error);
+			}
+		}); 		
 	}
 </script>
 <style type="text/css">
@@ -34,9 +51,9 @@
 	.panel-heading{background: rgb(252, 252, 252);}
 	table {border-spacing: 0px;	margin: 0px auto;}
 	th, td {padding: 5px;}
+	h3{text-align: center;}
 	th {width: 100px;border-bottom:1px solid lightgray;background: rgb(252, 252, 252); text-align: center;}
-	td {border-bottom:1px solid lightgray;text-align: left;}
-	#content {width: 450px; margin: 0px auto;}
+	td {border-bottom:1px solid lightgray;text-align: left;}	#content {width: 450px; margin: 0px auto;}
 	a:hover {color: red;}
 	a:active {color: gold}
 	a {color: gray; text-decoration: none;}
@@ -45,28 +62,22 @@
 </head>
 <body>
 	<div id="navdiv"></div>
-	<h3 style="margin-right: 480px; font:bold 32px none;">상세정보</h3>
+	<h3 style="margin-right: 410px; font:bold 32px none;">회원정보 확인</h3>
 	<hr style="width: 600px; border:1px solid lightgray; margin-bottom:50px;">
-
-	<form id="modiInfo">
-		<input type="hidden" name="id" value="${info.id}">
-
+	
+	<h4 style="margin-bottom: 20px"><sec:authentication property="name"/>님의 정보를 안전하게 보호하기 위해 <br>비밀번호를 다시 한번 확인 합니다.</h4>
+	<form id="modiForm">
+		<input type="hidden" name="id" value="<sec:authentication property="name"/>">
 		<div id="content" class="panel panel-default">
-			<div class="panel-heading">상세정보</div>
-			<table class="table" id="tablee">
-				<tr>
-					<th>id</th>
-					<td>${info.id}</td>
-				</tr>
-				<tr>
-					<th>email</th>
-					<td>${info.email}</td>
-				</tr>
-			</table>
+			<div class="panel-heading">회원정보 수정</div>
+		<table class="table" id="tablee">		
+			<tr><th>ID</th><td><sec:authentication property="name"/></td></tr>
+			<tr><th>비밀번호</th><td><input type="password" name="pwd"></td></tr>
+		</table>
 		</div>
-	</form>	
+	</form>
 	<br>
-	<button onclick="modiForm();" class="btn btn-default">정보수정</button>
+	<button onclick="modiForm();" class="btn btn-default">확인</button>
 	<div id="footer"></div>
 </body>
 </html>

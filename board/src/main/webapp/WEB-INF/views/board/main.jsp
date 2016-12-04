@@ -85,7 +85,7 @@
 	a {color: gray; text-decoration: none;}
 	.no {position: relative; display: block; padding: 12px 15px;}
 </style>
-</head>
+</head> 
 <body>
 	<h3>게 시 판 !</h3>
 	<div id="navdiv"></div>

@@ -203,7 +203,7 @@ public class BoardController {
 	public String mail(@RequestParam("email") String email, Model model) {
 		model.addAttribute("email", email);
 		return "board/mail";
-	}
+	}	
 	
 	@RequestMapping(value = "vv")
 	public String vv(){

@@ -25,6 +25,14 @@
 			location.href="<c:url value='/logout' />";
 		}
 	}
+	
+	function findId(){
+		location.href="findID";
+	}
+	
+	function findPwd(){
+		location.href="findPWD";
+	}
 </script>
 <style type="text/css">
 	body {text-align: center;}
@@ -49,7 +57,7 @@
 	<c:if test="${not empty param.error}">
 		<span id="errMsg">오류: ${SPRING_SECURITY_LAST_EXCEPTION.message}</span>
 	</c:if>
-	<h3 style="margin-bottom: 20px">Look Out에 오신 것을 환영합니다.</h3>
+	<h4 style="margin-bottom: 20px">Look Out에 오신 것을 환영합니다.</h4>
 	<form action="<c:url value='/user/login'/>" method="post">
 	
 	<div id="content" class="panel panel-default">
@@ -65,6 +73,9 @@
 	<br>
 		<button class="btn btn-default" type="submit">로그인</button>
 	 </form>
+	 <br>
+	 <button class="btn btn-default" onclick="findId();">ID 찾기</button>&nbsp;&nbsp;
+	 <button class="btn btn-default" onclick="findPwd();">PASSWORD 찾기</button>
 	<div id="footer"></div>
 </body>
 </html>

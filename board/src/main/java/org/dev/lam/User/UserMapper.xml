@@ -22,7 +22,16 @@
 		UPDATE member SET enabled = 0 WHERE id = #{id}
 	</update>
 	
-	<update id="modi" parameterType="org.dev.lam.User.UserVO">
-		UPDATE member SET pwd = #{pwd} , email = #{email}  WHERE id = #{id}
+	<update id="modiPwd"  parameterType="org.dev.lam.User.UserVO">
+		UPDATE member SET pwd = #{pwd} WHERE id = #{id}
+	</update>
+	
+	<update id="modiEmail"  parameterType="org.dev.lam.User.UserVO">
+		UPDATE member SET email = #{email} WHERE id = #{id}
 	</update>	
+	
+	<select id="searchId"  resultType="org.dev.lam.User.UserVO">
+		SELECT id FROM member WHERE email = #{email} and enabled=1
+	</select>		
+	
 </mapper>
