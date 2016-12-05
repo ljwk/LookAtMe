@@ -62,7 +62,7 @@
 	<h4 style="margin-bottom: 20px">Look Out에 오신 것을 환영합니다.</h4>
 	<form action="<c:url value='/user/login'/>" method="post">
 	
-	<div id="content" class="panel panel-default">
+	<div id="content" class="panel panel-default"> 
 	 <div class="panel-heading">로그인</div>
 		<table class="table" id="tablee">
 			<tr><th>ID</th><td><input type="text" name="id" value="SH"></td><td rowspan="2"><button class="btn btn-default" type="submit" style="padding: 25px;">로그인</button></td></tr>
