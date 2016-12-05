@@ -69,7 +69,7 @@
 	<hr style="width: 600px; border:1px solid lightgray; margin-bottom:50px;">
 	<div id="content" class="panel panel-default">	
 		<div class="panel-heading">회원가입시 입력하신 email을 입력해주세요!</div>		 	
-		<table class="table" id="tablee">
+		<table class="table" id="tablee">  
 			<tr><th>Email</th><td><input type="text" name="email"></td><td><button onclick="search();" class="btn btn-default" >찾기</button></td></tr>
 		</table>				
 	</div>	
