@@ -16,6 +16,6 @@ hr{width: 100%; border:1px solid lightgray;}
 	<ul>
 		<li>(주)Look Out</li>
 		<li>대표 조장 임종욱</li>
-		<li>서울특별시 금천구 가산디지털1로 145 17층 1704호</li>
+		<li>서울특별시 금천구 가산동 에이스하이엔드타워3차 1704호</li>
 		<li>Copyright © LookOut. All rights reserved.</li>
 	</ul>
