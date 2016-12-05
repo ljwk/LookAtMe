@@ -10,6 +10,7 @@ import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.net.URLConnection;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,13 +19,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/cctv")
 public class CCTVController {
+	
+	@Autowired
+	private CCTVService service;
+	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String cctv(Model model) {
 		return "cctv/cctv";
 	}
 	
-	@RequestMapping(value = "vv")
-	public String vv(){
+	@RequestMapping(value = "/view")
+	public String view(Model model){
+		service.on();
+		System.out.println("on");
 		return "cctv/view";
 	}
 	
@@ -36,7 +43,7 @@ public class CCTVController {
 		
 		try {
 			serverSocket = new ServerSocket(8088);
-//			serverSocket.setSoTimeout(1000 /* milliseconds */);
+			serverSocket.setSoTimeout(1000 /* milliseconds */);
 			while (true) {
 				do {
 					try {
@@ -49,7 +56,7 @@ public class CCTVController {
 
 				System.out.println(socket);
 
-				URL url = new URL("http://192.168.2.26:8083/");
+				URL url = new URL("http://192.168.0.25:8083/");
 				URLConnection getconn = url.openConnection();
 				input = new DataInputStream(getconn.getInputStream());
 
