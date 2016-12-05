@@ -46,7 +46,14 @@
 	}
 </script>
 <style type="text/css">
-	#navdiv {height:130px;}
+	body {text-align: center;}
+	#navdiv {height:100px;}
+	.panel-heading{background: rgb(252, 252, 252);}
+	table {border-spacing: 0px;	margin: 0px auto;}
+	th, td {padding: 5px;}
+	h3{text-align: center;}
+	th {width: 100px;border-bottom:1px solid lightgray;background: rgb(252, 252, 252); text-align: center;}
+	td {border-bottom:1px solid lightgray;text-align: left;}	#content {width: 450px; margin: 0px auto;}
 	a:hover {color: red;}
 	a:active {color: gold}
 	a {color: gray; text-decoration: none;}
@@ -55,16 +62,22 @@
 </head>
 <body>
 	<div id="navdiv"></div>
-	<h3>회원정보 확인</h3>
-	<sec:authentication property="name"/>님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.
+	<h3 style="margin-right: 410px; font:bold 32px none;">회원정보 확인</h3>
+	<hr style="width: 600px; border:1px solid lightgray; margin-bottom:50px;">
+	
+	<h4 style="margin-bottom: 20px"><sec:authentication property="name"/>님의 정보를 안전하게 보호하기 위해 <br>비밀번호를 다시 한번 확인 합니다.</h4>
 	<form id="modiForm">
 		<input type="hidden" name="id" value="<sec:authentication property="name"/>">
-		<table>		
+		<div id="content" class="panel panel-default">
+			<div class="panel-heading">회원정보 수정</div>
+		<table class="table" id="tablee">		
 			<tr><th>ID</th><td><sec:authentication property="name"/></td></tr>
 			<tr><th>비밀번호</th><td><input type="password" name="pwd"></td></tr>
 		</table>
+		</div>
 	</form>
-	<button onclick="modiForm();">확인</button>
+	<br>
+	<button onclick="modiForm();" class="btn btn-default">확인</button>
 	<div id="footer"></div>
 </body>
 </html>

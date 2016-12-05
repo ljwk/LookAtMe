@@ -57,7 +57,7 @@
 	<c:if test="${not empty param.error}">
 		<span id="errMsg">오류: ${SPRING_SECURITY_LAST_EXCEPTION.message}</span>
 	</c:if>
-	<h3 style="margin-bottom: 20px">Look Out에 오신 것을 환영합니다.</h3>
+	<h4 style="margin-bottom: 20px">Look Out에 오신 것을 환영합니다.</h4>
 	<form action="<c:url value='/user/login'/>" method="post">
 	
 	<div id="content" class="panel panel-default">

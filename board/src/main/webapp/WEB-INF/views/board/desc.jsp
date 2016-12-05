@@ -81,7 +81,6 @@
 	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
 	
 	<div id="content" class="panel panel-default">
-
 	<table>	
 		<tr>
 		<th>제목</th><td colspan="5">${desc.title}</td>

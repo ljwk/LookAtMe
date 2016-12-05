@@ -10,6 +10,7 @@ import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Date;
@@ -209,51 +210,6 @@ public class BoardController {
 	public String mail(@RequestParam("email") String email, Model model) {
 		model.addAttribute("email", email);
 		return "board/mail";
-	}	
-	
-	@RequestMapping(value = "/test")
-	public void image() {
-		DataInputStream input = null;
-		Socket socket = null;
-		ServerSocket serverSocket = null;
-		
-		try {
-			serverSocket = new ServerSocket(8088);
-			do {
-			socket = serverSocket.accept();
-			}while (socket == null);
-			
-			System.out.println(socket);
-			
-			URL url = new URL("http://192.168.2.26:8083/");
-			URLConnection getconn = url.openConnection();
-			input = new DataInputStream(getconn.getInputStream());
-			
-			
-			imageThread(socket, input);
-			
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	private void imageThread(Socket socket, DataInputStream input) {
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					DataOutputStream output = null;
-					output = new DataOutputStream(socket.getOutputStream());
-					
-					output.write(input.readByte());
-					output.flush();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}).start();
 	}
 	
 }

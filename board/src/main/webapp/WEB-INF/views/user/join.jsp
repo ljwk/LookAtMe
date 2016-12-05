@@ -135,7 +135,7 @@
 	<div id="navdiv"></div>
 	<h3 style="margin-right: 480px; font:bold 32px none;">회원가입</h3>
 	<hr style="width: 600px; border:1px solid lightgray; margin-bottom:50px;">
-	<h3 style="margin-bottom: 20px">회원가입 해주세요</h3>
+	<h4 style="margin-bottom: 20px">회원가입 해주세요</h4>
 	<div id="content" class="panel panel-default">
 		<div class="panel-heading">회원가입</div>
 		<table class="table" id="tablee">
