@@ -34,4 +34,8 @@
 		SELECT id FROM member WHERE email = #{email} and enabled=1
 	</select>		
 	
+	<update id="change"  parameterType="org.dev.lam.User.UserVO">
+		UPDATE member SET pwd = #{pwd} WHERE id = #{id}
+	</update>
+	
 </mapper>

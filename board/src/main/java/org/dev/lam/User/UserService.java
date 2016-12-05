@@ -128,6 +128,32 @@ public class UserService {
 		List<UserVO> idList = dao.searchId(email);
 		return idList;
 	}
+	
+    public boolean searchPwd(EmailVO email) throws Exception {
+        try{
+           MimeMessage msg = mailSender.createMimeMessage();
+           
+           InternetAddress addr = new InternetAddress("tjsgud1993@naver.com");
+           msg.setFrom(addr);
+           msg.setSubject(email.getSubject());
+           msg.setContent(email.getContent(), "text/html;charset=utf-8");
+           msg.setRecipient(RecipientType.TO , new InternetAddress(email.getReceiver()));
+            
+           mailSender.send(msg);
+           return true;
+        }catch(Exception ex) {
+           ex.printStackTrace();
+        }
+        return false;
+    }
+
+	public boolean change(UserVO user) {
+		UserDAO dao = sqlSessionTemplate.getMapper(UserDAO.class);		
+		String encodedPwd = passwordEncoder.encode(user.getPwd());
+		user.setPwd(encodedPwd);
+		int n = dao.change(user);		
+		return n > 0 ? true : false;
+	}
 
 	
 }

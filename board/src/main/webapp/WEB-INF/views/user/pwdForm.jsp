@@ -16,6 +16,9 @@
 	$(function(){
 	    $("#navdiv").load("../resources/nav.jsp");
 	    $("#footer").load("../resources/footer.jsp");
+		if(('${id}')!=""){
+			alert('EMAIL 인증이 완료되었습니다');
+		}
 	});
 	
 	function logout(){
@@ -24,24 +27,31 @@
 		}
 	}
 	
-	function search(){
-		var jsonObj = {};
-		
-		jsonObj.email =  $('[name=email]').val();		
-		jsonObj.id =  $('[name=id]').val();	
+	function change(){
+		if(confirm("비밀번호를 변경하시겠습니까?")){			
+			var jsonObj = {};
 
-		$.ajax({
-			url : 'searchPwd',
-			data : jsonObj,
-			type : 'post',
-			dataType : 'json',
-			success : function(res) {
-				alert('메일에서 비밀번호를 변경해주세요.');
-			},
-			error : function(xhr, status, error) {
-				alert(error);
-			}
-		}); 				
+			jsonObj.id = '${id}';			
+			jsonObj.pwd = $('[name=pwd]').val();		
+
+			$.ajax({
+				url : 'change',
+				data : jsonObj,
+				type : 'post',
+				dataType : 'json',
+				success : function(res) {
+					if(res.success){
+						alert('비밀번호변경 완료');
+						location.href="login";
+					}else{
+						alert('실패');
+					}
+				},
+				error : function(xhr, status, error) {
+					alert(error);
+				}
+			}); 
+		}
 	}
 </script>
 <style type="text/css">
@@ -54,11 +64,10 @@
 </head>
 <body>
 	<div id="navdiv"></div>
-	<h3>비밀번호 찾기</h3>
-	아이디와 회원가입시 입력하신 email을 입력해주세요!<br>		
-	id <input type="text" name="id">	
-	email <input type="text" name="email">	
-	<button onclick="search();">찾기</button>
+	${id}님의 비밀번호 변경 페이지입니다.<br>
+	변경하실 비밀번호를 입력해주세요.<br>
+	PWD <input type="password" name="pwd"><br>
+	<button onclick="change();">변경</button>
 	<div id="footer"></div>
 </body>
 </html>

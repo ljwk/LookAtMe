@@ -11,4 +11,5 @@ public interface UserDAO {
 	public int modiPwd(UserVO user);
 	public int modiEmail(UserVO user);
 	public List<UserVO> searchId(String email);
+	public int change(UserVO user);
 }

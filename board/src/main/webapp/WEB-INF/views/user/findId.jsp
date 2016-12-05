@@ -28,9 +28,7 @@
 		var jsonObj = {};
 		
 		jsonObj.email =  $('[name=email]').val();
-		 
-		
-
+		 		
 		$.ajax({
 			url : 'searchId',
 			data : jsonObj,
