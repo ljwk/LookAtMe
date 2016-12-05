@@ -155,6 +155,12 @@ public class UserService {
 		return n > 0 ? true : false;
 	}
 
+	public boolean searchEmail(UserVO user) {
+		UserDAO dao = sqlSessionTemplate.getMapper(UserDAO.class);		
+		int n = dao.searchEmail(user);		
+		return n > 0 ? true : false;
+	}
+
 	
 }
 

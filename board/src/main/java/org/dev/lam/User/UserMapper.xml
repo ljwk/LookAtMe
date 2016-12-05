@@ -38,4 +38,8 @@
 		UPDATE member SET pwd = #{pwd} WHERE id = #{id}
 	</update>
 	
+	<select id="searchEmail" resultType="Integer">
+		SELECT * FROM member WHERE id= #{id} AND email = #{email}
+	</select>	
+	
 </mapper>

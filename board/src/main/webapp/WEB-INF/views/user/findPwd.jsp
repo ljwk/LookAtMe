@@ -29,8 +29,22 @@
 		
 		jsonObj.email =  $('[name=email]').val();		
 		jsonObj.id =  $('[name=id]').val();	
-
+		
+		
 		$.ajax({
+			url : 'searchEmail',
+			data : jsonObj,
+			type : 'post',
+			dataType : 'json',
+			success : function(res) {
+				alert(res.success);
+			},
+			error : function(xhr, status, error) {
+				alert(error);
+			}
+		}); 		
+
+/* 		$.ajax({
 			url : 'searchPwd',
 			data : jsonObj,
 			type : 'post',
@@ -41,7 +55,7 @@
 			error : function(xhr, status, error) {
 				alert(error);
 			}
-		}); 				
+		}); 	 */			
 	}
 </script>
 <style type="text/css">

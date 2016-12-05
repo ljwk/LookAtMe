@@ -216,4 +216,13 @@ public class UserController {
 		return map;
 	}
 
+	@RequestMapping(value = "/searchEmail", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Boolean> searchEmail(UserVO user) {
+		Map<String, Boolean> map = new HashMap<>();
+		boolean ok = svc.searchEmail(user);
+		map.put("success", ok);
+		return map;
+	}
+	
 }
