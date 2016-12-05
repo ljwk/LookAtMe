@@ -108,12 +108,12 @@
 	<h3>회원정보 확인</h3>
 	<table>
 		<tr><th>ID</th><td>${info.id}</td></tr>
-		<tr><th>비밀번호</th><td><input type="password" name="pwd"><button onclick="pwdModi();">수정</button></td></tr>
-		<tr><th>이메일</th><td><input type="text" value="${info.email}" name="email"><button onclick="emailModi();">수정</button></td></tr>			
+		<tr><th>비밀번호</th><td><input type="password" name="pwd"><button onclick="pwdModi(); " class="btn btn-default" >수정</button></td></tr>
+		<tr><th>이메일</th><td><input type="text" value="${info.email}" name="email"><button onclick="emailModi();" class="btn btn-default" >수정</button></td></tr>			
 	</table>
 	<br><br>
-	<button onclick="drop();">회원탈퇴</button><br><br>
-	<a href="info?id=${info.id}"><button>나가기</button></a>
+	<button onclick="drop();" class="btn btn-default" >회원탈퇴</button><br><br>
+	<a href="info?id=${info.id}"><button class="btn btn-default" >나가기</button></a>
 	<div id="footer"></div>
 </body>
 </html>

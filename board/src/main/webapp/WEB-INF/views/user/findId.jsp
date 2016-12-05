@@ -49,7 +49,14 @@
 	}
 </script>
 <style type="text/css">
-	#navdiv {height:130px;}
+	body {text-align: center;}
+	#navdiv {height:100px;}
+	.panel-heading{background: rgb(252, 252, 252);}
+	table {border-spacing: 0px;	margin: 0px auto;}
+	th, td {padding: 5px;}
+	th {width: 100px;border-bottom:1px solid lightgray;background: rgb(252, 252, 252); text-align: center;}
+	td {border-bottom:1px solid lightgray;text-align: left;}
+	#content {width: 450px; margin: 0px auto;}
 	a:hover {color: red;}
 	a:active {color: gold}
 	a {color: gray; text-decoration: none;}
@@ -58,10 +65,15 @@
 </head>
 <body>
 	<div id="navdiv"></div>
-	<h3>아이디 찾기</h3>
-	회원가입시 입력하신 email을 입력해주세요!<br>
-	<input type="text" name="email">
-	<button onclick="search();">찾기</button>
+	<h3 style="margin-right: 480px; font:bold 32px none;">아이디 찾기</h3>
+	<hr style="width: 600px; border:1px solid lightgray; margin-bottom:50px;">
+	<div id="content" class="panel panel-default">	
+		<div class="panel-heading">회원가입시 입력하신 email을 입력해주세요!</div>		 	
+		<table class="table" id="tablee">
+			<tr><th>Email</th><td><input type="text" name="email"></td><td><button onclick="search();" class="btn btn-default" >찾기</button></td></tr>
+		</table>				
+	</div>	
+	<br>
 	<div id="id"></div>
 	<div id="footer"></div>
 </body>
