@@ -39,7 +39,7 @@
 	</update>
 	
 	<select id="searchEmail" resultType="Integer">
-		SELECT * FROM member WHERE id= #{id} AND email = #{email}
+		SELECT count(*) FROM member WHERE id= #{id} AND email = #{email}
 	</select>	
 	
 </mapper>

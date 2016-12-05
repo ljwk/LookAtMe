@@ -13,6 +13,8 @@
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script src="<c:url value="/resources/jquery.bootpag.min.js"/>"></script>
 <script type="text/javascript">
+	var chk = false;
+	
 	$(function(){
 	    $("#navdiv").load("../resources/nav.jsp");
 	    $("#footer").load("../resources/footer.jsp");
@@ -37,14 +39,25 @@
 			type : 'post',
 			dataType : 'json',
 			success : function(res) {
-				alert(res.success);
+				if(res.success){
+					mail();
+				}else {
+					alert('아이디와 Email을 확인해주세요.');
+				}				
 			},
 			error : function(xhr, status, error) {
 				alert(error);
 			}
 		}); 		
-
-/* 		$.ajax({
+	}
+	
+	function mail() {
+		var jsonObj = {};
+		
+		jsonObj.email =  $('[name=email]').val();		
+		jsonObj.id =  $('[name=id]').val();	
+		
+		$.ajax({
 			url : 'searchPwd',
 			data : jsonObj,
 			type : 'post',
@@ -55,7 +68,7 @@
 			error : function(xhr, status, error) {
 				alert(error);
 			}
-		}); 	 */			
+		});
 	}
 </script>
 <style type="text/css">
