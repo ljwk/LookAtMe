@@ -87,7 +87,6 @@
 </style>
 </head> 
 <body>
-	<h3>게 시 판 !</h3>
 	<div id="navdiv"></div>
 	<h3 style="margin-right: 700px; font:bold 32px none;">게시판</h3>
 	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
