@@ -66,7 +66,7 @@
 	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
 	
 	<form id="modiboard" action="boardDesc.jsp">
-	<div id="content" class="panel panel-default">
+		<div id="content" class="panel panel-default">
 		<input type="hidden" name="num"  value="${num}">
 		<table>
 			<tr id="bb">

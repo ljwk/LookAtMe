@@ -57,24 +57,24 @@
 	a:hover {color: red;}
 	a:active {color: gold}
 	a {color: gray; text-decoration: none;}
-	.no {position: relative; display: block; padding: 12px 15px;}}
+	.no {position: relative; display: block; padding: 12px 15px;}
 </style>
 </head>
 <body>
-<div id="navdiv"></div>
-	<h3 style="margin-right: 700px; font:bold 32px none;">글쓰기</h3>
+	<div id="navdiv"></div>
+	<h3 style="margin-right: 730px; font:bold 32px none;">수정</h3>
 	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
 
-	<form id="modiboard" action="boardDesc.jsp">
+	<form id="modiboard" action="boardDesc.jsp">	
+		<div id="content" class="panel panel-default">
 		<input type="hidden" name="num"  value="${num}">
-	<div id="content" class="panel panel-default">
 		<table>
-			<tr>
+			<tr id="bb">
 				<th>제목</th><td><input type="text" id="title" name="title" maxlength="40" size="90%"></td>
 			</tr>
-			<tr>
-				<th>내용</th><td><textarea id="contents" name="contents" cols="92%" maxlength="400"></textarea></td>
-			</tr>			
+			<tr id="aa">
+				<th>내용</th><td><textarea id="contents" name="contents" rows="15" cols="92%" maxlength="400"></textarea></td>
+			</tr>				
 		</table>
 	</div>
 	</form>

@@ -25,35 +25,39 @@
 </script>
 <style type="text/css">
 	body {text-align: center;}
-	table {border: 1px solid black; border-spacing: 0px; margin: 0px auto ; width: 500px;}
+	#navdiv {height:100px;}
+	table {border-spacing: 0px;	margin: 0px auto; width: 800px;}
 	th, td {padding: 5px;}
-	th {border: 1px solid black; text-align: center; background: rgb(176, 187, 190);}
-	td {border: 1px solid black;}
-	#navdiv{height:130px;}
+	th {width: 100px;border-bottom:1px solid lightgray;background: rgb(252, 252, 252); text-align: center;}
+	td {border-bottom:1px solid lightgray;text-align: left;}
+	#content {width: 800px; margin: 0px auto;}
+	textarea{resize: none;}
 	a:hover {color: red;}
 	a:active {color: gold}
-	a {color: black; text-decoration: none;}
+	a {color: gray; text-decoration: none;}
+	.no {position: relative; display: block; padding: 12px 15px;}
 </style>
 </head>
 <body>
-<div id="navdiv">
-</div>
-	<form action="/board/user/send" method="post">
-		<fieldset>
-		<legend>글쓴이에게 메일보내기</legend>
+	<div id="navdiv"></div>
+	<h3 style="margin-right: 730px; font:bold 32px none;">글쓴이에게 메일보내기</h3>
+	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
+	
+	<form action="/board/user/send" method="post">		
+		<div id="content" class="panel panel-default">
 		<input type="hidden" name="receiver1" value="${email}">
 		<table>
 			<tr>
-				<th>보내는사람</th><td><input type="text" id="send" name="send"></td>
+				<th>보내는사람</th><td><input type="text" id="send" name="send" maxlength="40" size="90%"></td>
 			</tr>	
-			<tr id="bb">
-				<th>제목</th><td><input type="text" id="title" name="title"></td>
+			<tr>
+				<th>제목</th><td><input type="text" id="title" name="title" maxlength="40" size="90%"></td>
 			</tr>
-			<tr id="aa">
-				<th>내용</th><td><textarea id="contents" name="contents"></textarea></td>
+			<tr>
+				<th>내용</th><td><textarea id="contents" name="contents" rows="15" cols="92%" maxlength="400"></textarea></td>
 			</tr>		
 		</table>
-		</fieldset>
+		</div>
 		<br><br>
 		<button type="submit" class="btn btn-default">보내기</button>
 	</form>
