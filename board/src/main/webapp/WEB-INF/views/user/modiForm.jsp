@@ -96,7 +96,14 @@
 	}
 </script>
 <style type="text/css">
-	#navdiv {height:130px;}
+	body {text-align: center;}
+	#navdiv {height:100px;}
+	.panel-heading{background: rgb(252, 252, 252);}
+	table {border-spacing: 0px;	margin: 0px auto;}
+	th, td {padding: 5px;}
+	th {width: 100px;border-bottom:1px solid lightgray;background: rgb(252, 252, 252); text-align: center;}
+	td {border-bottom:1px solid lightgray;text-align: left;}
+	#content {width: 450px; margin: 0px auto;}
 	a:hover {color: red;}
 	a:active {color: gold}
 	a {color: gray; text-decoration: none;}
@@ -105,12 +112,16 @@
 </head>
 <body>
 	<div id="navdiv"></div>
-	<h3>회원정보 확인</h3>
-	<table>
-		<tr><th>ID</th><td>${info.id}</td></tr>
-		<tr><th>비밀번호</th><td><input type="password" name="pwd"><button onclick="pwdModi(); " class="btn btn-default" >수정</button></td></tr>
-		<tr><th>이메일</th><td><input type="text" value="${info.email}" name="email"><button onclick="emailModi();" class="btn btn-default" >수정</button></td></tr>			
-	</table>
+	<h3 style="margin-right: 480px; font:bold 32px none;">회원정보 확인</h3>
+	<hr style="width: 600px; border:1px solid lightgray; margin-bottom:50px;">
+	<div id="content" class="panel panel-default">	
+		<div class="panel-heading">회원가입시 입력하신 email을 입력해주세요!</div>		 	
+		<table class="table">
+			<tr><th>ID</th><td>${info.id}</td></tr>
+			<tr><th>비밀번호</th><td><input type="password" name="pwd">&nbsp; <button onclick="pwdModi(); " class="btn btn-default" >수정</button></td></tr>
+			<tr><th>이메일</th><td><input type="text" value="${info.email}" name="email">&nbsp; <button onclick="emailModi();" class="btn btn-default" >수정</button></td></tr>			
+		</table>
+	</div>	
 	<br><br>
 	<button onclick="drop();" class="btn btn-default" >회원탈퇴</button><br><br>
 	<a href="info?id=${info.id}"><button class="btn btn-default" >나가기</button></a>
