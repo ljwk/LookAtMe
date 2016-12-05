@@ -80,7 +80,7 @@
 		</table>	
 	</div>	
 	<br>
-	<button onclick="change();" class="btn btn-default" >변경</button>	
+	<button onclick="change();" class="btn btn-default" >변경</button>	 
 	<div id="footer"></div>
 </body>
 </html>
