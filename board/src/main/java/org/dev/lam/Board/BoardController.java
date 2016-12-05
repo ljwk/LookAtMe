@@ -14,10 +14,9 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -167,7 +166,15 @@ public class BoardController {
 			@RequestParam(value = "rpp", defaultValue = "10") int rpp, @RequestParam("search") String search,
 			@RequestParam("searchContents") String searchContents, Model model) {
 		if (search.equals("번호")) {
-			model.addAttribute("list", svc.getNumSearchList(page, rpp, searchContents));
+			List<BoardVO> list = svc.getNumSearchList(page, rpp, searchContents);
+			   if (list.size() == 0) {
+			         System.out.println("사이즈 0 ");
+			           model.addAttribute("pageNum", page);
+			           model.addAttribute("total", 0);
+			           model.addAttribute("list", null);
+			           return "board/search";
+			   }
+			model.addAttribute("list", list);
 		} else if (search.equals("제목")) {
 			model.addAttribute("list", svc.getTitleSearchList(page, rpp, searchContents));
 		} else if (search.equals("작성자")) {
