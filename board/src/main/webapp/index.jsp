@@ -116,6 +116,8 @@ a {color: gray; text-decoration: none;}
 		 <img src="resources/js/images/dogsafe.png" class="img-thumbnail">
 		 <img src="resources/js/images/firesafe.png" class="img-thumbnail">
 	</div>
+	<div id="footarea">
 	<div id="footer"></div>
+	</div>
 </body>
 </html> 

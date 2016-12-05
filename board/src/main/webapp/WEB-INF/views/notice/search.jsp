@@ -83,6 +83,8 @@
 	<div id="page-selection"><!-- Pagination goes here --></div>		
 	<p>
 	<a href="main"><button type="button" class="btn btn-default">목 록 으 로</button></a>
+	<div id="footarea">
 	<div id="footer"></div>
+	</div>
 </body>
 </html>

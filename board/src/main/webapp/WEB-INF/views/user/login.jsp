@@ -43,11 +43,13 @@
 	th, td {padding: 5px;}
 	th {text-align: center;}
 	td {text-align: left;}
+	input{width: 100%;}
 	#content {width: 450px; margin: 0px auto;}
 	a:hover {color: red;}
 	a:active {color: gold}
 	a {color: gray; text-decoration: none;}
 	.no {position: relative; display: block; padding: 12px 15px;}
+
 </style>
 </head>
 <body>
@@ -63,19 +65,18 @@
 	<div id="content" class="panel panel-default">
 	 <div class="panel-heading">로그인</div>
 		<table class="table" id="tablee">
-			<tr>
-				<tr><th>ID</th><td><input type="text" name="id" value="SH">
-				<tr><th>PASSWORD</th><td><input type="password" name="pwd" value="1111"></td>
-			</tr>			
+			<tr><th>ID</th><td><input type="text" name="id" value="SH"></td><td rowspan="2"><button class="btn btn-default" type="submit" style="padding: 25px;">로그인</button></td></tr>
+			<tr><th>PASSWORD</th><td><input type="password" name="pwd" value="1111"></td></tr>
+					
 		</table>
 	  </div>
-	 
-	<br>
-		<button class="btn btn-default" type="submit">로그인</button>
-	 </form>
-	 <br>
-	 <button class="btn btn-default" onclick="findId();">ID 찾기</button>&nbsp;&nbsp;
-	 <button class="btn btn-default" onclick="findPwd();">PASSWORD 찾기</button>
+		 </form>
+		 <br>
+		<button class="btn btn-default" onclick="findId();">ID 찾기</button>
+	 	<button class="btn btn-default" onclick="findPwd();">PASSWORD 찾기</button>
+
+	<div id="footarea">
 	<div id="footer"></div>
+	</div>
 </body>
 </html>

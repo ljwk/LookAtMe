@@ -112,7 +112,7 @@
 </head>
 <body>
 	<div id="navdiv"></div>
-	<h3 style="margin-right: 480px; font:bold 32px none;">회원정보 확인</h3>
+	<h3 style="margin-right: 410px; font:bold 32px none;">회원정보 확인</h3>
 	<hr style="width: 600px; border:1px solid lightgray; margin-bottom:50px;">
 	<div id="content" class="panel panel-default">	
 		<div class="panel-heading">회원가입시 입력하신 email을 입력해주세요!</div>		 	
@@ -122,9 +122,12 @@
 			<tr><th>이메일</th><td><input type="text" value="${info.email}" name="email">&nbsp; <button onclick="emailModi();" class="btn btn-default" >수정</button></td></tr>			
 		</table>
 	</div>	
-	<br><br>
-	<button onclick="drop();" class="btn btn-default" >회원탈퇴</button><br><br>
+	<br>
+	<button onclick="drop();" class="btn btn-default" >회원탈퇴</button>
 	<a href="info?id=${info.id}"><button class="btn btn-default" >나가기</button></a>
+	
+	<div id="footarea">
 	<div id="footer"></div>
+	</div>
 </body>
 </html>

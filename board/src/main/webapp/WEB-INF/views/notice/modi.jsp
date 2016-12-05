@@ -81,6 +81,8 @@
 	<br>
 	<button type="button" class="btn btn-default" onclick="modiboard();">수 정</button>
 	<a href="desc?num=${num}"><button type="button" class="btn btn-default">취 소</button></a>	
+	<div id="footarea">
 	<div id="footer"></div>
+	</div>
 </body>
 </html>

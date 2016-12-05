@@ -67,6 +67,8 @@
 	</form>	
 	<br>
 	<button onclick="modiForm();" class="btn btn-default">정보수정</button>
+	<div id="footarea">
 	<div id="footer"></div>
+	</div>
 </body>
 </html>

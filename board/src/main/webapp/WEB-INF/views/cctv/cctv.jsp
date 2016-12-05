@@ -40,6 +40,8 @@
 	<img style="-webkit-user-select: none" src="http://192.168.2.26:8083/">	
 	<button>←</button>
 	<button>→</button>
+	<div id="footarea">
 	<div id="footer"></div>
+	</div>
 </body>
 </html>

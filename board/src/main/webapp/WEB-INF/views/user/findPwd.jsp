@@ -79,6 +79,8 @@
 	</div>		
 	<br>
 	<button onclick="search();" class="btn btn-default" >찾기</button>
+	<div id="footarea">
 	<div id="footer"></div>
+	</div>
 </body>
 </html>

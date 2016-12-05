@@ -75,6 +75,8 @@
 	</div>	
 	<br>
 	<div id="id"></div>
+	<div id="footarea">
 	<div id="footer"></div>
+	</div>
 </body>
 </html>

@@ -2,6 +2,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec"  uri="http://www.springframework.org/security/tags"%>
  <style>
+/*  #footarea{
+position:relative;
+width: 100%;
+height: 100px;
+background-color: red;
+} */
+ #footer{
+position: absolute;
+bottom: 0;
+width: 100%;
+height: 100px;
+ }
 #footer > ul {text-align: center;}
 #footer > ul > li {
 display:inline;

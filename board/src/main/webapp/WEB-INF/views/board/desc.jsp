@@ -115,6 +115,8 @@
 		<a href="modi?num=${desc.num}" ><button type="button" class="btn btn-default">수정</button></a>
 		<button type="button" class="btn btn-default" onclick="deleteBoard();">삭제</button>
 	</sec:authorize>			
+	<div id="footarea">
 	<div id="footer"></div>
+	</div>
 </body>
 </html>

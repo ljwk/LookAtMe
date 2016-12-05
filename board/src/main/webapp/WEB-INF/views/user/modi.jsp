@@ -65,7 +65,7 @@
 	<h3 style="margin-right: 410px; font:bold 32px none;">회원정보 확인</h3>
 	<hr style="width: 600px; border:1px solid lightgray; margin-bottom:50px;">
 	
-	<h4 style="margin-bottom: 20px"><sec:authentication property="name"/>님의 정보를 안전하게 보호하기 위해 <br>비밀번호를 다시 한번 확인 합니다.</h4>
+	<h4 style="margin-bottom: 20px"><sec:authentication property="name"/>님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.</h4>
 	<form id="modiForm">
 		<input type="hidden" name="id" value="<sec:authentication property="name"/>">
 		<div id="content" class="panel panel-default">
@@ -78,6 +78,8 @@
 	</form>
 	<br>
 	<button onclick="modiForm();" class="btn btn-default">확인</button>
+	<div id="footarea">
 	<div id="footer"></div>
+	</div>
 </body>
 </html>

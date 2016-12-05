@@ -104,6 +104,8 @@
 		<a href="main"><button type="button" class="btn btn-default">취 소</button></a>
 		</fieldset>
 	</form>
+	<div id="footarea">
 	<div id="footer"></div>
+	</div>
 </body>
 </html>

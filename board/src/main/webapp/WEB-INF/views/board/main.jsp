@@ -105,6 +105,8 @@
 		</sec:authorize>
 	</form>
 	<div id="page-selection"><!-- Pagination goes here --></div>		
+	<div id="footarea">
 	<div id="footer"></div>
+	</div>
 </body>
 </html>

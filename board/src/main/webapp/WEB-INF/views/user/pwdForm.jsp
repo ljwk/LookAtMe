@@ -81,6 +81,8 @@
 	</div>	
 	<br>
 	<button onclick="change();" class="btn btn-default" >변경</button>	 
+	<div id="footarea">
 	<div id="footer"></div>
+	</div>
 </body>
 </html>

@@ -61,6 +61,8 @@
 		<br><br>
 		<button type="submit" class="btn btn-default">보내기</button>
 	</form>
+	<div id="footarea">
 	<div id="footer"></div>
+	</div>
 </body>
 </html>
