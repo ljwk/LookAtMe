@@ -13,7 +13,7 @@
 </script>
 </head>
 <body>
-	<img style="-webkit-user-select: none" src="http://192.168.2.27:8088/">
+	<img style="-webkit-user-select: none" src="http://localhost:8088/">
 	<div id="view"></div>
 </body>
 </html>
