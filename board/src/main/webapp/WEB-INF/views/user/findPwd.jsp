@@ -40,7 +40,7 @@
 			dataType : 'json',
 			success : function(res) {
 				if(res.success){
-					mail();
+					alert('메일에서 비밀번호를 변경해주세요.');
 				}else {
 					alert('아이디와 Email을 확인해주세요.');
 				}				
@@ -49,26 +49,6 @@
 				alert(error);
 			}
 		}); 		
-	}
-	
-	function mail() {
-		var jsonObj = {};
-		
-		jsonObj.email =  $('[name=email]').val();		
-		jsonObj.id =  $('[name=id]').val();	
-		
-		$.ajax({
-			url : 'searchPwd',
-			data : jsonObj,
-			type : 'post',
-			dataType : 'json',
-			success : function(res) {
-				alert('메일에서 비밀번호를 변경해주세요.');
-			},
-			error : function(xhr, status, error) {
-				alert(error);
-			}
-		});
 	}
 </script>
 <style type="text/css">

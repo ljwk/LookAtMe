@@ -171,33 +171,6 @@ public class UserController {
 		return map;
 	}
 
-	@RequestMapping(value = "/searchPwd", method = RequestMethod.POST)
-	@ResponseBody
-	public Map<String, Boolean> searchPwd(@RequestParam("email") String email1, @RequestParam(value = "id") String id, HttpSession session) {
-		ServletContext application = session.getServletContext();
-
-		EmailVO email = new EmailVO();
-		String receiver = email1;
-		String subject = "비밀번호 변경 메일";
-
-		String sId = session.getId();
-		application.setAttribute(sId, id);
-		String content = "<a href='http://192.168.2.20:8081/board/user/pwdForm?auth=" + sId + "'>비밀번호변경 계속하기</a>";
-		email.setReceiver(receiver);
-		email.setSubject(subject);
-		email.setContent(content);
-		boolean ok = false;
-		try {
-			ok = svc.searchPwd(email);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		Map<String, Boolean> map = new HashMap<>();
-		map.put("success", ok);
-		return map;
-	}
-
 	@RequestMapping(value = "/pwdForm", method = RequestMethod.GET)
 	public String pwdForm(@RequestParam(value = "auth", defaultValue = "") String auth, Model model,
 			HttpSession session) {
@@ -218,10 +191,32 @@ public class UserController {
 
 	@RequestMapping(value = "/searchEmail", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Boolean> searchEmail(UserVO user) {
+	public Map<String, Boolean> searchEmail(UserVO user, HttpSession session) {
 		Map<String, Boolean> map = new HashMap<>();
 		boolean ok = svc.searchEmail(user);
-		map.put("success", ok);
+		if(ok){
+			ServletContext application = session.getServletContext();
+			EmailVO email = new EmailVO();
+			String receiver = user.getEmail();
+			String subject = "비밀번호 변경 메일";
+
+			String sId = session.getId();
+			application.setAttribute(sId, user.getId());
+			String content = "<a href='http://192.168.2.20:8081/board/user/pwdForm?auth=" + sId + "'>비밀번호변경 계속하기</a>";
+			email.setReceiver(receiver);
+			email.setSubject(subject);
+			email.setContent(content);
+			boolean aa = false;
+			try {
+				aa = svc.searchPwd(email);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			map.put("success", aa);
+		}else{
+			map.put("success", ok);
+		}
+		
 		return map;
 	}
 	
