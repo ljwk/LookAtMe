@@ -9,7 +9,7 @@
 <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="http://malsup.github.com/jquery.form.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script src="//raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script>
+<!-- <script src="//raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script> -->
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script src="<c:url value="/resources/jquery.bootpag.min.js"/>"></script>
 <script type="text/javascript">
@@ -38,7 +38,7 @@
 	<h3>CCTV</h3>
 	<br><br>
 	<!-- <img style="-webkit-user-select: none" src="http://192.168.2.27:8081/board/free/test/"> -->
-	<img style="-webkit-user-select: none" src="http://192.168.2.26:8083/">	<br><br>
+	<img style="-webkit-user-select: none" src="http://192.168.2.26:8083?id=${sessionid}">	<br><br>
 	<button>←</button>
 	<button>→</button>
 	<div id="footarea">

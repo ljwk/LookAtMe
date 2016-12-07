@@ -1,15 +1,26 @@
 package org.dev.lam.User;
 
-import java.util.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.dev.lam.Security.CustomAuthenticationProvider;
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.stereotype.*;
-import org.springframework.ui.*;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Controller
 @RequestMapping("/user")
@@ -233,16 +244,13 @@ public class UserController {
 	
 	@RequestMapping(value = "/session", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Boolean> session() {
+	public Map<String, Boolean> session(Authentication authentication) {
 		Map<String, Boolean> map = new HashMap<>();
 		map.put("success", true);
-		
+		WebAuthenticationDetails wab = (WebAuthenticationDetails) authentication.getDetails();
 		Map<String, String> online = CustomAuthenticationProvider.getOnline();
-		online.remove(Sid);
+		online.remove(wab.getSessionId());
 		return map;
 	}
 
-	public static void setSid(String sid) {
-		Sid=sid;
-	}
 }

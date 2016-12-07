@@ -44,7 +44,6 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 			} else {
 				WebAuthenticationDetails wad = (WebAuthenticationDetails) authentication.getDetails();
 				online.put(wad.getSessionId(), username);
-				UserController.setSid(wad.getSessionId());
 /*				System.out.println(wad.getSessionId());
 				System.out.println(username);*/
 				System.out.println(online.size());
