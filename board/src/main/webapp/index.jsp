@@ -88,7 +88,7 @@ a {color: gray; text-decoration: none;}
 			<ul class="nav navbar-nav">
 				<sec:authorize access="isAuthenticated()">
 					<li><a href="<c:url value='/cctv/list' />">CCTV</a></li>
-				</sec:authorize>		  					
+				</sec:authorize>		  					 
   				<li><a href="/board/notice/main">Notice</a></li>
 				<li><a href="/board/free/main">Board</a></li>
 				<sec:authorize access="! isAuthenticated()">	      	
