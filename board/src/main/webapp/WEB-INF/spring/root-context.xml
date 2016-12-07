@@ -41,8 +41,11 @@
         <intercept-url pattern="/notice/readd"  access="hasAuthority('USER_MANAGER')" />
         <intercept-url pattern="/free/add" access="isAuthenticated()" />
         <intercept-url pattern="/free/readd" access="isAuthenticated()" />
+        <intercept-url pattern="/user/info" access="isAuthenticated()" />
+        <intercept-url pattern="/user/modi" access="isAuthenticated()" />
+        <intercept-url pattern="/user/modiForm" access="isAuthenticated()" />
 		<form-login 
-			login-page="/login" 
+			login-page="/user/login" 
 			login-processing-url="/user/login" 
 			username-parameter="id"
 			password-parameter="pwd"
