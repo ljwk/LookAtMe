@@ -3,6 +3,8 @@ package org.dev.lam.User;
 import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+import org.dev.lam.Security.CustomAuthenticationProvider;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;
@@ -14,6 +16,8 @@ import org.springframework.web.context.request.*;
 public class UserController {
 	@Autowired
 	private UserService svc;
+	
+	private static String Sid;
 
 	@RequestMapping(value = "/joinForm", method = RequestMethod.GET)
 	public String join(@RequestParam(value = "auth", defaultValue = "") String auth, Model model, HttpSession session) {
@@ -227,4 +231,18 @@ public class UserController {
 		return map;
 	}
 	
+	@RequestMapping(value = "/session", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Boolean> session() {
+		Map<String, Boolean> map = new HashMap<>();
+		map.put("success", true);
+		
+		Map<String, String> online = CustomAuthenticationProvider.getOnline();
+		online.remove(Sid);
+		return map;
+	}
+
+	public static void setSid(String sid) {
+		Sid=sid;
+	}
 }

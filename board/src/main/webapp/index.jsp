@@ -1,3 +1,5 @@
+<%@page import="org.springframework.security.core.Authentication"%>
+<%@page import="org.springframework.security.web.authentication.WebAuthenticationDetails"%>
 <%@ page contentType="text/html;charset=utf-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec"  uri="http://www.springframework.org/security/tags"%>
@@ -23,6 +25,20 @@
 <script type="text/javascript">
 function logout(){
 	if(confirm("로그아웃 하시겠습니까?")){			
+		var dateObj = {};
+		
+		$.ajax({  
+			url : 'user/session' , 
+			data : dateObj,
+			type : 'post', 
+			dataType : 'json', 
+			success : function(res) {
+				
+			}, 
+			error(xhr, status, error){
+				alert(error);
+			} 
+		});  
 		location.href="<c:url value='/logout' />";
 	}
 }
