@@ -33,7 +33,7 @@ function logout(){
 			type : 'post', 
 			dataType : 'json', 
 			success : function(res) {
-				
+				 
 			}, 
 			error(xhr, status, error){
 				alert(error);

@@ -124,7 +124,7 @@ public class UserController {
 	@RequestMapping(value = "/modi", method = RequestMethod.GET)
 	public String modi() {
 		return "user/modi";
-	}
+	}	
 
 	@RequestMapping(value = "/modiLogin", method = RequestMethod.POST)
 	@ResponseBody
@@ -168,6 +168,12 @@ public class UserController {
 	public String findPWD() {
 		return "user/findPwd";
 	}
+	
+	@RequestMapping(value = "/warning", method = RequestMethod.GET)
+	public String warning() {
+		return "user/warning";
+	}
+
 
 	@RequestMapping(value = "/searchId", method = RequestMethod.POST)
 	@ResponseBody
