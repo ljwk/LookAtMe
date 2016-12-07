@@ -37,9 +37,10 @@
 	
 	<!-- Access permission -->
 	<http auto-config='true' use-expressions="true">
-        <intercept-url pattern="/admin/usermanager/**"  access="hasAuthority('USER_MANAGER')" />
-        <intercept-url pattern="/member/**"  access="isAuthenticated()" />
-		<intercept-url pattern="/**" access="permitAll" />
+        <intercept-url pattern="/notice/add"  access="hasAuthority('USER_MANAGER')" />
+        <intercept-url pattern="/notice/readd"  access="hasAuthority('USER_MANAGER')" />
+        <intercept-url pattern="/free/add" access="isAuthenticated()" />
+        <intercept-url pattern="/free/readd" access="isAuthenticated()" />
 		<form-login 
 			login-page="/login" 
 			login-processing-url="/user/login" 
@@ -50,7 +51,8 @@
 		<logout logout-success-url="/index.jsp" />
 		<csrf disabled="true" />
 	</http>
-	
+      
+      
 	<beans:bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 	<beans:bean id="customAuthenticationProvider" class="org.dev.lam.Security.CustomAuthenticationProvider" />
 	<beans:bean id="userService" class="org.dev.lam.Security.SecurityService" />
