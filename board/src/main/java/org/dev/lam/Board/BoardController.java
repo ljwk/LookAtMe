@@ -1,18 +1,10 @@
 package org.dev.lam.Board;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.MalformedURLException;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.net.SocketTimeoutException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -123,7 +115,7 @@ public class BoardController {
 
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Boolean> delete(@RequestParam("num") int num, Model model) {
+	public Map<String, Boolean> delete(@RequestParam("num") int num) {
 		Map<String, Boolean> map = new HashMap<>();
 		boolean ok = svc.boardDelete(num);
 		map.put("success", ok);
@@ -163,9 +155,7 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public String search(@RequestParam(value = "page", defaultValue = "1") int page,
-			@RequestParam(value = "rpp", defaultValue = "10") int rpp, @RequestParam("search") String search,
-			@RequestParam("searchContents") String searchContents, Model model) {
+	public String search(@RequestParam(value = "page", defaultValue = "1") int page, @RequestParam(value = "rpp", defaultValue = "10") int rpp, @RequestParam("search") String search, @RequestParam("searchContents") String searchContents, Model model) {
 		if (search.equals("¹øÈ£")) {
 			List<BoardVO> list = svc.getNumSearchList(page, rpp, searchContents);
 			   if (list.size() == 0) {

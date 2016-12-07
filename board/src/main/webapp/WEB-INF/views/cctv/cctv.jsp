@@ -25,6 +25,7 @@
 	}
 </script>
 <style type="text/css">
+	body {text-align: center;}
 	#navdiv {height:130px;}
 	a:hover {color: red;}
 	a:active {color: gold}
@@ -37,7 +38,7 @@
 	<h3>CCTV</h3>
 	<br><br>
 	<!-- <img style="-webkit-user-select: none" src="http://192.168.2.27:8081/board/free/test/"> -->
-	<img style="-webkit-user-select: none" src="http://192.168.2.26:8083/">	
+	<img style="-webkit-user-select: none" src="http://192.168.2.26:8083/">	<br><br>
 	<button>←</button>
 	<button>→</button>
 	<div id="footarea">

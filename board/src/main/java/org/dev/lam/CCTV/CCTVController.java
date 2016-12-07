@@ -24,7 +24,7 @@ public class CCTVController {
 	private CCTVService service;
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String cctv(Model model) {
+	public String cctv() {
 		return "cctv/cctv";
 	}
 	

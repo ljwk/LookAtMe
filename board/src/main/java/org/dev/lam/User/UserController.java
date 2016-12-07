@@ -1,15 +1,13 @@
 package org.dev.lam.User;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
-import org.springframework.ui.Model;
+import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.*;
 
 @Controller
 @RequestMapping("/user")
@@ -37,7 +35,7 @@ public class UserController {
 
 	@RequestMapping(value = "/chk", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Boolean> chk(@RequestParam("id") String id, Model model) {
+	public Map<String, Boolean> chk(@RequestParam("id") String id) {
 		Map<String, Boolean> map = new HashMap<>();
 		boolean ok = svc.chkId(id);
 		map.put("success", ok);
@@ -45,13 +43,13 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login1(Model model) {
+	public String login1() {
 		return "user/login";
 	}
 
 	@RequestMapping(value = "/chkResult", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Boolean> chk(@RequestParam(value = "email") String email1, HttpSession session, Model model) {
+	public Map<String, Boolean> chk(@RequestParam(value = "email") String email1, HttpSession session) {
 		ServletContext application = session.getServletContext();
 
 		EmailVO email = new EmailVO();
@@ -98,12 +96,21 @@ public class UserController {
 	@RequestMapping(value = "/info", method = RequestMethod.GET)
 	public String info(@RequestParam("id") String id, Model model) {
 		model.addAttribute("info", svc.getInfo(id));
+        HttpServletRequest req = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
+        String ip = req.getHeader("X-FORWARDED-FOR");
+        if (ip == null)
+            ip = req.getRemoteAddr();
+        int port = req.getRemotePort();
+        
+        System.out.println(ip);
+        System.out.println(port);
 		return "user/info";
 	}
+	
 
 	@RequestMapping(value = "/drop", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Boolean> drop(@RequestParam("id") String id, Model model) {
+	public Map<String, Boolean> drop(@RequestParam("id") String id) {
 		boolean ok = svc.drop(id);
 		Map<String, Boolean> map = new HashMap<>();
 		map.put("success", ok);
@@ -149,12 +156,12 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/findID", method = RequestMethod.GET)
-	public String findID(Model model) {
+	public String findID() {
 		return "user/findId";
 	}
 
 	@RequestMapping(value = "/findPWD", method = RequestMethod.GET)
-	public String findPWD(Model model) {
+	public String findPWD() {
 		return "user/findPwd";
 	}
 
