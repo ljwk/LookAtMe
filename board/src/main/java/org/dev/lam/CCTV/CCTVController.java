@@ -11,28 +11,39 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/cctv")
 public class CCTVController {
-	
+
 	@Autowired
 	private CCTVService service;
-	
+
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String cctv() {
 		return "cctv/cctv";
 	}
 	
 	@RequestMapping(value = "/view")
-	public String view(Model model){
-		service.on();
-		System.out.println("on");
+	public String view(Model model, Authentication authentication){
+		WebAuthenticationDetails wad = (WebAuthenticationDetails) authentication.getDetails();
+		model.addAttribute("sessionid", wad.getSessionId());
 		return "cctv/view";
+	}
+	
+	@RequestMapping(value = "/authority")
+	@ResponseBody
+	public boolean authority(Model model, @RequestParam("id") String sessionid) {
+		System.out.println("permit");
+		return service.viewPermit(sessionid);
 	}
 	
 	@RequestMapping(value = "/test")
@@ -56,7 +67,7 @@ public class CCTVController {
 
 				System.out.println(socket);
 
-				URL url = new URL("http://192.168.0.25:8083/");
+				URL url = new URL("http://192.168.2.26:8083/");
 				URLConnection getconn = url.openConnection();
 				input = new DataInputStream(getconn.getInputStream());
 

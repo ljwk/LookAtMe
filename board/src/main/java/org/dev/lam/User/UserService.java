@@ -34,15 +34,15 @@ public class UserService {
 		return n > 0 ? true : false;
 	}
 
-	public boolean login(UserVO user) {
-		UserDAO dao = sqlSessionTemplate.getMapper(UserDAO.class);
-		UserVO db = dao.getUser(user.getId());
-
-		// 이용자가 로그인할 때 평문 비밀번호와 암호화된 비밀번호를 이용하여 비교한다
-		boolean found = passwordEncoder.matches(user.getPwd(), db.getPwd());
-
-		return found;
-	}
+//	public boolean login(UserVO user) {
+//		UserDAO dao = sqlSessionTemplate.getMapper(UserDAO.class);
+//		UserVO db = dao.getUser(user.getId());
+//
+//		// 이용자가 로그인할 때 평문 비밀번호와 암호화된 비밀번호를 이용하여 비교한다
+//		boolean found = passwordEncoder.matches(user.getPwd(), db.getPwd());
+//
+//		return found;
+//	}
 
 	public boolean chkId(String id) {
 		UserDAO dao = sqlSessionTemplate.getMapper(UserDAO.class);
