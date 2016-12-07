@@ -13,6 +13,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,7 +30,7 @@ public class BoardController {
 	
 	@Autowired
 	private BoardService svc;
-
+	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String main(@RequestParam(value = "page", defaultValue = "1") int page, @RequestParam(value = "rpp", defaultValue = "10") int rpp, Model model) {
 		HttpServletRequest req = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes())
@@ -136,10 +137,16 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/modi", method = RequestMethod.GET)
-	public String modiForm(@RequestParam("num") int num, Model model) {
-		model.addAttribute("num", num);
-		return "board/modi";
-	}
+	public String modiForm(@RequestParam("num") int num, @RequestParam("id") String id, Model model, Authentication auth) {
+		if (auth == null) {
+			return "user/login";
+		} else if (auth.getName().equals(id)) {
+			model.addAttribute("num", num);
+			return "board/modi";
+		} else {
+			return "user/warning";
+		}
+	}	
 
 	@RequestMapping(value = "/modisave", method = RequestMethod.POST)
 	@ResponseBody

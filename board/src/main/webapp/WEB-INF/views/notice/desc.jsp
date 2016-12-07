@@ -108,7 +108,7 @@
 	<sec:authentication property="name" var="secName"/>
 	 
 	<sec:authorize access="${secName==desc.id}">	
-		<a href="modi?num=${desc.num}" ><button type="button" class="btn btn-default">수정</button></a>
+		<a href="modi?num=${desc.num}&id=${desc.id}" ><button type="button" class="btn btn-default">수정</button></a>
 		<button type="button" class="btn btn-default" onclick="deleteBoard();">삭제</button>
 	</sec:authorize>			
 	<div id="footarea">

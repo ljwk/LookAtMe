@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 import javax.servlet.http.*;
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;
 import org.springframework.validation.*;
@@ -113,9 +114,15 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value = "/modi", method = RequestMethod.GET)
-	public String modi(@RequestParam("num") int num, Model model) {
-		model.addAttribute("num", num);
-		return "notice/modi";
+	public String modi(@RequestParam("num") int num,@RequestParam("id") String id,Authentication auth, Model model) {
+		if (auth == null) {
+			return "user/login";
+		} else if (auth.getName().equals(id)) {
+			model.addAttribute("num", num);
+			return "notice/modi";
+		} else {
+			return "user/warning";
+		}
 	}
 
 	@RequestMapping(value = "/modisave", method = RequestMethod.POST)
