@@ -40,7 +40,7 @@ public class BoardController {
 			ip = req.getRemoteAddr();
 		int port = req.getRemotePort();
 
-		System.out.println(ip + "," + port);
+		/*System.out.println(ip + "," + port);*/
 		
 		model.addAttribute("list", svc.getList(page, rpp));
 		model.addAttribute("page", page);
