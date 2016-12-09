@@ -13,7 +13,6 @@
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script src="<c:url value="/resources/jquery.bootpag.min.js"/>"></script>
 <script type="text/javascript" src="/board/resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
-
 <script type="text/javascript">
 	$(function(){
 		//smarteditor
@@ -96,7 +95,6 @@
 		<br>
 		<button id="savebt" type="submit" class="btn btn-default">저 장</button>
 		<a href="main"><button type="button" class="btn btn-default">취 소</button></a>
-
 	</form>
 	<div id="footarea">
 	<div id="footer"></div>

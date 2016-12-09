@@ -1,6 +1,6 @@
 package org.dev.lam.Board;
 
-import java.io.File;
+import java.io.*;
 import java.util.*;
 import org.mybatis.spring.*;
 import org.springframework.beans.factory.annotation.*;
@@ -68,12 +68,22 @@ public class BoardService {
 		int n = dao.modi(board);
 		return n > 0 ? true : false;
 	}
-
+	
 	public boolean addInsert(BoardVO board) {
 		BoardDAO dao = sqlSessionTemplate.getMapper(BoardDAO.class);
 		int n = dao.reinsert(board);
+		int num = dao.num1(board.getId());
+		board.setNum(num);
+		dao.fileadd(board);
+		
 		return n > 0 ? true : false;
 	}
+	
+	public boolean addInsert1(BoardVO board) {
+		BoardDAO dao = sqlSessionTemplate.getMapper(BoardDAO.class);
+		int n = dao.reinsert(board);
+		return n > 0 ? true : false;
+	}	
 
 	public List<BoardVO> getNumSearchList(int page, int rpp, String searchContents) {
 		BoardDAO dao = sqlSessionTemplate.getMapper(BoardDAO.class);

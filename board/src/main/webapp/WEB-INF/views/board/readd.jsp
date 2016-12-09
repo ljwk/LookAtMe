@@ -7,19 +7,35 @@
 <meta charset="UTF-8">
 <title>답글</title>
 <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="http://malsup.github.com/jquery.form.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="//raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script>
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script src="<c:url value="/resources/jquery.bootpag.min.js"/>"></script>
+<script type="text/javascript" src="/board/resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
 	$(function(){
 	    $("#navdiv").load("../resources/nav.jsp");
 	    $("#footer").load("../resources/footer.jsp");
+	    
+		var options = { 
+			success: function(res){
+				if(res.success){
+					alert('추가 성공');
+					location.href='desc?num='+res.num;
+				}
+			},
+			error: function(){
+				alert('실패');
+			}
+		}; 	
+		$("#reForm").ajaxForm(options);	
 	});
 	
 	function reboard() {
 		if(confirm('답글을 등록하시겠습니까?')){
  			var jsonObj = $('#reForm').serialize();
+ 			alert(jsonObj);
 
  			$.ajax({
 				url : 'reple',
@@ -65,7 +81,7 @@
 	<h3 style="margin-right: 680px; font:bold 32px none;">답글쓰기</h3>
 	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
 	
-	<form id="reForm" action="boardDesc.jsp">
+	<form id="reForm" method="post" action="reple" enctype="multipart/form-data">
 		<input type="hidden" name="ref"  value="${ref}">
 		<input type="hidden" name="id" value="<sec:authentication property="name"/>">
 		<div id="content" class="panel panel-default">
@@ -75,13 +91,16 @@
 			</tr>
 			<tr>
 				<th>내용</th><td><textarea id="contents" name="contents" rows="15" cols="92%" maxlength="400"></textarea></td>
-			</tr>			
+			</tr>		
+			<tr>
+				<th>첨부</th><td><input type="file" name="file"></td>
+			</tr>		
 		</table>
 		</div>
+		<br>
+		<button type="submit" class="btn btn-default">저 장</button>
+		<a href="desc?num=${ref}"><button type="button" class="btn btn-default">취 소</button></a>	
 	</form>
-	<br>
-	<button type="button" class="btn btn-default" onclick="reboard();">저 장</button>
-	<a href="desc?num=${ref}"><button type="button" class="btn btn-default">취 소</button></a>	
 	<div id="footarea">
 	<div id="footer"></div>
 	</div>

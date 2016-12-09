@@ -165,15 +165,69 @@ public class BoardController {
 
 	@RequestMapping(value = "/reple", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, String> re(BoardVO board) {
+	public Map<String, String> re(BoardVO board, BindingResult result) {		
+		InputStream inputStream = null;
+		OutputStream outputStream = null;
 		Map<String, String> map = new HashMap<>();
-		boolean ok = svc.addInsert(board);
+
+		boolean ok = false;
+		
+		if (!result.hasErrors()) {
+			// 파일 이름
+			String fileName = board.getFile().getOriginalFilename();
+			// 중복검사
+			String tmpName = !svc.isValid(fileName) ? fileName + new Date().getTime() : fileName;
+			// 파일사이즈
+			long filesize = board.getFile().getSize();
+			// 확장자 구하기
+			String[] sExt = fileName.split("\\.");
+			String ext = sExt[1];
+
+			board.setFilename(fileName);
+			board.setFilename2(tmpName);
+			board.setFilesize(filesize);
+			board.setExt(ext);
+			// 파일을 서버에 저장
+			try {
+				inputStream = board.getFile().getInputStream();
+
+				File newFile = new File("F:/test/upload/" + tmpName);
+				if (!newFile.exists()) {
+					newFile.createNewFile();
+				}
+				outputStream = new FileOutputStream(newFile);
+				int read = 0;
+				byte[] bytes = new byte[1024];
+
+				while ((read = inputStream.read(bytes)) != -1) {
+					outputStream.write(bytes, 0, read);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					inputStream.close();
+					outputStream.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			ok = svc.addInsert(board);
+		} else {
+			ok = svc.addInsert1(board);
+		}
+		
 		map.put("success", ok + "");
 		map.put("num", svc.getNum(board.getId()) + "");
 		svc.hitCnt(board.getNum());
 		return map;
+		
 	}
 
+
+
+
+	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public String search(@RequestParam(value = "page", defaultValue = "1") int page, @RequestParam(value = "rpp", defaultValue = "10") int rpp, @RequestParam("search") String search, @RequestParam("searchContents") String searchContents, Model model) {
 		if (search.equals("번호")) {
