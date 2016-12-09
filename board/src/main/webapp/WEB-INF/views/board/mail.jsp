@@ -40,7 +40,7 @@
 </head>
 <body>
 	<div id="navdiv"></div>
-	<h3 style="margin-right: 730px; font:bold 32px none;">글쓴이에게 메일보내기</h3>
+	<h3 style="margin-right: 650px; font:bold 32px none;">메일보내기</h3>
 	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
 	
 	<form action="/board/user/send" method="post">
