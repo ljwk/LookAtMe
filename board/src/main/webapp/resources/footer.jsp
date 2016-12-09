@@ -17,10 +17,11 @@ height: 100px;
 #footer > ul {text-align: center;}
 #footer > ul > li {
 display:inline;
-border-left:1px solid #999; 
-font:bold 12px Dotum; 
+border-right:1px solid #999; 
+font:bold 12px Dotum;
 padding:0 10px;	
 list-style-type: none;
+color: gray;
 }
 hr{width: 100%; border:1px solid lightgray;}
 </style>

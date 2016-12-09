@@ -82,8 +82,11 @@
 	<div id="content" class="panel panel-default">
 		<table>	
 			<tr>
+				<th>제목</th><td colspan="5">${desc.title}</td>
+			</tr>
+		
+			<tr>
 				<th>번호</th><td>${desc.num}</td>
-				<th>제목</th><td>${desc.title}</td>
 				<th>작성자</th><td>${desc.id}</td>
 			</tr>
 			<tr id="file" >

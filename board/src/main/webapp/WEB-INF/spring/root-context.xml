@@ -49,6 +49,11 @@
 			authentication-failure-url="/user/login?error=true" />
 		<logout logout-success-url="/index.jsp" />
 		<csrf disabled="true" />
+		<!--xfram 보안 푸는거-->
+        <headers>
+		<frame-options disabled="true"/>
+		</headers>
+		<!--xfram 보안 푸는거 end-->
 	</http>
 	
 	<beans:bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
