@@ -8,7 +8,6 @@ body{height: 713px;}
 position:relative;
 width: 100%;
 height: 100px;
-background-color: red;
 } 
  #footer{
 position: absolute;
