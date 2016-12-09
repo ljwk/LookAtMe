@@ -52,6 +52,10 @@
 		UPDATE notice SET active = 'X' WHERE num=#{num} and not EXISTS (SELECT * FROM (select * from notice where active is null) WHERE ref=#{num})
 	</update>
 	
+	<update id="fileupdate" parameterType="org.dev.lam.Notice.NoticeVO">
+		UPDATE noticepds SET filename = #{filename}, filesize = #{filesize}, ext = #{ext}, filenames = #{filename2} WHERE num=#{num}		
+	</update>		
+	
 	<update id="modi" parameterType="org.dev.lam.Notice.NoticeVO">
 		UPDATE notice SET title = #{title}, contents= #{contents} WHERE num=#{num}
 	</update>

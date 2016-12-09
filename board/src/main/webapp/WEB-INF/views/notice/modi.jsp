@@ -6,38 +6,31 @@
 <head>
 <meta charset="UTF-8">
 <title>수정</title>
-<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="http://malsup.github.com/jquery.form.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="//raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script>
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script src="<c:url value="/resources/jquery.bootpag.min.js"/>"></script>
+<script type="text/javascript" src="/board/resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
 	$(function(){
 	    $("#navdiv").load("../resources/nav.jsp");
 	    $("#footer").load("../resources/footer.jsp");
-	});
-	
-	function modiboard() {
-		if(confirm('글을 수정하시겠습니까?')){
- 			var jsonObj = $('#modiboard').serialize();
-
- 			$.ajax({
-				url : 'modisave',
-				data : jsonObj,
-				type : 'post',
-				dataType : 'json',
-				success : function(res) {
-				 	if(res.success){
-			 			alert('수정 성공');	
-			 			location.href='desc?num='+${num};
-					} 
-				},
-				error : function(xhr, status, error) {
-					alert(error);
+	    
+		var options = { 
+			success: function(res){
+				if(res.success){
+					alert('수정 성공');
+					location.href='desc?num='+res.num;
 				}
-			}); 
-		} 
-	}
+			},
+			error: function(){
+				alert('실패');
+			}
+		}; 	
+		$("#modiboard").ajaxForm(options);	
+	});
 	
 	function logout(){
 		if(confirm("로그아웃 하시겠습니까?")){			
@@ -64,23 +57,26 @@
 	<div id="navdiv"></div>
 	<h3 style="margin-right: 730px; font:bold 32px none;">수정</h3>
 	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
-
-	<form id="modiboard" action="boardDesc.jsp">	
+	<form id="modiboard" method="post" action="modisave" enctype="multipart/form-data">	
 		<div id="content" class="panel panel-default">
-		<input type="hidden" name="num"  value="${num}">
-		<table>
-			<tr id="bb">
-				<th>제목</th><td><input type="text" id="title" name="title" maxlength="40" size="90%"></td>
-			</tr>
-			<tr id="aa">
-				<th>내용</th><td><textarea id="contents" name="contents" rows="15" cols="92%" maxlength="400"></textarea></td>
-			</tr>				
-		</table>
-	</div>
+			<input type="hidden" name="id" value="${id}">
+			<input type="hidden" name="num"  value="${num}">
+			<table>
+				<tr>
+					<th>제목</th><td><input type="text" id="title" name="title" maxlength="40" size="90%"></td>
+				</tr>
+				<tr>
+					<th>내용</th><td><textarea id="contents" name="contents" rows="15" cols="92%" maxlength="400"></textarea></td>
+				</tr>			
+				<tr>
+					<th>첨부</th><td><input type="file" name="file"></td>
+				</tr>		
+			</table>
+		</div>
+		<br>
+		<button type="submit" class="btn btn-default">수 정</button>
+		<a href="desc?num=${num}"><button type="button" class="btn btn-default">취 소</button></a>	
 	</form>
-	<br>
-	<button type="button" class="btn btn-default" onclick="modiboard();">수 정</button>
-	<a href="desc?num=${num}"><button type="button" class="btn btn-default">취 소</button></a>	
 	<div id="footarea">
 	<div id="footer"></div>
 	</div>

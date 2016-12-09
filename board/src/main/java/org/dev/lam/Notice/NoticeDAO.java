@@ -18,4 +18,5 @@ public interface NoticeDAO {
 	public List<NoticeVO> ContList(@Param("page")int page,@Param("rpp")int rpp, @Param("searchContents")String searchContents);
 	public int fileadd(NoticeVO board);
 	public NoticeVO fileDesc(int num);	
+	public int fileupdate(NoticeVO board);
 }

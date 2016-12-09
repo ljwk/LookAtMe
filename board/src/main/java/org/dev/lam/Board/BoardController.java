@@ -172,12 +172,6 @@ public class BoardController {
 			board.setFilename2(tmpName);
 			board.setFilesize(filesize);
 			board.setExt(ext);
-
-			System.out.println(board.getNum());
-			System.out.println(board.getFilename());
-			System.out.println(board.getFilename2());
-			System.out.println(board.getFilesize());
-			System.out.println(board.getExt());
 			// 파일을 서버에 저장
 			try {
 				inputStream = board.getFile().getInputStream();

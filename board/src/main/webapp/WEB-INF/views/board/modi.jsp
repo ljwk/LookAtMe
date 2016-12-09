@@ -31,8 +31,7 @@
 		}; 	
 		$("#modiboard").ajaxForm(options);	
 	});
-	
-	
+		
 	function logout(){
 		if(confirm("로그아웃 하시겠습니까?")){			
 			location.href="<c:url value='/logout' />";
@@ -60,19 +59,19 @@
 	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
 	<form id="modiboard" method="post" action="modisave" enctype="multipart/form-data">
 		<div id="content" class="panel panel-default">
-		<input type="hidden" name="id" value="${id}">
-		<input type="hidden" name="num"  value="${num}">
-		<table>
-			<tr>
-				<th>제목</th><td><input type="text" id="title" name="title" maxlength="40" size="90%"></td>
-			</tr>
-			<tr>
-				<th>내용</th><td><textarea id="contents" name="contents" rows="15" cols="92%" maxlength="400"></textarea></td>
-			</tr>			
-			<tr>
-				<th>첨부</th><td><input type="file" name="file"></td>
-			</tr>		
-		</table>
+			<input type="hidden" name="id" value="${id}">
+			<input type="hidden" name="num"  value="${num}">
+			<table>
+				<tr>
+					<th>제목</th><td><input type="text" id="title" name="title" maxlength="40" size="90%"></td>
+				</tr>
+				<tr>
+					<th>내용</th><td><textarea id="contents" name="contents" rows="15" cols="92%" maxlength="400"></textarea></td>
+				</tr>			
+				<tr>
+					<th>첨부</th><td><input type="file" name="file"></td>
+				</tr>		
+			</table>
 		</div>
 		<br>
 		<button type="submit" class="btn btn-default">수 정</button>
