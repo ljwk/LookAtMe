@@ -15,6 +15,26 @@
 <script type="text/javascript" src="/board/resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
 	$(function(){
+		//smarteditor
+	    var editor_object = [];
+	    nhn.husky.EZCreator.createInIFrame({
+	        oAppRef: editor_object,
+	        elPlaceHolder: "contents",
+	        sSkinURI: "/board/resources/smarteditor/SmartEditor2Skin.html", 
+	        htParams : {
+	            // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+	            bUseToolbar : true,             
+	            // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+	            bUseVerticalResizer : false,     
+	            // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+	            bUseModeChanger : false,
+	        }
+	    });
+	    savebt.onclick = function() {
+			 editor_object.getById["contents"].exec("UPDATE_CONTENTS_FIELD", []);
+			} 
+	  //smarteditor end
+		
 	    $("#navdiv").load("../resources/nav.jsp");
 	    $("#footer").load("../resources/footer.jsp");
 	    
@@ -98,7 +118,7 @@
 		</table>
 		</div>
 		<br>
-		<button type="submit" class="btn btn-default">저 장</button>
+		<button id="savebt" type="submit" class="btn btn-default">저 장</button>
 		<a href="desc?num=${ref}"><button type="button" class="btn btn-default">취 소</button></a>	
 	</form>
 	<div id="footarea">

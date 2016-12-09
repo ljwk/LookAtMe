@@ -72,6 +72,16 @@ public class NoticeService {
 	public boolean addInsert(NoticeVO board) {
 		NoticeDAO dao = sqlSessionTemplate.getMapper(NoticeDAO.class);
 		int n = dao.reinsert(board);
+		int num = dao.num1(board.getId());
+		board.setNum(num);
+		dao.fileadd(board);
+		
+		return n > 0 ? true : false;
+	}
+	
+	public boolean addInsert1(NoticeVO board) {
+		NoticeDAO dao = sqlSessionTemplate.getMapper(NoticeDAO.class);
+		int n = dao.reinsert(board);
 		return n > 0 ? true : false;
 	}
 

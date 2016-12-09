@@ -19,7 +19,7 @@
 	    var editor_object = [];
 	    nhn.husky.EZCreator.createInIFrame({
 	        oAppRef: editor_object,
-	        elPlaceHolder: "incontents",
+	        elPlaceHolder: "contents",
 	        sSkinURI: "/board/resources/smarteditor/SmartEditor2Skin.html", 
 	        htParams : {
 	            // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
@@ -31,7 +31,7 @@
 	        }
 	    });
 	    savebt.onclick = function() {
-			 editor_object.getById["incontents"].exec("UPDATE_CONTENTS_FIELD", []);
+			 editor_object.getById["contents"].exec("UPDATE_CONTENTS_FIELD", []);
 			} 
 	  //smarteditor end
 		$("#navdiv").load("../resources/nav.jsp");
@@ -84,8 +84,8 @@
 			<tr>
 				<th>제목</th><td><input type="text" id="title" name="title" maxlength="40" size="90%"></td>
 			</tr>
-			<tr id="contents">
-				<th>내용</th><td><textarea id="incontents" name="contents" rows="15" cols="92%" maxlength="400"></textarea></td>
+			<tr>
+				<th>내용</th><td><textarea id="contents" name="contents" rows="15" cols="92%" maxlength="400"></textarea></td>
 			</tr>		
 			<tr>
 				<th>첨부</th><td><input type="file" name="file"></td>
