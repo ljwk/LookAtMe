@@ -72,12 +72,11 @@
 </style>
 </head>
 <body>
-<div id="navdiv"></div>
+	<div id="navdiv"></div>
 	<h3 style="margin-right: 680px; font:bold 32px none;">글쓰기</h3>
 	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
 	
 	<form id="saveForm" method="post" action="save" enctype="multipart/form-data">
-	
 		<input type="hidden" name="id" value="${id}">
 		<div id="content" class="panel panel-default">
 		<table>

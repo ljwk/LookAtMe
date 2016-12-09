@@ -88,13 +88,13 @@
 			</tr>
 			<tr>
 				<th>내용</th><td><textarea id="contents" name="contents" rows="15" cols="92%" maxlength="400"></textarea></td>
-			</tr>	
+			</tr>		
 			<tr>
 				<th>첨부</th><td><input type="file" name="file"></td>
-			</tr>							
-		</table>		
+			</tr>		
+		</table>
 		</div>
-		<br>	
+		<br>
 		<button id="savebt" type="submit" class="btn btn-default">저 장</button>
 		<a href="desc?num=${ref}"><button type="button" class="btn btn-default">취 소</button></a>	
 	</form>

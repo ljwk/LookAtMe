@@ -12,8 +12,9 @@
 <script src="//raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script>
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script src="<c:url value="/resources/jquery.bootpag.min.js"/>"></script>
+<script type="text/javascript" src="/board/resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
-	$(document).ready(function(){
+	$(function(){
 		//smarteditor
 	    var editor_object = [];
 	    nhn.husky.EZCreator.createInIFrame({
@@ -33,7 +34,7 @@
 			 editor_object.getById["contents"].exec("UPDATE_CONTENTS_FIELD", []);
 			} 
 	  //smarteditor end
-		
+		$("#navdiv").load("../resources/nav.jsp");
 		$("#footer").load("../resources/footer.jsp");
 		var options = { 
 			success: function(res){
@@ -57,72 +58,42 @@
 </script>
 <style type="text/css">
 	body {text-align: center;}
-	table {border: 1px solid black; border-spacing: 0px; margin: 0px auto ; width: 500px;}
+	#navdiv {height:100px;}
+	table {border-spacing: 0px;	margin: 0px auto; width: 800px;}
 	th, td {padding: 5px;}
-	th {border: 1px solid black; text-align: center; background: rgb(176, 187, 190);}
-	td {border: 1px solid black;}
-	#aa {height: 420px;}
-	#bb {height: 50px;}
-	#contents {width: 400px; height: 400px;}
-	#title {width: 400px;}
-	#navdiv {height:130px;}
+	th {width: 100px;border-bottom:1px solid lightgray;background: rgb(252, 252, 252); text-align: center;}
+	td {border-bottom:1px solid lightgray;text-align: left;}
+	#content {width: 800px; margin: 0px auto;}
+	textarea{resize: none;}
 	a:hover {color: red;}
 	a:active {color: gold}
-	a {color: black; text-decoration: none;}
-	</style>
+	a {color: gray; text-decoration: none;}
+	.no {position: relative; display: block; padding: 12px 15px;}
+</style>
 </head>
 <body>
-<div id="navdiv">
-	<nav class="nav nav-tabs">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/board/index.jsp">Main</a>
-			</div>
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<sec:authorize access="isAuthenticated()">
-						<li><a href="<c:url value='/cctv/list' />">CCTV</a></li>
-					</sec:authorize>		  					
-  					<li><a href="/board/notice/main">Notice</a></li>
-					<li><a href="/board/free/main">Board</a></li>
-					<sec:authorize access="! isAuthenticated()">	      	
-						<li><a href="/board/user/joinForm">Join</a></li>
-						<li><a href="/board/user/login">Login</a></li>
-					</sec:authorize>
-					<sec:authorize access="isAuthenticated()">
-						<li><a href="javascript:logout();">Logout</a></li>
-					</sec:authorize>					
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<sec:authorize access="!isAuthenticated()">
-						<li><a>Guest님이 접속하셨습니다.</a></li>
-						<li><a>글쓰기와 다운로드는 로그인이 필요합니다!</a></li>
-					</sec:authorize>
-					<sec:authorize access="isAuthenticated()">
-						<li><a><sec:authentication property="name"/>님이 접속하셨습니다.</a></li>
-					</sec:authorize>		
-      			</ul>
-			</div>	    
-	</nav>
-</div>
+	<div id="navdiv"></div>
+	<h3 style="margin-right: 680px; font:bold 32px none;">글쓰기</h3>
+	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
+	
 	<form id="saveForm" method="post" action="save" enctype="multipart/form-data">
-		<fieldset>
-		<legend>글 쓰 기</legend>
-		<input type="hidden" name="id" value="${id}">
-		<table>
-			<tr id="bb">
-				<th>제목</th><td><input type="text" id="title" name="title"></td>
-			</tr>
-			<tr id="aa">
-				<th>내용</th><td><textarea id="contents" name="contents"></textarea></td>
-			</tr>		
-			<tr>
-				<th>첨부</th><td><input type="file" name="file"></td>
-			</tr>	
-		</table>
-		<br><br><br>
+		<input type="hidden" name="id" value="${id}">		
+		<div id="content" class="panel panel-default">
+			<table>
+				<tr>
+					<th>제목</th><td><input type="text" id="title" name="title" maxlength="40" size="90%"></td>
+				</tr>
+				<tr>
+					<th>내용</th><td><textarea id="contents" name="contents" rows="15" cols="92%" maxlength="400"></textarea></td>
+				</tr>		
+				<tr>
+					<th>첨부</th><td><input type="file" name="file"></td>
+				</tr>	
+			</table>
+		</div>
+		<br>
 		<button id="savebt" type="submit" class="btn btn-default">저 장</button>
 		<a href="main"><button type="button" class="btn btn-default">취 소</button></a>
-		</fieldset>
 	</form>
 	<div id="footarea">
 	<div id="footer"></div>

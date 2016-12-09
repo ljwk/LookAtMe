@@ -17,5 +17,6 @@ public interface BoardDAO {
 	public List<BoardVO> idList(@Param("page")int page,@Param("rpp")int rpp, @Param("searchContents")String searchContents);
 	public List<BoardVO> ContList(@Param("page")int page,@Param("rpp")int rpp, @Param("searchContents")String searchContents);
 	public int fileadd(BoardVO board);
-	public BoardVO fileDesc(int num);	
+	public BoardVO fileDesc(int num);
+	public int fileupdate(BoardVO board);	
 }

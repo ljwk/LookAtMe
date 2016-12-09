@@ -28,7 +28,7 @@
 	</insert>
 
 	<insert id="fileadd" parameterType="org.dev.lam.Notice.NoticeVO">
-		INSERT INTO pds (num, filename,filesize,ext,filenames)
+		INSERT INTO noticepds (num, filename,filesize,ext,filenames)
 		VALUES (#{num}, #{filename}, #{filesize}, #{ext},#{filename2})
 	</insert>
 	
@@ -37,7 +37,7 @@
 	</select>
 	
 	<select id="fileDesc" resultType="org.dev.lam.Notice.NoticeVO">
-		SELECT * FROM notice B INNER JOIN pds p ON B.num = p.num WHERE B.num = #{num}
+		SELECT * FROM notice B INNER JOIN noticepds p ON B.num = p.num WHERE B.num = #{num}
 	</select>
 	
 	<select id="num1" resultType="Integer">

@@ -142,6 +142,7 @@ public class BoardController {
 			return "user/login";
 		} else if (auth.getName().equals(id)) {
 			model.addAttribute("num", num);
+			model.addAttribute("id", id);
 			return "board/modi";
 		} else {
 			return "user/warning";
@@ -150,9 +151,63 @@ public class BoardController {
 
 	@RequestMapping(value = "/modisave", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, String> modisave(BoardVO board) {
+	public Map<String, String> modisave(BoardVO board, BindingResult result) {
+		InputStream inputStream = null;
+		OutputStream outputStream = null;
 		Map<String, String> map = new HashMap<>();
-		boolean ok = svc.modi(board);
+		boolean ok = false;
+		
+		if (!result.hasErrors()) {
+			// 파일 이름
+			String fileName = board.getFile().getOriginalFilename();
+			// 중복검사
+			String tmpName = !svc.isValid(fileName) ? fileName + new Date().getTime() : fileName;
+			// 파일사이즈
+			long filesize = board.getFile().getSize();
+			// 확장자 구하기
+			String[] sExt = fileName.split("\\.");
+			String ext = sExt[1];
+
+			board.setFilename(fileName);
+			board.setFilename2(tmpName);
+			board.setFilesize(filesize);
+			board.setExt(ext);
+
+			System.out.println(board.getNum());
+			System.out.println(board.getFilename());
+			System.out.println(board.getFilename2());
+			System.out.println(board.getFilesize());
+			System.out.println(board.getExt());
+			// 파일을 서버에 저장
+			try {
+				inputStream = board.getFile().getInputStream();
+
+				File newFile = new File("F:/test/upload/" + tmpName);
+				if (!newFile.exists()) {
+					newFile.createNewFile();
+				}
+				outputStream = new FileOutputStream(newFile);
+				int read = 0;
+				byte[] bytes = new byte[1024];
+
+				while ((read = inputStream.read(bytes)) != -1) {
+					outputStream.write(bytes, 0, read);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					inputStream.close();
+					outputStream.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			ok = svc.modi(board);
+		} else {
+			ok = svc.modi1(board);
+		}
+		map.put("num", board.getNum() + "");
 		map.put("success", ok + "");
 		return map;
 	}

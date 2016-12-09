@@ -51,30 +51,7 @@
 		}; 	
 		$("#reForm").ajaxForm(options);	
 	});
-	
-	function reboard() {
-		if(confirm('답글을 등록하시겠습니까?')){
- 			var jsonObj = $('#reForm').serialize();
- 			alert(jsonObj);
-
- 			$.ajax({
-				url : 'reple',
-				data : jsonObj,
-				type : 'post',
-				dataType : 'json',
-				success : function(res) {
-					if(res.success){
-			 			alert('추가 성공');	
-			 			location.href='desc?num='+res.num;
-					}
-				},
-				error : function(xhr, status, error) {
-					alert(error);
-				}
-			}); 
-		} 
-	}
-	
+		
 	function logout(){
 		if(confirm("로그아웃 하시겠습니까?")){			
 			location.href="<c:url value='/logout' />";
