@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dev.lam.CCTV.CCTVDAO"> <!--이 sql 문장과 매핑될 인터페이스의 완전한 경로 -->
+	<select id="getCCTVList" resultType="org.dev.lam.CCTV.CCTVVO">
+		SELECT num, id,cctvip,cctvname,authority FROM cctv where id = #{id}
+	</select>
+	
+	<insert id="insert" parameterType="org.dev.lam.CCTV.CCTVVO">
+		INSERT INTO board (num, title, contents, id, regdate, hitCnt) 
+		VALUES (board_num.NEXTVAL, #{title}, #{contents}, #{id}, sysdate,0)
+	</insert>
+
+	<insert id="fileadd" parameterType="org.dev.lam.CCTV.CCTVVO">
+		INSERT INTO pds (num, filename,filesize,ext,filenames)
+		VALUES (#{num}, #{filename}, #{filesize}, #{ext},#{filename2})
+	</insert>
+	
+	<select id="desc" resultType="org.dev.lam.CCTV.CCTVVO">
+		<!-- SELECT * FROM board WHERE num=#{num} -->
+		SELECT * FROM BOARD B INNER JOIN MEMBER M ON B.ID = M.ID WHERE B.num = #{num}
+	</select>
+	
+	<select id="fileDesc" resultType="org.dev.lam.CCTV.CCTVVO">
+		SELECT * FROM BOARD B INNER JOIN pds p ON B.num = p.num WHERE B.num = #{num}
+	</select>
+	
+	<select id="num1" resultType="Integer">
+		SELECT MAX(NUM) FROM board WHERE id = #{id}
+	</select>
+	
+	<update id="hitCnt">
+		UPDATE board SET hitCnt = hitCnt+1 WHERE num=#{num}
+	</update>
+	
+	<update id="boardDelete">
+		UPDATE board SET active = 'X' WHERE num=#{num} and not EXISTS (SELECT * FROM (select * from board where active is null) WHERE ref=#{num})
+	</update>	
+	
+	<update id="fileupdate" parameterType="org.dev.lam.CCTV.CCTVVO">
+		UPDATE pds SET filename = #{filename}, filesize = #{filesize}, ext = #{ext}, filenames = #{filename2} WHERE num=#{num}		
+	</update>		
+	
+	<update id="modi" parameterType="org.dev.lam.CCTV.CCTVVO">
+		UPDATE board SET title = #{title}, contents= #{contents} WHERE num=#{num}
+	</update>
+	
+	<insert id="reinsert" parameterType="org.dev.lam.CCTV.CCTVVO">
+		INSERT INTO board (num, title, contents, id, regdate, hitCnt, ref) 
+		VALUES (board_num.NEXTVAL, #{title}, #{contents}, #{id}, sysdate, 0, #{ref})
+	</insert>
+	
+	<select id="numList" resultType="org.dev.lam.CCTV.CCTVVO">
+		SELECT * 
+		FROM (SELECT num,title, id, regdate, hitcnt, active, ref, 
+		(SELECT COUNT(*) FROM board where num =#{searchContents}) 
+		totalRows ,TRUNC((ROWNUM-1)/#{rpp})+1 AS page  
+		FROM board  where num =#{searchContents}  ORDER BY num desc) 
+		WHERE page=#{page} and active is null
+	</select>
+	
+	<select id="titleList" resultType="org.dev.lam.CCTV.CCTVVO">
+		SELECT * 
+		FROM (SELECT num,title, id, regdate, hitcnt, active, ref, 
+		(SELECT COUNT(*) FROM board where title like '%'||#{searchContents}||'%') 
+		totalRows ,TRUNC((ROWNUM-1)/#{rpp})+1 AS page  
+		FROM board  where title like '%'||#{searchContents}||'%'  ORDER BY num desc) 
+		WHERE page=#{page} and active is null
+	</select>
+			
+	<select id="idList" resultType="org.dev.lam.CCTV.CCTVVO">
+		SELECT * 
+		FROM (SELECT num,title, id, regdate, hitcnt, active, ref, 
+		(SELECT COUNT(*) FROM board where id =#{searchContents}) 
+		totalRows ,TRUNC((ROWNUM-1)/#{rpp})+1 AS page  
+		FROM board  where id =#{searchContents}  ORDER BY num desc) 
+		WHERE page=#{page} and active is null
+	</select>
+	
+	<select id="ContList" resultType="org.dev.lam.CCTV.CCTVVO">
+		SELECT * 
+		FROM (SELECT num, title, contents, id, regdate, hitcnt, active, ref, (SELECT COUNT(*) FROM board where contents like '%'||#{searchContents}||'%') 
+		totalRows ,TRUNC((ROWNUM-1)/#{rpp})+1 AS page  
+		FROM board  where contents like '%'||#{searchContents}||'%'  ORDER BY num desc) 
+		WHERE page=#{page} and active is null
+	</select>	
+</mapper>

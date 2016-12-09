@@ -73,7 +73,7 @@ public class UserController {
 
 		String sId = session.getId();
 		application.setAttribute(sId, email1);
-		String content = "<a href='http://192.168.2.20:8081/board/user/joinForm?auth=" + sId + "'>회원가입 계속하기</a>";
+		String content = "<a href='http://192.168.2.27:8081/board/user/joinForm?auth=" + sId + "'>회원가입 계속하기</a>";
 		email.setReceiver(receiver);
 		email.setSubject(subject);
 		email.setContent(content);
@@ -230,7 +230,7 @@ public class UserController {
 
 			String sId = session.getId();
 			application.setAttribute(sId, user.getId());
-			String content = "<a href='http://192.168.2.20:8081/board/user/pwdForm?auth=" + sId + "'>비밀번호변경 계속하기</a>";
+			String content = "<a href='http://192.168.2.27:8081/board/user/pwdForm?auth=" + sId + "'>비밀번호변경 계속하기</a>";
 			email.setReceiver(receiver);
 			email.setSubject(subject);
 			email.setContent(content);

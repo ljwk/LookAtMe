@@ -29,7 +29,7 @@ public class CCTVService {
 
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
-	
+
 	DataInputStream input;
 	List<String> userList;
 	List<DataOutputStream> temp;
@@ -62,7 +62,7 @@ public class CCTVService {
 				System.out.println("startServer");
 				temp = new ArrayList<>();
 				try {
-					 serverSocket.setSoTimeout(1000);
+					serverSocket.setSoTimeout(1000);
 					do {
 						do {
 							try {
@@ -71,7 +71,7 @@ public class CCTVService {
 							} catch (final SocketTimeoutException e) {
 								// TimeOut catch
 							} finally {
-//								if (userList.isEmpty()) {
+								// if (userList.isEmpty()) {
 								if (temp.isEmpty()) {
 									return;
 								}
@@ -114,11 +114,11 @@ public class CCTVService {
 				System.out.println("monitor");
 				url = new URL("http://192.168.2.26:8083/");
 				URLConnection getconn = url.openConnection();
-				
+
 				do {
 					try {
 						input = new DataInputStream(getconn.getInputStream());
-					} catch(ConnectException e) {
+					} catch (ConnectException e) {
 						System.out.println("Connection fail");
 						System.out.println("retry : " + retry++);
 						try {
@@ -207,46 +207,57 @@ public class CCTVService {
 					bufreader.readLine();
 					int a = 1;
 					while (true) {
-//						do {
-//							byteArrayOutputStream.write(input.readByte());
-//						}while(!byteArrayOutputStream.toString().contains("Content-type: image/jpeg\r\n"));
-//						byteArrayOutputStream.reset();
-//						byteArrayOutputStream.write("Content-type: image/jpeg\r\n".getBytes());
-//
-//						do {
-//							byteArrayOutputStream.write(input.readByte());
-//						} while (!byteArrayOutputStream.toString().contains("--gc0p4Jq0M2Yt08jU534c0p--"));
-//						int hlength = byteArrayOutputStream.size();
-//						byte[] hboundary = new byte[byteArrayOutputStream.size()];
-//						byteArrayInputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray(), 0, hlength -30);
-//						hboundary = new byte[byteArrayInputStream.available()];
-//						byteArrayInputStream.read(hboundary);
-//						imgheader = new String(hboundary);
-//						
-//						byteArrayOutputStream.reset();
-//						System.out.println("header : \n" + imgheader);
-//						
-//						do {
-//							byteArrayOutputStream.write(input.readByte());
-//						} while (!byteArrayOutputStream.toString().contains("--gc0p4Jq0M2Yt08jU534c0p--"));
-//						
-//						length = byteArrayOutputStream.toByteArray().length;
-//						
-//						byteArrayInputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray(), 0, length - 28);
-//						imgbyte = new byte[byteArrayInputStream.available()];
-//						byteArrayInputStream.read(imgbyte);
-//
-//						byteArrayOutputStream.reset();
-//						System.out.println("bufarr : \n" + new String(imgbyte));
-//
-//						System.out.println("length : " + length);
-//						System.out.println("length : " + imgbyte.length);
-//						for (DataOutputStream e : temp) {
-//							e.writeBytes(imgheader);
-//							e.write(imgbyte);
-//							e.writeBytes("\r\n--gc0p4Jq0M2Yt08jU534c0p--\r\n");
-//							e.flush();
-//						}
+						// do {
+						// byteArrayOutputStream.write(input.readByte());
+						// }while(!byteArrayOutputStream.toString().contains("Content-type:
+						// image/jpeg\r\n"));
+						// byteArrayOutputStream.reset();
+						// byteArrayOutputStream.write("Content-type:
+						// image/jpeg\r\n".getBytes());
+						//
+						// do {
+						// byteArrayOutputStream.write(input.readByte());
+						// } while
+						// (!byteArrayOutputStream.toString().contains("--gc0p4Jq0M2Yt08jU534c0p--"));
+						// int hlength = byteArrayOutputStream.size();
+						// byte[] hboundary = new
+						// byte[byteArrayOutputStream.size()];
+						// byteArrayInputStream = new
+						// ByteArrayInputStream(byteArrayOutputStream.toByteArray(),
+						// 0, hlength -30);
+						// hboundary = new
+						// byte[byteArrayInputStream.available()];
+						// byteArrayInputStream.read(hboundary);
+						// imgheader = new String(hboundary);
+						//
+						// byteArrayOutputStream.reset();
+						// System.out.println("header : \n" + imgheader);
+						//
+						// do {
+						// byteArrayOutputStream.write(input.readByte());
+						// } while
+						// (!byteArrayOutputStream.toString().contains("--gc0p4Jq0M2Yt08jU534c0p--"));
+						//
+						// length = byteArrayOutputStream.toByteArray().length;
+						//
+						// byteArrayInputStream = new
+						// ByteArrayInputStream(byteArrayOutputStream.toByteArray(),
+						// 0, length - 28);
+						// imgbyte = new byte[byteArrayInputStream.available()];
+						// byteArrayInputStream.read(imgbyte);
+						//
+						// byteArrayOutputStream.reset();
+						// System.out.println("bufarr : \n" + new
+						// String(imgbyte));
+						//
+						// System.out.println("length : " + length);
+						// System.out.println("length : " + imgbyte.length);
+						// for (DataOutputStream e : temp) {
+						// e.writeBytes(imgheader);
+						// e.write(imgbyte);
+						// e.writeBytes("\r\n--gc0p4Jq0M2Yt08jU534c0p--\r\n");
+						// e.flush();
+						// }
 						imgheader = "";
 					}
 				} catch (IOException e) {
@@ -263,7 +274,7 @@ public class CCTVService {
 							input = null;
 						}
 
-//						userList.clear();
+						// userList.clear();
 						temp.clear();
 					} catch (IOException e) {
 						e.printStackTrace();
@@ -284,5 +295,11 @@ public class CCTVService {
 		} else {
 			return false;
 		}
+	}
+
+	public List<CCTVVO> getCCTVList(String name) {
+		CCTVDAO cctvdao = sqlSessionTemplate.getMapper(CCTVDAO.class);
+		List<CCTVVO> list = cctvdao.getCCTVList(name);
+		return list;
 	}
 }
