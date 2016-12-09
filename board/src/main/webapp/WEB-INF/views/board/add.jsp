@@ -30,7 +30,7 @@
 	            // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
 	            bUseModeChanger : false,
 	        }
-	    }); 
+	    });
 	    savebt.onclick = function() {
 			 editor_object.getById["incontents"].exec("UPDATE_CONTENTS_FIELD", []);
 			} 

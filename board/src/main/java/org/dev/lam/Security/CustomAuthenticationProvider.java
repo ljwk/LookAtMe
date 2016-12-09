@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.dev.lam.User.UserController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -43,8 +44,10 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 			} else {
 				WebAuthenticationDetails wad = (WebAuthenticationDetails) authentication.getDetails();
 				online.put(wad.getSessionId(), username);
-				System.out.println(wad.getSessionId());
-				System.out.println(username);
+/*				System.out.println(wad.getSessionId());
+				System.out.println(username);*/
+				System.out.println(online.size());
+				
 			}
 
 			authorities = user.getAuthorities();

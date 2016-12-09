@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CCTV</title>
+<title>잘못된 접근</title>
 <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="http://malsup.github.com/jquery.form.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<!-- <script src="//raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script> -->
+<script src="//raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script>
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script src="<c:url value="/resources/jquery.bootpag.min.js"/>"></script>
 <script type="text/javascript">
@@ -26,7 +26,13 @@
 </script>
 <style type="text/css">
 	body {text-align: center;}
-	#navdiv {height:130px;}
+	#navdiv {height:100px;}
+	.panel-heading{background: rgb(252, 252, 252);}
+	table {border-spacing: 0px;	margin: 0px auto;}
+	th, td {padding: 5px;}
+	th {width: 100px;border-bottom:1px solid lightgray;background: rgb(252, 252, 252); text-align: center;}
+	td {border-bottom:1px solid lightgray;text-align: left;}
+	#content {width: 450px; margin: 0px auto;}
 	a:hover {color: red;}
 	a:active {color: gold}
 	a {color: gray; text-decoration: none;}
@@ -35,12 +41,7 @@
 </head>
 <body>
 	<div id="navdiv"></div>
-	<h3>CCTV</h3>
-	<br><br>
-	<!-- <img style="-webkit-user-select: none" src="http://192.168.2.27:8081/board/free/test/"> -->
-	<img style="-webkit-user-select: none" src="http://192.168.2.26:8083?id=${sessionid}">	<br><br>
-	<button>←</button>
-	<button>→</button>
+	<h3 style="margin-right: 480px; font:bold 32px none;">잘못된 접근입니다.</h3>
 	<div id="footarea">
 	<div id="footer"></div>
 	</div>

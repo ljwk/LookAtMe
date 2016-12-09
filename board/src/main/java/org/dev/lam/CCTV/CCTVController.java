@@ -28,14 +28,20 @@ public class CCTVController {
 	private CCTVService service;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String cctv() {
+	public String cctv(Model model, Authentication authentication){
+		if (authentication != null) {
+			WebAuthenticationDetails wad = (WebAuthenticationDetails) authentication.getDetails();
+			model.addAttribute("sessionid", wad.getSessionId());
+		}
 		return "cctv/cctv";
 	}
 	
 	@RequestMapping(value = "/view")
 	public String view(Model model, Authentication authentication){
-		WebAuthenticationDetails wad = (WebAuthenticationDetails) authentication.getDetails();
-		model.addAttribute("sessionid", wad.getSessionId());
+		if (authentication != null) {
+			WebAuthenticationDetails wad = (WebAuthenticationDetails) authentication.getDetails();
+			model.addAttribute("sessionid", wad.getSessionId());
+		}
 		return "cctv/view";
 	}
 	
