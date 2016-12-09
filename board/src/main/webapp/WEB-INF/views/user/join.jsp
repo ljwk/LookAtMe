@@ -134,6 +134,7 @@
 <body>
 
 	<div id="navdiv"></div>
+	<div id="centerdiv">
 	<h3 style="margin-right: 480px; font:bold 32px none;">회원가입</h3>
 	<hr style="width: 600px; border:1px solid lightgray; margin-bottom:50px;">
 	<h4 style="margin-bottom: 20px">회원가입 해주세요</h4>
@@ -151,6 +152,7 @@
 	<br>
 	<button class="btn btn-default" onclick="join();" id="JOIN">회원가입</button>
 	<a href=/board/index.jsp><button class="btn btn-default">취소</button></a>
+	</div>
 	<div id="footarea">
 	<div id="footer"></div>
 	</div>

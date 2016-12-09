@@ -73,6 +73,7 @@
 </head>
 <body>
 	<div id="navdiv"></div>
+	<div id="centerdiv">
 	<h3 style="margin-right: 680px; font:bold 32px none;">글쓰기</h3>
 	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
 	
@@ -95,6 +96,7 @@
 		<button id="savebt" type="submit" class="btn btn-default">저 장</button>
 		<a href="main"><button type="button" class="btn btn-default">취 소</button></a>
 	</form>
+	</div>
 	<div id="footarea">
 	<div id="footer"></div>
 	</div>

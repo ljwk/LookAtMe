@@ -68,6 +68,7 @@
 <style type="text/css">
 	body {text-align: center;}
 	#navdiv {height:100px;}
+
 	table {border-spacing: 0px; margin: 0px auto;}
 	th, td {padding: 5px;}
 	th {text-align: center; background: rgb(252, 252, 252);}
@@ -88,6 +89,7 @@
 </head> 
 <body>
 	<div id="navdiv"></div>
+	<div id="centerdiv">
 	<h3 style="margin-right: 700px; font:bold 32px none;">게시판</h3>
 	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
 	<div id="content" class="panel panel-default"><!-- Dynamic Content goes here --></div>
@@ -104,7 +106,8 @@
 			<a href="add?id=<sec:authentication property="name"/>" ><button type="button" class="btn btn-default">글쓰기</button></a>
 		</sec:authorize>
 	</form>
-	<div id="page-selection"><!-- Pagination goes here --></div>		
+	<div id="page-selection"><!-- Pagination goes here --></div>
+	</div>	
 	<div id="footarea">
 	<div id="footer"></div>
 	</div>

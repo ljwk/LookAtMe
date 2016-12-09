@@ -75,6 +75,7 @@
 </head>
 <body>
 	<div id="navdiv"></div>
+	<div id="centerdiv">
 	<h3 style="margin-right: 730px; font:bold 32px none;">수정</h3>
 	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
 	<form id="modiboard" method="post" action="modisave" enctype="multipart/form-data">	
@@ -97,6 +98,7 @@
 		<button id="savebt" type="submit" class="btn btn-default">수 정</button>
 		<a href="desc?num=${num}"><button type="button" class="btn btn-default">취 소</button></a>	
 	</form>
+	</div>
 	<div id="footarea">
 	<div id="footer"></div>
 	</div>

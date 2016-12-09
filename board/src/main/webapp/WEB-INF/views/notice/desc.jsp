@@ -77,6 +77,7 @@
 </head>
 <body>
 <div id="navdiv"></div>
+<div id="centerdiv">
 	<h3 style="margin-right: 680px; font:bold 32px none;">상세정보</h3>
 	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
 	<div id="content" class="panel panel-default">
@@ -113,7 +114,8 @@
 	<sec:authorize access="${secName==desc.id}">	
 		<a href="modi?num=${desc.num}&id=${desc.id}" ><button type="button" class="btn btn-default">수정</button></a>
 		<button type="button" class="btn btn-default" onclick="deleteBoard();">삭제</button>
-	</sec:authorize>			
+	</sec:authorize>
+	</div>	
 	<div id="footarea">
 	<div id="footer"></div>
 	</div>

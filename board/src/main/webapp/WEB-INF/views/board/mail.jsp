@@ -40,6 +40,7 @@
 </head>
 <body>
 	<div id="navdiv"></div>
+	<div id="centerdiv">
 	<h3 style="margin-right: 650px; font:bold 32px none;">메일보내기</h3>
 	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
 	
@@ -61,6 +62,7 @@
 		<br><br>
 		<button type="submit" class="btn btn-default">보내기</button>
 	</form>
+	</div>
 	<div id="footarea">
 	<div id="footer"></div>
 	</div>

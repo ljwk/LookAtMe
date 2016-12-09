@@ -54,6 +54,7 @@
 </head>
 <body>
 	<div id="navdiv"></div>
+	<div id="centerdiv">
 	<h3 style="margin-right: 510px; font:bold 32px none;">로그인</h3>
 	<hr style="width: 600px; border:1px solid lightgray; margin-bottom:50px;">
 	<c:if test="${not empty param.error}">
@@ -74,7 +75,7 @@
 		 <br>
 		<button class="btn btn-default" onclick="findId();">ID 찾기</button>
 	 	<button class="btn btn-default" onclick="findPwd();">PASSWORD 찾기</button>
-
+	</div>
 	<div id="footarea">
 	<div id="footer"></div>
 	</div>

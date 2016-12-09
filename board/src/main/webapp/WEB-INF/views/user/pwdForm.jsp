@@ -71,6 +71,7 @@
 </head>
 <body>
 	<div id="navdiv"></div>
+	<div id="centerdiv">
 	<h3 style="margin-right: 480px; font:bold 32px none;">${id}님의 비밀번호 변경 페이지입니다.</h3>
 	<hr style="width: 600px; border:1px solid lightgray; margin-bottom:50px;">
 	<div id="content" class="panel panel-default">	
@@ -81,6 +82,7 @@
 	</div>	
 	<br>
 	<button onclick="change();" class="btn btn-default" >변경</button>	 
+	</div>
 	<div id="footarea">
 	<div id="footer"></div>
 	</div>

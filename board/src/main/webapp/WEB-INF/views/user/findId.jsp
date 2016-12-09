@@ -65,6 +65,7 @@
 </head>
 <body>
 	<div id="navdiv"></div>
+	<div id="centerdiv">
 	<h3 style="margin-right: 480px; font:bold 32px none;">아이디 찾기</h3>
 	<hr style="width: 600px; border:1px solid lightgray; margin-bottom:50px;">
 	<div id="content" class="panel panel-default">	
@@ -75,6 +76,7 @@
 	</div>	
 	<br>
 	<div id="id"></div>
+	</div>
 	<div id="footarea">
 	<div id="footer"></div>
 	</div>

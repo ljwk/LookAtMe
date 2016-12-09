@@ -41,7 +41,9 @@
 </head>
 <body>
 	<div id="navdiv"></div>
+	<div id="centerdiv">
 	<h3 style="margin-right: 480px; font:bold 32px none;">잘못된 접근입니다.</h3>
+	</div>
 	<div id="footarea">
 	<div id="footer"></div>
 	</div>

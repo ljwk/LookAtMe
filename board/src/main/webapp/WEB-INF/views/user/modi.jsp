@@ -62,6 +62,7 @@
 </head>
 <body>
 	<div id="navdiv"></div>
+	<div id="centerdiv">
 	<h3 style="margin-right: 410px; font:bold 32px none;">회원정보 확인</h3>
 	<hr style="width: 600px; border:1px solid lightgray; margin-bottom:50px;">
 	
@@ -78,6 +79,7 @@
 	</form>
 	<br>
 	<button onclick="modiForm();" class="btn btn-default">확인</button>
+	</div>
 	<div id="footarea">
 	<div id="footer"></div>
 	</div>

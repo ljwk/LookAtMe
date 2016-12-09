@@ -64,6 +64,7 @@
 </head>
 <body>
 <div id="navdiv">
+<div id="centerdiv">
 </div>
 	<h3>게 시 판 !</h3>
 	<div id="content" class="panel panel-default">
@@ -83,6 +84,7 @@
 	<div id="page-selection"><!-- Pagination goes here --></div>		
 	<p>
 	<a href="main"><button type="button" class="btn btn-default">목 록 으 로</button></a>
+	</div>
 	<div id="footarea">
 	<div id="footer"></div>
 	</div>

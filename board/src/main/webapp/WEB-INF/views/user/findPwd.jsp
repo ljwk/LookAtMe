@@ -68,6 +68,7 @@
 </head>
 <body>
 	<div id="navdiv"></div>
+	<div id="centerdiv">
 	<h3 style="margin-right: 480px; font:bold 32px none;">비밀번호 찾기</h3>
 	<hr style="width: 600px; border:1px solid lightgray; margin-bottom:50px;">
 	<div id="content" class="panel panel-default">	
@@ -79,6 +80,7 @@
 	</div>		
 	<br>
 	<button onclick="search();" class="btn btn-default" >찾기</button>
+	</div>
 	<div id="footarea">
 	<div id="footer"></div>
 	</div>
