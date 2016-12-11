@@ -16,6 +16,7 @@ import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -300,6 +301,44 @@ public class CCTVService {
 	public List<CCTVVO> getCCTVList(String name) {
 		CCTVDAO cctvdao = sqlSessionTemplate.getMapper(CCTVDAO.class);
 		List<CCTVVO> list = cctvdao.getCCTVList(name);
+		return list;
+	}
+
+	public CCTVVO getVO(String name) {
+		CCTVDAO cctvdao = sqlSessionTemplate.getMapper(CCTVDAO.class);
+		CCTVVO vo = cctvdao.getVO(name);
+		System.out.println(vo.getCctvip());
+		return vo;
+	}
+
+	public void save(String[] data) {
+		List<Map<String, String>> list = convert(data);
+		CCTVDAO cctvdao = sqlSessionTemplate.getMapper(CCTVDAO.class);
+		
+	}
+
+	private List<Map<String, String>> convert(String[] data) {
+		List<Map<String, String>> list = new ArrayList<>();
+		for (String e : data) {
+			if (!e.equals("")) {
+				e = e.replaceAll("\"", "");
+				e = e.replaceAll("\\{", "");
+				e = e.replaceAll("\\}", "");
+				String[] temp = e.split(",");
+				Map<String, String> map = new HashMap<>();
+				for (String e2 : temp) {
+					String[] temp2 = e2.split(":", 2);
+					map.put(temp2[0], temp2[1]);
+				}
+				list.add(map);
+			}
+		}
+
+		for (Map<String, String> e : list) {
+			for (String e2 : e.keySet()) {
+				System.out.println(e2 + ":" + e.get(e2));
+			}
+		}
 		return list;
 	}
 }

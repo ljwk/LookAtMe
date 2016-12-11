@@ -6,4 +6,6 @@ public interface CCTVDAO {
 
 	public List<CCTVVO> getCCTVList(String name);
 
+	public CCTVVO getVO(String name);
+
 }

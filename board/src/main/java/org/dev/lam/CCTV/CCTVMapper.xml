@@ -5,6 +5,10 @@
 		SELECT num, id,cctvip,cctvname,authority FROM cctv where id = #{id}
 	</select>
 	
+	<select id="getVO" resultType="org.dev.lam.CCTV.CCTVVO">
+		SELECT cctvip, cctvname, authority FROM cctv WHERE id = #{id}
+	</select>
+	
 	<insert id="insert" parameterType="org.dev.lam.CCTV.CCTVVO">
 		INSERT INTO board (num, title, contents, id, regdate, hitCnt) 
 		VALUES (board_num.NEXTVAL, #{title}, #{contents}, #{id}, sysdate,0)

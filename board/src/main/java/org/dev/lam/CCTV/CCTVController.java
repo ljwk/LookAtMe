@@ -1,5 +1,12 @@
 package org.dev.lam.CCTV;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
@@ -31,6 +38,7 @@ public class CCTVController {
 		if (authentication != null) {
 			WebAuthenticationDetails wad = (WebAuthenticationDetails) authentication.getDetails();
 			model.addAttribute("sessionid", wad.getSessionId());
+			model.addAttribute("vo",service.getVO(authentication.getName()));
 		}
 		return "cctv/view";
 	}
@@ -42,11 +50,17 @@ public class CCTVController {
 		return service.viewPermit(sessionid);
 	}
 
-	@RequestMapping(value = "/addCCTV")
+	@RequestMapping(value = "/addCCTV", method = RequestMethod.GET)
 	public String cctvInsert(Model model, Authentication authentication) {
 		System.out.println("naaaame" + authentication.getName());
 		model.addAttribute("list", service.getCCTVList(authentication.getName()));
 		return "cctv/addCCTV";
+	}
+	
+	@RequestMapping(value = "/addCCTV", method = RequestMethod.POST)
+	public String cctvInsert(Authentication authentication, @RequestParam(value = "arr[]") String[] data) {
+		service.save(data);
+		return "";
 	}
 
 	// @RequestMapping(value = "/test")
