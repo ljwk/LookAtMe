@@ -125,7 +125,7 @@
 			<tr><th>비밀번호</th><td><input type="password" name="pwd">&nbsp; <button onclick="pwdModi(); " class="btn btn-default" >수정</button></td></tr>
 			<tr><th>이메일</th><td><input type="text" value="${info.email}" name="email">&nbsp; <button onclick="emailModi();" class="btn btn-default" >수정</button></td></tr>			
 		</table>
-	</div>	
+	</div>	 
 	<br> 
 	<button onclick="drop();" class="btn btn-default" >회원탈퇴</button>
 	<a href="info?id=${info.id}"><button class="btn btn-default" >나가기</button></a>
