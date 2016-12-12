@@ -46,7 +46,7 @@
 				}
 			},
 			error: function(){
-				alert('실패');
+				alert('글 작성 실패. 모든 항목을 입력해주세요.');
 			}
 		}; 	
 		$("#reForm").ajaxForm(options);	
