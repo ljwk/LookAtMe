@@ -37,8 +37,9 @@
 				dataType : 'json',
 				success : function(res) {
 				 	if(res.success){
-			 			alert('비번 수정 성공');
-			 			location.href="info?id=<sec:authentication property="name"/>";
+			 			alert('비밀번호 수정 성공');
+			 			var id = $('[name=id]').val();
+			 			location.href="info?id="+id;
 					} 
 				},
 				error : function(xhr, status, error) {
@@ -62,7 +63,8 @@
 				success : function(res) {
 				 	if(res.success){
 			 			alert('이메일 수정 성공');
-			 			location.href="info?id=<sec:authentication property="name"/>";
+			 			var id = $('[name=id]').val();
+			 			location.href="info?id="+id;
 					} 
 				},
 				error : function(xhr, status, error) {
@@ -114,7 +116,8 @@
 	<div id="navdiv"></div>
 	<div id="centerdiv">
 	<h3 style="margin-right: 410px; font:bold 32px none;">회원정보 확인</h3>
-	<hr style="width: 600px; border:1px solid lightgray; margin-bottom:50px;">
+	<hr style="width: 600px; border:1px solid lightgray; margin-bottom:50px;">	
+	<input type="hidden" value="<sec:authentication property="name"/>" name="id">
 	<div id="content" class="panel panel-default">	
 		<div class="panel-heading">회원가입시 입력하신 email을 입력해주세요!</div>		 	
 		<table class="table">

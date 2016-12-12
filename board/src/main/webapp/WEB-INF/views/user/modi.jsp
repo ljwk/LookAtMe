@@ -34,7 +34,8 @@
 			dataType : 'json',
 			success : function(res) {
 			 	if(res.success){
-					location.href="modiForm?id=<sec:authentication property="name"/>";
+			 		var id = $('[name=id]').val();
+					location.href="modiForm?id="+id;
 				} else{
 					alert('비밀번호를 확인해주세요')
 				}
@@ -65,7 +66,7 @@
 	<div id="centerdiv">
 	<h3 style="margin-right: 410px; font:bold 32px none;">회원정보 확인</h3>
 	<hr style="width: 600px; border:1px solid lightgray; margin-bottom:50px;">
-	
+	<input type="hidden" value="<sec:authentication property="name"/>" name="id">
 	<h4 style="margin-bottom: 20px"><sec:authentication property="name"/>님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.</h4>
 	<form id="modiForm">
 		<input type="hidden" name="id" value="<sec:authentication property="name"/>">
