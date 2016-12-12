@@ -68,7 +68,6 @@
 <style type="text/css">
 	body {text-align: center;}
 	#navdiv {height:100px;}
-
 	table {border-spacing: 0px; margin: 0px auto;}
 	th, td {padding: 5px;}
 	th {text-align: center; background: rgb(252, 252, 252);}

@@ -119,8 +119,29 @@ body {
 	text-align: center;
 }
 
+
 #navdiv {
 	height: 130px;
+}
+table {
+	border-spacing: 0px;
+	margin: 0px auto; width: 800px;
+}
+th, td {
+	padding: 5px;
+}
+th {
+	width: 100px;
+	border-bottom:1px solid lightgray;
+	background: rgb(252, 252, 252);
+	text-align: left;
+}
+td {
+	border-bottom:1px solid lightgray;text-align: left;
+}
+#content {
+	width: 805px;
+	margin: 0px auto;
 }
 
 a:hover {
@@ -154,7 +175,11 @@ a {
 		<a href="view">CCTV 보기</a>
 	</div>
 	<div id="centerdiv">
+	<h3 style="margin-right: 650px; font:bold 32px none;">CCTV 관리</h3>
+	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
+	
 		<form action="addCCTV" method="post">
+			<div id="content" class="panel panel-default">
 			<table>
 				<tr>
 					<th>ID</th>
@@ -209,8 +234,10 @@ a {
 					</tr>
 				</c:forEach>
 			</table>
-			<button type="button" onclick="addone();">추가</button>
-			<button type="button" onclick="save();">적용</button>
+			</div>
+			<br>
+			<button type="button" onclick="addone();" class="btn btn-default">추가</button>
+			<button type="button" onclick="save();" class="btn btn-default">적용</button>
 		</form>
 	</div>
 	<div id="footarea">
