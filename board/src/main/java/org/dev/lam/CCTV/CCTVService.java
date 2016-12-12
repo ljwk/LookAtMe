@@ -39,21 +39,7 @@ public class CCTVService {
 
 	BufferedReader bufreader;
 
-	public void on() {
-		System.out.println(serverSocket);
-		if (serverSocket == null) {
-			System.out.println("Create ServerSocket");
-			userList = new ArrayList<>();
-			try {
-				serverSocket = new ServerSocket(8088);
-				if (MonitorBroadCast()) {
-					startServer();
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+	
 
 	private void startServer() {
 		new Thread(new Runnable() {
