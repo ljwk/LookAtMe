@@ -21,8 +21,8 @@
 	
 	<beans:bean id="dataSource" class="oracle.jdbc.pool.OracleDataSource">
 		<beans:property name="dataSourceName" value="ds" />
-<!-- 		<beans:property name="URL" value="jdbc:oracle:thin:@192.168.2.24:1521:xe" /> -->
-<beans:property name="URL" value="jdbc:oracle:thin:@localhost:1521:xe" />
+ 		<beans:property name="URL" value="jdbc:oracle:thin:@192.168.2.24:1521:xe" /> 
+		<!-- <beans:property name="URL" value="jdbc:oracle:thin:@localhost:1521:xe" /> -->
 		<beans:property name="user" value="scott" />
 		<beans:property name="password" value="TIGER" />
 	</beans:bean>	
