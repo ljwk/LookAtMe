@@ -57,7 +57,7 @@ a {
 
 	<div id="navdiv"></div>
 	<div>
-		<a href="addCCTV">CCTV 등록</a>
+		<a href="addCCTV">CCTV 관리</a>
 		<a href="view">CCTV 보기</a>
 	</div>
 	<div id="centerdiv">
