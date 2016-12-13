@@ -7,9 +7,9 @@ public interface CCTVDAO {
 
 	public List<CCTVVO> getCCTVList(String id);
 
-	public CCTVVO getVO(String name);
+	public CCTVVO authority(int num);
 
-	public int save(CCTVVO vo);
+	public int cctvInsert(CCTVVO vo);
 	
 	public List<CCTVVO> getAddList(Map<String, String> map);
 }

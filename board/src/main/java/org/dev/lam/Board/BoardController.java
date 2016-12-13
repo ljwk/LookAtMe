@@ -89,7 +89,7 @@ public class BoardController {
 			try {
 				inputStream = board.getFile().getInputStream();
 
-				File newFile = new File("F:/test/upload/" + tmpName);
+				File newFile = new File("E:/test/upload/" + tmpName);
 				if (!newFile.exists()) {
 					newFile.createNewFile();
 				}
@@ -176,7 +176,7 @@ public class BoardController {
 			try {
 				inputStream = board.getFile().getInputStream();
 
-				File newFile = new File("F:/test/upload/" + tmpName);
+				File newFile = new File("E:/test/upload/" + tmpName);
 				if (!newFile.exists()) {
 					newFile.createNewFile();
 				}
@@ -240,7 +240,7 @@ public class BoardController {
 			try {
 				inputStream = board.getFile().getInputStream();
 
-				File newFile = new File("F:/test/upload/" + tmpName);
+				File newFile = new File("E:/test/upload/" + tmpName);
 				if (!newFile.exists()) {
 					newFile.createNewFile();
 				}
@@ -306,7 +306,7 @@ public class BoardController {
 	@RequestMapping("/download")
 	@ResponseBody
 	public byte[] getImage(HttpServletResponse response, @RequestParam String filename) throws IOException {
-		File file = new File("F:/test/upload/" + filename);
+		File file = new File("E:/test/upload/" + filename);
 		byte[] bytes = org.springframework.util.FileCopyUtils.copyToByteArray(file);
 
 		// 한글은 http 헤더에 사용할 수 없기때문에 파일명은 영문으로 인코딩하여 헤더에 적용한다
