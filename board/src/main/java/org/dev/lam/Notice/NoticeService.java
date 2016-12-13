@@ -66,8 +66,6 @@ public class NoticeService {
 	public boolean modi(NoticeVO board) {
 		NoticeDAO dao = sqlSessionTemplate.getMapper(NoticeDAO.class);
 		int n = dao.modi(board);
-		int num = dao.num1(board.getId());
-		board.setNum(num);
 		dao.fileupdate(board);
 		return n > 0 ? true : false;
 	}
@@ -78,6 +76,13 @@ public class NoticeService {
 		return n > 0 ? true : false;
 	}
 
+	public boolean modi2(NoticeVO board) {
+		NoticeDAO dao = sqlSessionTemplate.getMapper(NoticeDAO.class);
+		int n = dao.modi(board);
+		dao.fileupdate2(board);
+		return n > 0 ? true : false;
+	}
+	
 	public boolean addInsert(NoticeVO board) {
 		NoticeDAO dao = sqlSessionTemplate.getMapper(NoticeDAO.class);
 		int n = dao.reinsert(board);

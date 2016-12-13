@@ -56,6 +56,11 @@
 		UPDATE noticepds SET filename = #{filename}, filesize = #{filesize}, ext = #{ext}, filenames = #{filename2} WHERE num=#{num}		
 	</update>		
 	
+	<insert id="fileupdate2" parameterType="org.dev.lam.Notice.NoticeVO">
+		INSERT INTO noticepds (num, filename,filesize,ext,filenames)
+		VALUES (#{num}, #{filename}, #{filesize}, #{ext},#{filename2})		
+	</insert>	
+	
 	<update id="modi" parameterType="org.dev.lam.Notice.NoticeVO">
 		UPDATE notice SET title = #{title}, contents= #{contents} WHERE num=#{num}
 	</update>
