@@ -66,8 +66,6 @@ public class BoardService {
 	public boolean modi(BoardVO board) {
 		BoardDAO dao = sqlSessionTemplate.getMapper(BoardDAO.class);
 		int n = dao.modi(board);
-		int num = dao.num1(board.getId());
-		board.setNum(num);
 		dao.fileupdate(board);
 		return n > 0 ? true : false;
 	}
@@ -75,6 +73,13 @@ public class BoardService {
 	public boolean modi1(BoardVO board) {
 		BoardDAO dao = sqlSessionTemplate.getMapper(BoardDAO.class);
 		int n = dao.modi(board);
+		return n > 0 ? true : false;
+	}
+	
+	public boolean modi2(BoardVO board) {
+		BoardDAO dao = sqlSessionTemplate.getMapper(BoardDAO.class);
+		int n = dao.modi(board);
+		dao.fileupdate2(board);
 		return n > 0 ? true : false;
 	}
 	

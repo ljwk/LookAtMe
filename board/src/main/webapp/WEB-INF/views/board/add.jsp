@@ -36,6 +36,7 @@
 	  //smarteditor end
 		$("#navdiv").load("../resources/nav.jsp");
 		$("#footer").load("../resources/footer.jsp");
+		
 		var options = { 
 			success: function(res){
 				if(res.success){

@@ -19,4 +19,5 @@ public interface NoticeDAO {
 	public int fileadd(NoticeVO board);
 	public NoticeVO fileDesc(int num);	
 	public int fileupdate(NoticeVO board);
+	public int fileupdate2(NoticeVO board);
 }

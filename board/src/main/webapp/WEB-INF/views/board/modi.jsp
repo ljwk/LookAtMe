@@ -14,7 +14,8 @@
 <script src="<c:url value="/resources/jquery.bootpag.min.js"/>"></script>
 <script type="text/javascript" src="/board/resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
-	$(function(){
+var a = "";
+	$(function(){		
 		//smarteditor
 	    var editor_object = [];
 	    nhn.husky.EZCreator.createInIFrame({
@@ -34,9 +35,19 @@
 			 editor_object.getById["contents"].exec("UPDATE_CONTENTS_FIELD", []);
 			} 
 	  //smarteditor end
+
 		
 	    $("#navdiv").load("../resources/nav.jsp");
 	    $("#footer").load("../resources/footer.jsp");
+	    
+    	var name = '${desc.filename}';
+    	var theForm = document.modiboard;
+    	
+    	if(name==""){
+    		theForm.action = "modisav"; 
+    	}else{
+    		theForm.action = "modisave"; 
+    	}    	
 	    
 		var options = { 
 			success: function(res){
@@ -78,16 +89,16 @@
 	<div id="centerdiv">
 	<h3 style="margin-right: 730px; font:bold 32px none;">수정</h3>
 	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
-	<form id="modiboard" method="post" action="modisave" enctype="multipart/form-data">
+	<form id="modiboard"name="modiboard" method="post" enctype="multipart/form-data">	
 		<div id="content" class="panel panel-default">
 			<input type="hidden" name="id" value="${id}">
 			<input type="hidden" name="num"  value="${num}">
 			<table>
 				<tr>
-					<th>제목</th><td><input type="text" id="title" name="title" maxlength="40" size="90%"></td>
+					<th>제목</th><td><input type="text" id="title" name="title" maxlength="40" size="90%" value="${desc.title}"></td>
 				</tr>
 				<tr>
-					<th>내용</th><td><textarea id="contents" name="contents" rows="15" cols="92%" maxlength="400"></textarea></td>
+					<th>내용</th><td><textarea id="contents" name="contents" rows="15" cols="92%" maxlength="400" >${desc.contents}</textarea></td>
 				</tr>			
 				<tr>
 					<th>첨부</th><td><input type="file" name="file"></td>
