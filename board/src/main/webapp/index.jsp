@@ -103,7 +103,6 @@ a {color: gray; text-decoration: none;}
 	    <li><img src="resources/js/images/main3.jpg"></li>
 	</ul>
 	</div>
-
 		<div id="allsubimage">
 			<!-- normal -->
 			<div id="subimg1" class="ih-item square effect3 bottom_to_top">
@@ -137,7 +136,6 @@ a {color: gray; text-decoration: none;}
 				</a>
 			</div>
 			<!-- end normal -->
-
 			<!-- normal -->
 			<div id="subimg1" class="ih-item square effect13 top_to_bottom">
 				<a href="#">
