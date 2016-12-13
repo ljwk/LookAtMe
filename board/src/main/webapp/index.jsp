@@ -9,9 +9,10 @@
 <title>index</title>
 <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script src="//raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script>
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script src="<c:url value="/resources/jquery.bootpag.min.js"/>"></script>
+
+<link href="<c:url value="/resources/ihover/ihover.css"/>" rel="stylesheet">
 
 <!--bxslider-->
 <!-- jQuery library (served from Google) -->
@@ -58,13 +59,15 @@
 #sliderimg {border-spacing: 0px; margin-left: 410px; width: 1100px;}
 .bxslider > li > img {height:400px; width:1350px;}
 .bxslider > li {height:400px; width: 500px;}
-#imgs {margin-left:370px; width: 1400px; height: 300px;}
-#imgs > img {float:left; margin-left: 35px; width:250px; height:250px;}
+#allsubimage{margin-left:370px;width:1150px; height: 300px;}
+#subimg{float:left;width:250px; height:250px;}
+#subimg1{float:left;width:250px; height:250px;margin-left:35px;}
 a:hover {color: red;}
 a:active {color: gold}
 a {color: gray; text-decoration: none;}
 .no {position: relative; display: block; padding: 12px 15px;}
 #main {margin-left: 380px;}
+
 #footer > ul {text-align: center;}
 </style>
 </head>
@@ -100,12 +103,55 @@ a {color: gray; text-decoration: none;}
 	    <li><img src="resources/js/images/main3.jpg"></li>
 	</ul>
 	</div>
-	<div id="imgs">
-		 <img src="resources/js/images/appphone.png" class="img-thumbnail">
-		 <img src="resources/js/images/babysafe.png" class="img-thumbnail">
-		 <img src="resources/js/images/dogsafe.png" class="img-thumbnail">
-		 <img src="resources/js/images/firesafe.png" class="img-thumbnail">
-	</div>
+
+		<div id="allsubimage">
+			<!-- normal -->
+			<div id="subimg1" class="ih-item square effect3 bottom_to_top">
+				<img src="resources/js/images/appphone.png" alt="img">
+			</div>
+			<!-- end normal -->
+			<!-- normal -->
+			<div id="subimg1" class="ih-item square effect13 top_to_bottom">
+				<a href="#">
+					<div class="img">
+						<img src="resources/js/images/babysafe.jpg" alt="img">
+					</div>
+					<div class="info">
+						<h3>Look Out과 함께라면</h3>
+						<p>사랑하는 자녀를 항상 확인할 수 있습니다</p>
+					</div>
+				</a>
+			</div>
+			<!-- end normal -->
+
+			<!-- normal -->
+			<div id="subimg1" class="ih-item square effect13 top_to_bottom">
+				<a href="#">
+					<div class="img">
+						<img src="resources/js/images/dogsafe.jpg" alt="img">
+					</div>
+					<div class="info">
+						<h3>Look Out과 함께라면</h3>
+						<p>사랑하는 애완동물을 언제나 볼 수 있습니다</p>
+					</div>
+				</a>
+			</div>
+			<!-- end normal -->
+
+			<!-- normal -->
+			<div id="subimg1" class="ih-item square effect13 top_to_bottom">
+				<a href="#">
+					<div class="img">
+						<img src="resources/js/images/firesafe.jpg" alt="img">
+					</div>
+					<div class="info">
+						<h3>Look Out과 함께라면</h3>
+						<p>화재를 예방할 수 있습니다</p>
+					</div>
+				</a>
+			</div>
+		</div>
+	<!-- end normal -->
 	<div id="footarea">
 		<div id="footer"></div>
 	</div>
