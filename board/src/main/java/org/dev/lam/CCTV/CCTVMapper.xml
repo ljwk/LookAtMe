@@ -9,11 +9,11 @@
 		SELECT num, id,cctvip,cctvname,authority FROM cctv WHERE cctvip = #{cctvip} AND NOT id = #{id}
 	</select>
 
-	<select id="getVO" resultType="org.dev.lam.CCTV.CCTVVO">
-		SELECT cctvip, cctvname, authority FROM cctv WHERE id = #{id} ORDER BY num;
+	<select id="authority" resultType="org.dev.lam.CCTV.CCTVVO">
+		SELECT cctvip, cctvname, authority FROM cctv WHERE num = #{num}
 	</select>
 
-	<insert id="save" parameterType="org.dev.lam.CCTV.CCTVVO">
+	<insert id="cctvInsert" parameterType="org.dev.lam.CCTV.CCTVVO">
 		<choose>
 			<when test="num == -1">
 				INSERT INTO cctv (num, cctvip, cctvname, id, authority) VALUES (CCTV_NUM.NEXTVAL, #{cctvip}, #{cctvname}, #{id}, #{authority})

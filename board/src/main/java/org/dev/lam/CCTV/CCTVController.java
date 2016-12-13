@@ -31,7 +31,7 @@ public class CCTVController {
 		if (authentication != null) {
 			WebAuthenticationDetails wad = (WebAuthenticationDetails) authentication.getDetails();
 			model.addAttribute("sessionid", wad.getSessionId());
-			model.addAttribute("vo", service.getVO(authentication.getName()));
+			model.addAttribute("vo", service.getVO(1));
 		}
 		return "cctv/view";
 	}
@@ -40,7 +40,7 @@ public class CCTVController {
 	@ResponseBody
 	public boolean authority(Model model, @RequestParam("id") String sessionid) {
 		System.out.println("permit");
-		return service.viewPermit(sessionid);
+		return service.getAuthority(sessionid);
 	}
 
 	@RequestMapping(value = "/addCCTV", method = RequestMethod.GET)
@@ -53,8 +53,8 @@ public class CCTVController {
 
 	@RequestMapping(value = "/addCCTV", method = RequestMethod.POST)
 	public String cctvInsert(Authentication authentication, @RequestParam(value = "arr[]") String[] data) {
-		service.save(data);
-		return "";
+		service.getInsert(data);
+		return "cctv/addCCTV";
 	}
 
 }

@@ -22,10 +22,7 @@
 	</c:if>
 </c:forEach>
 <script type="text/javascript">
-	var size = $
-	{
-		size
-	};
+	var size = ${size};
 	var addsize = 0;
 	$(function() {
 		$("#navdiv").load("../resources/nav.jsp");
@@ -64,21 +61,22 @@
 
 	function save() {
 		var array = [];
-
-		for (var i = 0; i < size; i++) {
+		var i = 0;
+// 		for (var i = 0; i < size; i++) {
+		while($(".line:eq(" + i + ") > td > [name=num]").val() != undefined) {
 			var obj = {};
-			if ($(".line:eq(" + i + ") > td > [name=authority]").val() != null) {
+			if ($(".line:eq(" + i + ") > td > [name=authority]").val() != undefined) {
+				console.log($(".line:eq(" + i + ") > td > [name=cctvname]").val());
 				obj.num = $(".line:eq(" + i + ") > td > [name=num]").val();
-				obj.cctvip = $(".line:eq(" + i + ") > td > [name=cctvip]")
-						.val();
-				obj.cctvname = $(".line:eq(" + i + ") > td > [name=cctvname]")
-						.val();
-				obj.authority = $(".line:eq(" + i + ") > td > [name=authority]")
-						.val();
+				obj.cctvip = $(".line:eq(" + i + ") > td > [name=cctvip]").val();
+				obj.cctvname = $(".line:eq(" + i + ") > td > [name=cctvname]").val();
+				obj.authority = $(".line:eq(" + i + ") > td > [name=authority]").val();
+				obj.id = $(".line:eq(" + i + ") > td > [name=id]").val();
 
 				array.push(JSON.stringify(obj));
 			}
-			console.log(array[i]);
+// 			console.log(array[i]);
+			i++;
 		}
 
 		for (var i = 0; i < addsize; i++) {
@@ -86,8 +84,7 @@
 			obj.id = $(".add:eq(" + i + ") > td > [name=id]").val();
 			obj.cctvip = $(".add:eq(" + i + ") > td > [name=cctvip]").val();
 			obj.cctvname = $(".add:eq(" + i + ") > td > [name=cctvname]").val();
-			obj.authority = $(".add:eq(" + i + ") > td > [name=authority]")
-					.val();
+			obj.authority = $(".add:eq(" + i + ") > td > [name=authority]").val();
 			obj.num = -1;
 
 			array.push(JSON.stringify(obj));
@@ -104,7 +101,7 @@
 			data : obj,
 			type : "post",
 			success : function(result) {
-				console.log(result);
+				location.href="addCCTV"
 			},
 			error : function(xhr, status, error) {
 				console.log(xhr);
@@ -166,6 +163,10 @@ a {
 .line>#num {
 	display: none;
 }
+
+.line>#id {
+	display: none;
+}
 </style>
 </head>
 <body>
@@ -193,6 +194,7 @@ a {
 						<c:if test="${item.authority eq 'ADMIN'}">
 							<c:choose>
 								<c:when test="${item.id eq id}">
+									<td id="id"><input name="id" value="${item.id}"></td>
 									<td>${item.id}</td>
 								</c:when>
 								<c:when test="${!(item.id eq id)}">

@@ -1,10 +1,5 @@
 package org.dev.lam.CCTV;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +16,7 @@ public class CCTVService {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 
-	public boolean viewPermit(String sessionid) {
+	public boolean getAuthority(String sessionid) {
 		Map<String, String> online = CustomAuthenticationProvider.getOnline();
 		System.out.println(sessionid);
 		System.out.println(online.keySet());
@@ -39,16 +34,16 @@ public class CCTVService {
 		List<CCTVVO> list = cctvdao.getCCTVList(id);
 		List<CCTVVO> temp = new ArrayList<>();
 		
-		for(int i=0; i<list.size(); i++) {
-			System.out.println(list.get(i).getAuthority());
-			System.out.println(list.get(i).getCctvip());
-			System.out.println(list.get(i).getCctvname());
-			System.out.println(list.get(i).getId());
-			System.out.println(list.get(i).getNum());
-		}
+//		for(int i=0; i<list.size(); i++) {
+//			System.out.println(list.get(i).getAuthority());
+//			System.out.println(list.get(i).getCctvip());
+//			System.out.println(list.get(i).getCctvname());
+//			System.out.println(list.get(i).getId());
+//			System.out.println(list.get(i).getNum());
+//		}
 		
 		for (CCTVVO e : list) {
-			System.out.println(e.getAuthority());
+//			System.out.println(e.getAuthority());
 			if (e.getAuthority().equals("ADMIN")) {
 				Map<String, String> map = new HashMap<>();
 				map.put("cctvip", e.getCctvip());
@@ -58,7 +53,7 @@ public class CCTVService {
 					temp.add(e2);
 				}
 			}
-			System.out.println(list.size());
+//			System.out.println(list.size());
 		}
 		
 		for (CCTVVO e : temp) {
@@ -67,24 +62,26 @@ public class CCTVService {
 		return list;
 	}
 
-	public CCTVVO getVO(String name) {
+	public CCTVVO getVO(int num) {
 		CCTVDAO cctvdao = sqlSessionTemplate.getMapper(CCTVDAO.class);
-		CCTVVO vo = cctvdao.getVO(name);
+		CCTVVO vo = cctvdao.authority(num);
 		
 		System.out.println(vo.getCctvip());
 		return vo;
 	}
 
-	public void save(String[] data) {
+	public void getInsert(String[] data) {
 		List<CCTVVO> list = convert(data);
 		CCTVDAO cctvdao = sqlSessionTemplate.getMapper(CCTVDAO.class);
-		
+		System.out.println(list.size());
 		for (CCTVVO e : list) {
-			cctvdao.save(e);
+			cctvdao.cctvInsert(e);
+			System.out.println(e.getNum());
 		}
 	}
 
 	private List<CCTVVO> convert(String[] data) {
+		System.out.println("convert");
 		List<CCTVVO> list = new ArrayList<>();
 		for (String e : data) {
 			if (!e.equals("")) {
