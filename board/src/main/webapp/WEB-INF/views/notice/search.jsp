@@ -63,9 +63,8 @@
 </style>
 </head>
 <body>
-<div id="navdiv">
-<div id="centerdiv">
-</div>
+	<div id="navdiv"></div>
+	<div id="centerdiv">
 	<h3>게 시 판 !</h3>
 	<div id="content" class="panel panel-default">
 

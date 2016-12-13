@@ -96,7 +96,7 @@ public class NoticeService {
 
 	public List<NoticeVO> getNumSearchList(int page, int rpp, String searchContents) {
 		NoticeDAO dao = sqlSessionTemplate.getMapper(NoticeDAO.class);
-		List<NoticeVO> list = dao.numList(page, rpp, searchContents);
+		List<NoticeVO> list = dao.numList(page, rpp, searchContents);		
 		return list;
 	}
 

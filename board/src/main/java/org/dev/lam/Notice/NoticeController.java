@@ -253,6 +253,7 @@ public class NoticeController {
 	public String search(@RequestParam(value = "page", defaultValue = "1") int page,
 			@RequestParam(value = "rpp", defaultValue = "10") int rpp, @RequestParam("search") String search,
 			@RequestParam("searchContents") String searchContents, Model model) {
+		
 		if (search.equals("번호")) {
 			model.addAttribute("list", svc.getNumSearchList(page, rpp, searchContents));
 		} else if (search.equals("제목")) {
