@@ -84,11 +84,10 @@
 		<table>	
 			<tr>
 				<th>제목</th><td colspan="5">${desc.title}</td>
-			</tr>
-		
+			</tr>		
 			<tr>
 				<th>번호</th><td>${desc.num}</td>
-				<th>작성자</th><td>${desc.id}</td>
+				<th>작성자</th><td><a href="/board/user/info?id=${desc.id}">${desc.id}</a></td>
 			</tr>
 			<tr id="file" >
 				<th>메일</th><td colspan="5" ><a href="mail?email=${desc.email}">${desc.email}</a></td>

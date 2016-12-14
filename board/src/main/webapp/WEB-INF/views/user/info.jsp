@@ -67,7 +67,10 @@
 		</div>
 	</form>	
 	<br>
-	<button onclick="modiForm();" class="btn btn-default">정보수정</button>
+	<sec:authentication property="name" var="secName"/>
+	<sec:authorize access="${secName==info.id}">			
+		<button onclick="modiForm();" class="btn btn-default">정보수정</button>
+	</sec:authorize>
 	</div>
 	<div id="footarea">
 	<div id="footer"></div>
