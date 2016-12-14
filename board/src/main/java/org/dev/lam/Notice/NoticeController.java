@@ -154,7 +154,7 @@ public class NoticeController {
 			try {
 				inputStream = board.getFile().getInputStream();
 
-				File newFile = new File("F:/test/upload/" + tmpName);
+				File newFile = new File("E:/test/upload/" + tmpName);
 				if (!newFile.exists()) {
 					newFile.createNewFile();
 				}
