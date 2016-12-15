@@ -171,14 +171,16 @@ a {
 </head>
 <body>
 	<div id="navdiv"></div>
-	<div>
-		<a href="list">CCTV 보기</a>
-		<a href="addCCTV">CCTV 관리</a>
-	</div>
+
 	<div id="centerdiv">
 	<h3 style="margin-right: 650px; font:bold 32px none;">CCTV 관리</h3>
-	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
-	
+	<hr style="width: 800px; border:1px solid lightgray;">
+	<div>
+		<a href="list"><button class="btn btn-default" type="button">CCTV 보기</button></a>
+		<a style="margin-right: 600px;"href="addCCTV"><button class="btn btn-default" type="button">CCTV 관리</button></a>
+		<br>
+		<br>
+	</div>
 		<form action="addCCTV" method="post">
 			<div id="content" class="panel panel-default">
 			<table>

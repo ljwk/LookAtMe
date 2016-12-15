@@ -36,10 +36,11 @@ public class CCTVService {
 			vo.setId(id);
 			vo.setCctvip(ip);
 			vo = cctvdao.viewAuthority(vo);
-			System.out.println(id);
+			System.out.println("id:"+id);
 			System.out.println(vo.getAuthority());
 			
 			if (vo.getAuthority().equals("ADMIN")) {
+				System.out.println("return admin");
 				return "true:ADMIN";
 			} else if (vo.getAuthority().equals("USER")) {
 				return "true:USER";

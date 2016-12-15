@@ -108,15 +108,15 @@
 	
 	var ip = '${vo.cctvip}';
 	function right() {
-		$.ajax("http://" + ip.split(':')[0] + ":8084?key=ddddd");
+		$.ajax("http://" + ip.split(':')[0] + ":8084?key=ddddd&id=${sessionid}");
 	};
 
 	function left() {
-		$.ajax("http://" + ip.split(':')[0] + ":8084?key=aaaaa");
+		$.ajax("http://" + ip.split(':')[0] + ":8084?key=aaaaa&id=${sessionid}");
 	};
 	
 	function flash() {
-		$.ajax("http://" + ip.split(':')[0] + ":8084?key=flash");
+		$.ajax("http://" + ip.split(':')[0] + ":8084?key=flash&id=${sessionid}");
 	};
 </script>
 <style type="text/css">
