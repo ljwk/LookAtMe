@@ -21,26 +21,27 @@ public class CCTVController {
 	public String cctvForm(Model model, Authentication authentication) {
 		if (authentication != null) {
 			WebAuthenticationDetails wad = (WebAuthenticationDetails) authentication.getDetails();
+			model.addAttribute("list", service.getCCTVList(authentication.getName()));
 			model.addAttribute("sessionid", wad.getSessionId());
 		}
-		return "cctv/cctv";
+		return "cctv/viewList";
 	}
 
 	@RequestMapping(value = "/view")
-	public String cctvView(Model model, Authentication authentication) {
+	public String cctvView(Model model, Authentication authentication, @RequestParam("num") String num) {
 		if (authentication != null) {
 			WebAuthenticationDetails wad = (WebAuthenticationDetails) authentication.getDetails();
 			model.addAttribute("sessionid", wad.getSessionId());
-			model.addAttribute("vo", service.getVO(1));
+			model.addAttribute("vo", service.getVO(Integer.valueOf(num)));
 		}
 		return "cctv/view";
 	}
 
 	@RequestMapping(value = "/authority")
 	@ResponseBody
-	public boolean authority(Model model, @RequestParam("id") String sessionid) {
+	public String authority(Model model, @RequestParam("id") String sessionid, @RequestParam("ip") String ip) {
 		System.out.println("permit");
-		return service.getAuthority(sessionid);
+		return service.getAuthority(sessionid, ip);
 	}
 
 	@RequestMapping(value = "/addCCTV", method = RequestMethod.GET)

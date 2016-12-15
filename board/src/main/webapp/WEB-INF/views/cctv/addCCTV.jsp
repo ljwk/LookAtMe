@@ -172,8 +172,8 @@ a {
 <body>
 	<div id="navdiv"></div>
 	<div>
+		<a href="list">CCTV 보기</a>
 		<a href="addCCTV">CCTV 관리</a>
-		<a href="view">CCTV 보기</a>
 	</div>
 	<div id="centerdiv">
 	<h3 style="margin-right: 650px; font:bold 32px none;">CCTV 관리</h3>

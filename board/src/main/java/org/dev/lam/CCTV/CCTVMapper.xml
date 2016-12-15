@@ -12,6 +12,10 @@
 	<select id="authority" resultType="org.dev.lam.CCTV.CCTVVO">
 		SELECT cctvip, cctvname, authority FROM cctv WHERE num = #{num}
 	</select>
+	
+	<select id="viewAuthority" parameterType="hashmap" resultType="org.dev.lam.CCTV.CCTVVO">
+	    SELECT cctvip, cctvname, authority FROM cctv WHERE id = #{id} AND cctvip = #{cctvip}
+	</select>
 
 	<insert id="cctvInsert" parameterType="org.dev.lam.CCTV.CCTVVO">
 		<choose>

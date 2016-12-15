@@ -57,75 +57,35 @@
 		});
 		
 	}
-
-	function save() {
-		var array = [];
-
-		for (var i = 0; i < size; i++) {
-			var obj = {};
-			if ($(".line:eq(" + i + ") > td > [name=authority]").val() != null) {
-				obj.num = $(".line:eq(" + i + ") > td > [name=num]").val();
-				obj.cctvip = $(".line:eq(" + i + ") > td > [name=cctvip]").val();
-				obj.cctvname = $(".line:eq(" + i + ") > td > [name=cctvname]").val();
-				obj.authority = $(".line:eq(" + i + ") > td > [name=authority]").val();
-
-				array.push(JSON.stringify(obj));
-			}
-			console.log(array[i]);
-		}
-
-		for (var i = 0; i < addsize; i++) {
-			var obj = {};
-			obj.id = $(".add:eq(" + i + ") > td > [name=id]").val();
-			obj.cctvip = $(".add:eq(" + i + ") > td > [name=cctvip]").val();
-			obj.cctvname = $(".add:eq(" + i + ") > td > [name=cctvname]").val();
-			obj.authority = $(".add:eq(" + i + ") > td > [name=authority]").val();
-			obj.num = -1;
-
-			array.push(JSON.stringify(obj));
-			console.log(array[size + i]);
-		}
-
-		array.push("");
-
-		var obj = {};
-		obj.arr = array;
-
-		$.ajax({
-			url : "addCCTV",
-			data : obj,
-			type : "post",
-			success : function(result) {
-				console.log(result);
-			},
-			error : function(xhr, status, error) {
-				console.log(xhr);
-				console.log(status);
-				console.log(error);
-			}
-		});
-	}
-	
-	var ip = '${vo.cctvip}';
-	function right() {
-		$.ajax("http://" + ip.split(':')[0] + ":8084?key=ddddd");
-	};
-
-	function left() {
-		$.ajax("http://" + ip.split(':')[0] + ":8084?key=aaaaa");
-	};
-	
-	function flash() {
-		$.ajax("http://" + ip.split(':')[0] + ":8084?key=flash");
-	};
 </script>
 <style type="text/css">
 body {
 	text-align: center;
 }
 
+
 #navdiv {
 	height: 130px;
+}
+table {
+	border-spacing: 0px;
+	margin: 0px auto; width: 800px;
+}
+th, td {
+	padding: 5px;
+}
+th {
+	width: 100px;
+	border-bottom:1px solid lightgray;
+	background: rgb(252, 252, 252);
+	text-align: left;
+}
+td {
+	border-bottom:1px solid lightgray;text-align: left;
+}
+#content {
+	width: 805px;
+	margin: 0px auto;
 }
 
 a:hover {
@@ -150,6 +110,10 @@ a {
 .line>#num {
 	display: none;
 }
+
+.line>#id {
+	display: none;
+}
 </style>
 </head>
 <body>
@@ -158,18 +122,19 @@ a {
 		<a href="list">CCTV 보기</a>
 		<a href="addCCTV">CCTV 관리</a>
 	</div>
-	<div id="centerdiv">
-		<div id="view">
-		<img style='-webkit-user-select: none'
-			src='http://${vo.cctvip}/?id=${sessionid}&ip=${vo.cctvip}'>
-	</div>
-	<c:if test="${vo.authority eq 'ADMIN'}">
-		<div>
-			<button id="left" onclick="left();">←</button>
-			<button id="right" onclick="right();">→</button>
-			<button id="right" onclick="flash();">플래시</button>
-		</div>
-	</c:if>
+	<div id="content" class="panel panel-default">
+		<table>
+			<tr>
+				<th>CCTV 이름</th>
+				<th>권한</th>
+			</tr>
+			<c:forEach var="item" items="${list}">
+				<tr>
+					<td><a href="view?num=${item.num}&id=${item.id}">${item.cctvname}</a></td>
+					<td>${item.authority}</td>
+				</tr>
+			</c:forEach>
+		</table>
 	</div>
 	<div id="footarea">
 		<div id="footer"></div>

@@ -27,8 +27,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 public class UserController {
 	@Autowired
 	private UserService svc;
-	
-	private static String Sid;
 
 	@RequestMapping(value = "/joinForm", method = RequestMethod.GET)
 	public String join(@RequestParam(value = "auth", defaultValue = "") String auth, Model model, HttpSession session) {

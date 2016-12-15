@@ -11,5 +11,7 @@ public interface CCTVDAO {
 
 	public int cctvInsert(CCTVVO vo);
 	
+	public CCTVVO viewAuthority(CCTVVO vo);
+	
 	public List<CCTVVO> getAddList(Map<String, String> map);
 }

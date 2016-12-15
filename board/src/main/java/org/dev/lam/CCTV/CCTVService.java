@@ -16,16 +16,30 @@ public class CCTVService {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 
-	public boolean getAuthority(String sessionid) {
+	public String getAuthority(String sessionid, String ip) {
 		Map<String, String> online = CustomAuthenticationProvider.getOnline();
 		System.out.println(sessionid);
 		System.out.println(online.keySet());
+		System.out.println(ip);
 		if (online.containsKey(sessionid)) {
 			String id = online.get(sessionid);
+			CCTVDAO cctvdao = sqlSessionTemplate.getMapper(CCTVDAO.class);
+			CCTVVO vo = new CCTVVO();
+			vo.setId(id);
+			vo.setCctvip(ip);
+			vo = cctvdao.viewAuthority(vo);
 			System.out.println(id);
-			return true;
+			System.out.println(vo.getAuthority());
+			
+			if (vo.getAuthority().equals("ADMIN")) {
+				return "true:ADMIN";
+			} else if (vo.getAuthority().equals("USER")) {
+				return "true:USER";
+			} else {
+				return "false";
+			}
 		} else {
-			return false;
+			return "false";
 		}
 	}
 
@@ -67,6 +81,7 @@ public class CCTVService {
 		CCTVVO vo = cctvdao.authority(num);
 		
 		System.out.println(vo.getCctvip());
+		System.out.println(vo.getAuthority());
 		return vo;
 	}
 
