@@ -64,8 +64,6 @@ a {
 		<h3>CCTV</h3>
 		<br>
 		<br>
-		<!-- 		<img style="-webkit-user-select: none" src="http://192.168.2.27:8081/board/free/test/"> -->
-<%-- 		<img style="-webkit-user-select: none" src="http://192.168.2.26:8083?id=${sessionid}"> <br> --%>
 		<br>
 		<button>←</button>
 		<button>→</button>

@@ -21,7 +21,7 @@ public class CCTVController {
 	public String cctvForm(Model model, Authentication authentication) {
 		if (authentication != null) {
 			WebAuthenticationDetails wad = (WebAuthenticationDetails) authentication.getDetails();
-			model.addAttribute("list", service.getCCTVList(authentication.getName()));
+			model.addAttribute("list", service.getViewCCTVList(authentication.getName()));
 			model.addAttribute("sessionid", wad.getSessionId());
 		}
 		return "cctv/viewList";
@@ -57,5 +57,11 @@ public class CCTVController {
 		service.getInsert(data);
 		return "cctv/addCCTV";
 	}
+	
+//	@RequestMapping(value = "/connectTest")
+//	public String connectTest(Model model, @RequestParam("ip") String ip) {
+//		service.connectTest(ip);
+//		return "";
+//	}
 
 }

@@ -48,7 +48,7 @@
 								+ '<option value="ADMIN" selected="selected">관리자</option>'
 								+ '<option value="USER">사용자</option>'
 								+ '</select></td>' 
-								+ '<td><button type="button" onclick="check(' + addsize + ');">테스트</button></td>'
+// 								+ '<td><button type="button" onclick="check(' + addsize + ');">테스트</button></td>'
 								+ '</tr>');
 	}
 	

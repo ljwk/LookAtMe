@@ -122,6 +122,9 @@ a {
 		<a href="list">CCTV 보기</a>
 		<a href="addCCTV">CCTV 관리</a>
 	</div>
+	<h3 style="margin-right: 650px; font:bold 32px none;">CCTV 목록</h3>
+	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
+	
 	<div id="content" class="panel panel-default">
 		<table>
 			<tr>
