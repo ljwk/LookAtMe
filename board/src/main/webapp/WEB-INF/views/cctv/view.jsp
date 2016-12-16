@@ -165,11 +165,11 @@ a {
 	</div>
 	<c:if test="${vo.authority eq 'ADMIN'}">
 		<div>
-			<button id="left" onclick="left();">←</button>
-			<button id="right" onclick="right();">→</button>
-			<button id="right" onclick="flash();">플래시</button>
+			<button id="left" onclick="left();" class="btn btn-default" >←</button>
+			<button id="right" onclick="right();" class="btn btn-default" >→</button>
+			<button id="right" onclick="flash();" class="btn btn-default" >플래시</button>
 		</div>
-	</c:if>
+	</c:if> 
 	</div>
 	<div id="footarea">
 		<div id="footer"></div>
