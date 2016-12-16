@@ -2,12 +2,22 @@ package org.dev.lam.Board;
 
 import java.io.*;
 import java.util.*;
+
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMessage.RecipientType;
+
+import org.dev.lam.User.EmailVO;
 import org.mybatis.spring.*;
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.*;
 
 @Service
 public class BoardService {
+	
+	@Autowired
+	protected JavaMailSender mailSender;
 	
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
@@ -137,5 +147,26 @@ public class BoardService {
 		}
 		return true;
 	}
+	
+    public boolean sendMail(EmailVO email) throws Exception {
+        try{
+	        MimeMessage msg = mailSender.createMimeMessage();
+	        InternetAddress addr = new InternetAddress("someone@paran.com");
+	        msg.setFrom(addr); // 송신자를 설정해도 소용없지만 없으면 오류가 발생한다
+	        //msg.setFrom("someone@paran.com");
+	        msg.setSubject(email.getSubject());
+
+	        // 일반 텍스트만 전송하려는 경우
+	        msg.setText(email.getContent());  
+
+	        msg.setRecipient(RecipientType.TO , new InternetAddress(email.getReceiver()));
+	         
+	        mailSender.send(msg);
+	        return true;
+        }catch(Exception ex) {
+        	ex.printStackTrace();
+        }
+        return false;
+    }
 	
 }

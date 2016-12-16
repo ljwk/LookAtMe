@@ -12,6 +12,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.dev.lam.User.EmailVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -374,9 +376,27 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/mail", method = RequestMethod.GET)
-	public String mail(@RequestParam("email") String email, Model model) {
+	public String mail(@RequestParam("email") String email, @RequestParam("num") int num,Model model) {
 		model.addAttribute("email", email);
+		model.addAttribute("num", num);
 		return "board/mail";
+	}
+	
+	@RequestMapping(value = "/send", method = RequestMethod.POST)
+	public Map<String, Boolean> sendMail(@RequestParam(value = "receiver1") String receiver1, @RequestParam(value = "title") String title, @RequestParam(value = "contents") String contents) throws Exception {
+		Map<String, Boolean> map = new HashMap<>();
+		EmailVO email = new EmailVO();
+
+		String receiver = receiver1; // Receiver.
+		String subject = title;
+		String content = contents;
+
+		email.setReceiver(receiver);
+		email.setSubject(subject);
+		email.setContent(content);
+		boolean ok = svc.sendMail(email);
+		map.put("success", ok);
+		return map;
 	}
 	
 }

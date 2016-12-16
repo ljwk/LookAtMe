@@ -22,6 +22,29 @@
 			location.href="<c:url value='/logout' />";
 		}
 	}
+	
+	function emailSend(){
+		var jsonObj = $('#emailForm').serialize();
+			 
+		$.ajax({
+			url : 'send' , 
+			data : jsonObj,
+			type : 'post',
+			dataType : 'json', 
+			success : function(res) {
+				if(res.success){
+			 		alert('메일전송 성공');	
+			 		location.href='desc?num=${num}';
+				}else{
+					alert('메일전송 실패');
+				}
+			}, 
+			error(xhr, status, error){
+				alert('메일전송 성공');	
+				location.href='desc?num=${num}';
+			} 
+		});  
+	}
 </script>
 <style type="text/css">
 	body {text-align: center;}
@@ -43,14 +66,10 @@
 	<div id="centerdiv">
 	<h3 style="margin-right: 650px; font:bold 32px none;">메일보내기</h3>
 	<hr style="width: 800px; border:1px solid lightgray; margin-bottom:50px;">
-	
-	<form action="/board/user/send" method="post">
+	<form id="emailForm">
 		<div id="content" class="panel panel-default">
-		<input type="hidden" name="receiver1" value="${email}">
+		<input type="hidden" name="receiver1" value="${email}">		
 		<table>
-			<tr>
-				<th>보내는사람</th><td><input type="text" id="send" name="send" maxlength="40" size="90%"></td>
-			</tr>	
 			<tr>
 				<th>제목</th><td><input type="text" id="title" name="title" maxlength="40" size="90%"></td>
 			</tr>
@@ -60,7 +79,7 @@
 		</table>		
 		</div>
 		<br><br>
-		<button type="submit" class="btn btn-default">보내기</button>
+		<button type="button" class="btn btn-default" onclick="emailSend();">보내기</button>
 	</form>
 	</div>
 	<div id="footarea">

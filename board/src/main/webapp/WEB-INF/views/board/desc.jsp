@@ -91,7 +91,7 @@
 			<th>작성자</th><td><a href="/board/user/info?id=${desc.id}">${desc.id}</a></td>
 		</tr>
 		<tr id="file" >
-			<th >메일</th><td colspan="5" ><a href="mail?email=${desc.email}">${desc.email}</a></td>
+			<th >메일</th><td colspan="5" ><a href="mail?email=${desc.email}&num=${desc.num}">${desc.email}</a></td>
 		</tr>
 		<tr id="contents">
 			<th>내용</th><td colspan="5" id="aaaa" align=left valign=top>${desc.contents}</td>

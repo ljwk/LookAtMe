@@ -66,8 +66,8 @@
 	<div id="content" class="panel panel-default"> 
 	 <div class="panel-heading">로그인</div>
 		<table class="table" id="tablee">
-			<tr><th>ID</th><td><input type="text" name="id" value="SH"></td><td rowspan="2"><button class="btn btn-default" type="submit" style="padding: 25px;">로그인</button></td></tr>
-			<tr><th>PASSWORD</th><td><input type="password" name="pwd" value="1111"></td></tr>
+			<tr><th>ID</th><td><input type="text" name="id"></td><td rowspan="2"><button class="btn btn-default" type="submit" style="padding: 25px;">로그인</button></td></tr>
+			<tr><th>PASSWORD</th><td><input type="password" name="pwd" ></td></tr>
 					
 		</table>
 	  </div>
